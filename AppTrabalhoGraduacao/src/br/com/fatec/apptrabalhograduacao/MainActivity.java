@@ -78,7 +78,7 @@ public class MainActivity extends FragmentActivity {
 
         @Override
         public int getCount() {
-            return 3;
+            return 4;
         }
 
         @Override
@@ -87,6 +87,7 @@ public class MainActivity extends FragmentActivity {
                 case 0: return getString(R.string.title_section1).toUpperCase();
                 case 1: return getString(R.string.title_section2).toUpperCase();
                 case 2: return getString(R.string.title_section3).toUpperCase();
+                case 3: return getString(R.string.title_section4).toUpperCase();
             }
             return null;
         }
