@@ -9,3 +9,14 @@ D:\WebProject\TrabalhoGraduacao\TG\TG.Model\bin\Debug\NHibernate.xml
 D:\WebProject\TrabalhoGraduacao\TG\TG.Model\obj\x86\Debug\ResolveAssemblyReference.cache
 D:\WebProject\TrabalhoGraduacao\TG\TG.Model\obj\x86\Debug\TG.Model.dll
 D:\WebProject\TrabalhoGraduacao\TG\TG.Model\obj\x86\Debug\TG.Model.pdb
+D:\Testes\TrabalhoGraduacao\TG\TG.Model\bin\Debug\TG.Model.dll
+D:\Testes\TrabalhoGraduacao\TG\TG.Model\bin\Debug\TG.Model.pdb
+D:\Testes\TrabalhoGraduacao\TG\TG.Model\bin\Debug\FluentNHibernate.dll
+D:\Testes\TrabalhoGraduacao\TG\TG.Model\bin\Debug\Iesi.Collections.dll
+D:\Testes\TrabalhoGraduacao\TG\TG.Model\bin\Debug\NHibernate.dll
+D:\Testes\TrabalhoGraduacao\TG\TG.Model\bin\Debug\FluentNHibernate.xml
+D:\Testes\TrabalhoGraduacao\TG\TG.Model\bin\Debug\Iesi.Collections.xml
+D:\Testes\TrabalhoGraduacao\TG\TG.Model\bin\Debug\NHibernate.xml
+D:\Testes\TrabalhoGraduacao\TG\TG.Model\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\Testes\TrabalhoGraduacao\TG\TG.Model\obj\x86\Debug\TG.Model.dll
+D:\Testes\TrabalhoGraduacao\TG\TG.Model\obj\x86\Debug\TG.Model.pdb
