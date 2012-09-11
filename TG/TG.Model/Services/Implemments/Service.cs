@@ -5,7 +5,7 @@ using System.Text;
 using TG.Model.Services;
 using TG.Model.Repository;
 
-namespace PrimeiraAplicacao.Teste.Model.Services
+namespace TG.Model.Services
 {
     public class Service<T> : IService<T> where T : class
     {

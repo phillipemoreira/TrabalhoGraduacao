@@ -58,13 +58,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Mappings\Plan5W2H.cs" />
+    <Compile Include="Mappings\Plan5W2HMap.cs" />
+    <Compile Include="Mappings\UserMap.cs" />
     <Compile Include="Models\Plan5W2H.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Implemments\Repository.cs" />
+    <Compile Include="Repository\Implemments\UserRepository.cs" />
     <Compile Include="Repository\Interface\IRepository.cs" />
+    <Compile Include="Repository\Interface\IUserRepository.cs" />
     <Compile Include="Services\Implemments\Service.cs" />
+    <Compile Include="Services\Implemments\UserService.cs" />
     <Compile Include="Services\Interface\IService.cs" />
+    <Compile Include="Services\Interface\IUserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
