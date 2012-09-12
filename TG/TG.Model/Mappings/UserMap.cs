@@ -17,6 +17,7 @@ namespace TG.Model.Mappings
             Map(x => x.Email);
             Map(x => x.UserName);
             Map(x => x.Password);
+            HasMany(x => x.Plans);
         }
     }
 }

@@ -13,6 +13,7 @@ namespace TG.Model.Models
         public virtual string Email { get; set; }
         public virtual string UserName { get; set; }
         public virtual string Password { get; set; }
+        public virtual IList<Plan5W2H> Plans { get; set; }
         
         public User()
         {
