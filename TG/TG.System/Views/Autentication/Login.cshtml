@@ -1,39 +1,108 @@
 ﻿@model TG.Application.Models.LoginModel
 
 @{
-    ViewBag.Title = "Login";
+    ViewBag.Layout = "";
 }
+    <div class="container-fluid">
 
-<h2>Login</h2>
+        <div id="header">
 
-<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
-<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+            <div class="row-fluid">
 
-@Html.ActionLink("Register", "Create", "User")
+                <div class="navbar">
+                    <div class="navbar-inner">
+                      <div class="container">
+                      </div>
+                    </div><!-- /navbar-inner -->
+                  </div><!-- /navbar -->
+                
 
-@using (Html.BeginForm()) {
-    @Html.ValidationSummary(true)
-    <fieldset>
-        <legend>Login</legend>
+            </div><!-- End .row-fluid -->
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UserName)
+        </div><!-- End #header -->
+
+    </div><!-- End .container-fluid -->    
+
+    <div class="container-fluid">
+
+        <div class="loginContainer">
+            @using (Html.BeginForm("Login", "Autentication", FormMethod.Post, new { @class = "form-horizontal", @Id = "loginForm" }))
+            {
+                <div class="form-row row-fluid">
+                    <div class="span12">
+                        <div class="row-fluid">
+                            <label class="form-label span12" for="username">
+                                Username:
+                                <span class="icon16 icomoon-icon-user-2 right gray marginR10"></span>
+                            </label>
+                            @Html.TextBoxFor(model => model.UserName, new { @id = "username", @class = "span12", @Name = "username" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row row-fluid">
+                    <div class="span12">
+                        <div class="row-fluid">
+                            <label class="form-label span12" for="password">
+                                Password:
+                                <span class="icon16 icomoon-icon-locked right gray marginR10"></span>
+                                <span class="forgot"><a href="#">Forgot your password?</a></span>
+                            </label>
+                            @Html.PasswordFor(model => model.Password, new { @id = "password", @class = "span12", @Name = "password" })
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row row-fluid">                       
+                    <div class="span12">
+                        <div class="row-fluid">
+                            <div class="form-actions">
+                            <div class="span12 controls">
+                                <button type="submit" class="btn btn-info right" id="loginBtn"><span class="icon16 icomoon-icon-enter white"></span> Login</button>
+                            </div>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            }
         </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UserName)
-            @Html.ValidationMessageFor(model => model.UserName)
-        </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Password)
-        </div>
-        <div class="editor-field">
-            @Html.PasswordFor(model => model.Password)
-            @Html.ValidationMessageFor(model => model.Password)
-        </div>
+    </div><!-- End .container-fluid -->
 
-        <p>
-            <input type="submit" value="Login" />
-        </p>
-    </fieldset>
-}
+    <!-- Le javascript
+    ================================================== -->
+    
+    <script type="text/javascript" src="@Url.Content("~/Content/js/bootstrap/bootstrap.js")"></script>  
+    <script type="text/javascript" src="@Url.Content("~/Content/plugins/touch-punch/jquery.ui.touch-punch.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/plugins/ios-fix/ios-orientationchange-fix.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/plugins/validate/jquery.validate.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/plugins/uniform/jquery.uniform.min.js")"></script>
+
+     <script type="text/javascript">
+         // document ready function
+         $(document).ready(function () {
+             $("input, textarea, select").not('.nostyle').uniform();
+             $("#loginForm").validate({
+                 rules: {
+                     username: {
+                         required: true,
+                         minlength: 4
+                     },
+                     password: {
+                         required: true,
+                         minlength: 6
+                     }
+                 },
+                 messages: {
+                     username: {
+                         required: "Fill the username",
+                         minlength: "The password is more that 4 chars"
+                     },
+                     password: {
+                         required: "Please provide a password",
+                         minlength: "The password is more that 6 chars"
+                     }
+                 }
+             });
+         });
+    </script>
+    
