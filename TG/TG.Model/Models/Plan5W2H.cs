@@ -9,10 +9,13 @@ namespace TG.Model.Models
     {
         public virtual Guid Code { get; set; }
         public virtual User Owner { get; set; }
+        public virtual DateTime Creation { get; set; }
+        public virtual IList<Item5W2H> PlanItens { get; set; }
 
         public Plan5W2H()
         {
             this.Code = Guid.NewGuid();
+            this.Creation = DateTime.Now;
         }
     }
 }

@@ -64,8 +64,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mappings\Item5W2HMap.cs" />
     <Compile Include="Mappings\Plan5W2HMap.cs" />
     <Compile Include="Mappings\UserMap.cs" />
+    <Compile Include="Models\Item5W2H.cs" />
     <Compile Include="Models\Plan5W2H.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
