@@ -1042,8 +1042,7 @@
     <None Include="Content\css\fonts\minia.woff" />
     <None Include="Content\css\fonts\silkcons.woff" />
     <None Include="Content\css\fonts\wpzoom.woff" />
-    <Content Include="Views\Shared\JSPlugins.cshtml" />
-    <Content Include="Views\Shared\MetaIncludes.cshtml" />
+    <Content Include="Views\Shared\MenuSideNav.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

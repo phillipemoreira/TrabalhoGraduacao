@@ -9,7 +9,7 @@
     <property name="dialect">NHibernate.Dialect.MySQLDialect</property>
     <property name="connection.driver_class">NHibernate.Driver.MySqlDataDriver</property>
     <property name="use_proxy_validator">true</property>
-    <property name="connection.connection_string">Server=localhost;Database=nhibernateteste;User ID=root;Password=100189</property>
+    <property name="connection.connection_string">Server=localhost;Database=tgproject;User ID=root;Password=root</property>
     <property name="proxyfactory.factory_class"> NHibernate.ByteCode.Castle.ProxyFactoryFactory, NHibernate.ByteCode.Castle</property>
 
   </session-factory>
