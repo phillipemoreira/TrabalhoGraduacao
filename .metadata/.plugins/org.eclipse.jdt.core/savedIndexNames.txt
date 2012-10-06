@@ -1,5 +1,0 @@
-INDEX VERSION 1.126+D:\Testes\TrabalhoGraduacao\.metadata\.plugins\org.eclipse.jdt.core
-3611711369.index
-4206189814.index
-459897932.index
-1487599013.index

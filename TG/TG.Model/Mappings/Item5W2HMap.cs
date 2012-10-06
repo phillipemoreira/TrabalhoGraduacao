@@ -8,8 +8,7 @@ namespace TG.Model.Mappings
         public Item5W2HMap()
         {
             Id(x => x.Code).GeneratedBy.Assigned();
-            References(x => x.Plan);
-
+            
             Map(x => x.Oque);
             Map(x => x.Quando);
             Map(x => x.Onde);

@@ -8,7 +8,6 @@ namespace TG.Model.Models
     public class Plan5W2H
     {
         public virtual Guid Code { get; set; }
-        public virtual User Owner { get; set; }
         public virtual DateTime Creation { get; set; }
         public virtual IList<Item5W2H> PlanItens { get; set; }
 

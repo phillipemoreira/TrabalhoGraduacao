@@ -12,7 +12,6 @@ namespace TG.Model.Mappings
         public Plan5W2HMap()
         {
             Id(x => x.Code).GeneratedBy.Assigned();
-            References(x => x.Owner);
             HasMany(x => x.PlanItens);
         }
     }
