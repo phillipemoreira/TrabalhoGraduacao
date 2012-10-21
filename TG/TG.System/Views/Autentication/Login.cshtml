@@ -116,6 +116,20 @@
          $(document).ready(function () {
              $("input, textarea, select").not('.nostyle').uniform();
              $("#loginForm").validate({
+                 submitHandler: function (form) {
+                     $.ajax({
+                         url: "@Url.Action("Login","Autentication")",
+                         data: {"username": $("#username").val(), "password": $("#password").val()},
+                         dataType: 'json',
+                         type: 'post',
+                         success: function (j) {
+                             if(j.status == "ok")
+                                window.location = "@Url.Action("Index","Home")";
+                             else
+                                alert(j.status);
+                         }
+                     });
+                 },
                  rules: {
                      username: {
                          required: true,

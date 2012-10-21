@@ -22,6 +22,12 @@ namespace TG.Application
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                "WS", // Route name
+                "{controller}/login/{username}/{password}", // URL with parameters
+                new { controller = "WS", action = "Login" } // Parameter defaults
+            );
+
+            routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults

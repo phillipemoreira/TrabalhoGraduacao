@@ -58,14 +58,20 @@ namespace TG.Application.Controllers
                 if (user != null)
                 {
                     FormsAuthentication.SetAuthCookie(user.Code.ToString(), false);
-                    return RedirectToAction("Index", "Home");
+                    var obj = new { status = "ok" };
+                    return Json(obj, JsonRequestBehavior.AllowGet);
+                    //return RedirectToAction("Index", "Home");
                 }
                 else
-                    return View();
+                {
+                    var obj = new { status = "error" };
+                    return Json(obj, JsonRequestBehavior.DenyGet);
+                }
             }
             catch
             {
-                return View();
+                var obj = new { status = "error" };
+                return Json(obj, JsonRequestBehavior.DenyGet);
             }
         }
 
