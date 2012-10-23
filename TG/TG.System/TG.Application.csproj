@@ -105,7 +105,9 @@
     <Content Include="Content\css\bootstrap\bootstrap.css" />
     <Content Include="Content\css\bootstrap\bootstrap.min.css" />
     <Content Include="Content\css\bootstrap\index.html" />
-    <Content Include="Content\css\fonts\README IMPORTANT.txt" />
+    <Content Include="Content\css\fonts\README IMPORTANT.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\css\icons.css" />
     <Content Include="Content\css\main.css" />
     <Content Include="Content\css\Site.css" />
@@ -1017,13 +1019,27 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Content\css\fonts\broccolidry.woff" />
-    <None Include="Content\css\fonts\entypo.woff" />
-    <None Include="Content\css\fonts\icoMoon.woff" />
-    <None Include="Content\css\fonts\iconic.woff" />
-    <None Include="Content\css\fonts\minia.woff" />
-    <None Include="Content\css\fonts\silkcons.woff" />
-    <None Include="Content\css\fonts\wpzoom.woff" />
+    <Content Include="Content\css\fonts\broccolidry.woff">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\css\fonts\entypo.woff">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\css\fonts\icoMoon.woff">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\css\fonts\iconic.woff">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\css\fonts\minia.woff">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\css\fonts\silkcons.woff">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\css\fonts\wpzoom.woff">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Views\Shared\MenuSideNav.cshtml" />
   </ItemGroup>
   <ItemGroup>

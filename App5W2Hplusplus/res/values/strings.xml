@@ -1,0 +1,19 @@
+<resources>
+
+    <string name="app_name">5W2H++</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_home">HomeActivity</string>
+
+    <string name="app_error_backHome">There\'s been an error, going back to the home.</string>
+    <string name="problem">Problem</string>
+    <string name="unhandledProblem">Sorry, there is a problem in the application.</string>
+    <string name="dialogButton_unhandledProblem">Send</string>
+    <string name="progressDialogMessage_unhandledProblem">Catching and computing application stack trace&#8230;</string>
+    <string name="unavailableService">Unavailable service. The application cannot continue. Click on the \"OK \" button.</string>
+    <string name="connectivityProblem">You\'re not connected on the internet or your connection is too slow. Please check your connection parameters and try again.</string>
+    <string name="connectivityProblemRetry">You\'re not connected on the internet or your connection is too slow. Please check your connection parameters and try again.</string>
+    <string name="unavailableItem">This screen doesn\'t show properly. Please click on the \"OK \" button.</string>
+    <string name="progressDialog_title">Please wait</string>
+    
+</resources>

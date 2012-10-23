@@ -32,7 +32,7 @@ namespace TG.Application.ActionFilter
         private static void BuildSchema(Configuration config)
         {
 
-            if (true)
+            if (false)
             {
                 // this NHibernate tool takes a configuration (with mapping info in)
                 // and exports a database schema from it
