@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TG.Application", "TG.System\TG.Application.csproj", "{A055D3D1-19FA-4403-9473-EAB96A6FAF99}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TG.Model", "TG.Model\TG.Model.csproj", "{EEB0252F-77A0-4B13-ADE7-CEF925E675EF}"
