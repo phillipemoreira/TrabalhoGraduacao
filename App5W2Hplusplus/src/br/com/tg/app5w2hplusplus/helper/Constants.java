@@ -25,7 +25,7 @@ public class Constants {
 /*
  * Web Service Constants	
  */
-	public static final String WEBSERVICES_BASE_URL = "http://localhost";
+	public static final String WEBSERVICES_BASE_URL = "http://192.168.1.101/ws";
 	/**
    * The encoding used for wrapping the URL of the HTTP requests.
    */
