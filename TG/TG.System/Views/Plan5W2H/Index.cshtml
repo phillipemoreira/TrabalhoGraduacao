@@ -1,33 +1,89 @@
-﻿@model IEnumerable<TG.Model.Models.Plan5W2H>
+﻿@Html.Partial("BodyFirstPart")
 
-@{
-    ViewBag.Title = "Index";
-}
+@*Content Here*@
 
-<h2>Index</h2>
+                    <div class="row-fluid">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table>
-    <tr>
-        <th>
-            Code
-        </th>
-        <th></th>
-    </tr>
+                       <div class="tableBox">
+                            
+                            <div class="box">
 
-@*@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Code)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}*@
+                                <div class="title">
 
-</table>
+                                    <h4>
+                                        <span class="icon16 brocco-icon-grid"></span>
+                                        <span>Lista de Projetos</span>
+                                        <form class="box-form right" action="">
+                                            <a style="margin-right:70px" class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                                                <span class="icon16 iconic-icon-cog"></span>
+                                                <span class="caret"></span>
+                                            </a>
+                                            <ul style="margin-right:70px" class="dropdown-menu" >
+                                                <li><a href="#"><span class="icon-plus"></span> Adicionar</a></li>
+                                            </ul>
+                                        </form>
+                                       
+                                    </h4>
+                                    <a href="#" class="minimize">Minimize</a>
+                                </div>
+                                <div class="content noPad">
+                                    <table class="responsive table table-bordered" id="checkAll">
+                                        <thead>
+                                          <tr>
+                                            <th>#</th>
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
+                                            <th>Username</th>
+                                            <th>Actions</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <td>1</td>
+                                            <td>Mark</td>
+                                            <td>Otto</td>
+                                            <td>mdo</td>
+                                            <td>
+                                                <div class="controls center">
+                                                    <a href="#" title="Edit task" class="tip"><span class="icon12 icomoon-icon-pencil"></span></a>
+                                                    <a href="#" title="Remove task" class="tip"><span class="icon12 icomoon-icon-remove"></span></a>
+                                                </div>
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <td>2</td>
+                                            <td>Jacob</td>
+                                            <td>Thornton</td>
+                                            <td>fat</td>
+                                            <td>
+                                                <div class="controls center">
+                                                    <a href="#" title="Edit task" class="tip"><span class="icon12 icomoon-icon-pencil"></span></a>
+                                                    <a href="#" title="Remove task" class="tip"><span class="icon12 icomoon-icon-remove"></span></a>
+                                                </div>
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <td>3</td>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>twitter</td>
+                                            <td>
+                                                <div class="controls center">
+                                                    <a href="#" title="Edit task" class="tip"><span class="icon12 icomoon-icon-pencil"></span></a>
+                                                    <a href="#" title="Remove task" class="tip"><span class="icon12 icomoon-icon-remove"></span></a>
+                                                </div>
+                                            </td>
+                                          </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div><!-- End .box -->
+
+                        </div><!-- End .span6 -->
+
+                    </div><!-- End .row-fluid -->
+
+
+@Html.Partial("BodySecondPart")
+                

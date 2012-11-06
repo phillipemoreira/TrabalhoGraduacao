@@ -5,9 +5,17 @@ using System.Text;
 
 namespace TG.Model.Models
 {
+    public enum Status
+    {
+        Pronto = 1,
+        EmAndamento = 2,
+        Parado = 3
+    }
+
     public class Item5W2H
     {
         public virtual Guid Code { get; set; }
+        public virtual Status Andamento { get; set; }
 
         public virtual string Porque { get; set; }
         public virtual string Oque { get; set; }
