@@ -11,24 +11,14 @@
             <a href="#"><span class="icon16 minia-icon-list-3"></span></a>
         </div>
         
-        <!--Sidebar collapse button-->  
-        <div class="collapseBtn">
-             <a href="#" class="tipR" title="Hide sidebar"><span class="icon12 minia-icon-layout"></span></a>
-        </div>
-
         <!--Sidebar background-->
         <div id="sidebarbg"></div>
         <!--Sidebar content-->
         <div id="sidebar">
 
             <div class="shortcuts">
-                <ul>
-                    <li><a href="support.html" title="Support section" class="tip"><span class="icon24 wpzoom-support"></span></a></li>
-                    <li><a href="#" title="Database backup" class="tip"><span class="icon24 icomoon-icon-database"></span></a></li>
-                    <li><a href="charts.html" title="Sales statistics" class="tip"><span class="icon24 iconic-icon-chart"></span></a></li>
-                    <li><a href="#" title="Write post" class="tip"><span class="icon24 icomoon-icon-pencil"></span></a></li>
-                </ul>
-            </div><!-- End search -->            
+                
+            </div><!-- End search -->
 
             <!-- SideNav Include -->
             @Html.Partial("MenuSideNav")
@@ -41,32 +31,29 @@
 
                 <div class="heading">
 
-                    <h3>Dashboard</h3>                    
+                    <h3>@ViewBag.Titulo</h3>                    
 
-                    <div class="resBtnSearch">
-                        <a href="#"><span class="icon16 brocco-icon-search"></span></a>
-                    </div>
-
-                    <div class="search">
-
-                        <form id="searchform" action="search.html">
-                            <input type="text" id="tipue_search_input" class="top-search" placeholder="Search here ..." />
-                            <input type="submit" id="tipue_search_button" class="search-btn" value=""/>
-                        </form>
-                
-                    </div><!-- End search -->
-                    
                     <ul class="breadcrumb">
-                        <li>You are here:</li>
+                        <li>Você está aqui:</li>
                         <li>
-                            <a href="#" class="tip" title="back to dashboard">
+                            <a href="@Url.Action("Index", "Home")" class="tip" title="voltar para a Home">
                                 <span class="icon16 icomoon-icon-screen"></span>
                             </a> 
                             <span class="divider">
                                 <span class="icon16 icomoon-icon-arrow-right"></span>
                             </span>
                         </li>
-                        <li class="active">Dashboard</li>
+                        
+                        @if (ViewBag.LocalizacaoPai != null)
+                        {
+                        <li>
+                            @Html.Raw(ViewBag.LocalizacaoPai)
+                            <span class="divider">
+                                <span class="icon16 icomoon-icon-arrow-right"></span>
+                            </span>
+                        </li>
+                        }
+                        <li class="active">@Html.Raw(ViewBag.Localizacao)</li>
                     </ul>
 
                 </div><!-- End .heading-->

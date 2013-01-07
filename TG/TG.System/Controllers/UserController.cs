@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using TG.Application.ActionFilter;
-using TG.Model.Services;
-using TG.Model.Models;
-using TG.Model.Repository;
+using Plan5W2HPlusPlus.Application.ActionFilter;
+using Plan5W2HPlusPlus.Model.Services;
+using Plan5W2HPlusPlus.Model.Models;
+using Plan5W2HPlusPlus.Model.Repository;
 
-namespace TG.Application.Controllers
+namespace Plan5W2HPlusPlus.Application.Controllers
 {
     [NHibernateActionFilter]
-    public class UserController : SessionController
+    public class UserController : LoggedController
     {
         private IService<User> service;
         private IService<User> Service

@@ -1,7 +1,7 @@
 ﻿using FluentNHibernate.Mapping;
-using TG.Model.Models;
+using Plan5W2HPlusPlus.Model.Models;
 
-namespace TG.Model.Mappings
+namespace Plan5W2HPlusPlus.Model.Mappings
 {
     public class Item5W2HMap : ClassMap<Item5W2H>
     {
@@ -16,7 +16,7 @@ namespace TG.Model.Mappings
             Map(x => x.Porque);
             Map(x => x.Como);
             Map(x => x.Quanto);
-            HasMany(x => x.Quem);
+            HasMany(x => x.Quem).Not.LazyLoad();
         }
     }
 }

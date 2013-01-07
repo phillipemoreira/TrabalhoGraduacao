@@ -1,9 +1,11 @@
 ﻿<div class="sidenav">
-
+            @if(this.Request.IsAuthenticated)
+            {
                 <div class="sidebar-widget" style="margin: -1px 0 0 0;">
-                    <h5 class="title" style="margin-bottom:0">Navigation</h5>
+                    <h5 class="title" style="margin-bottom:0">Navegação</h5>
                 </div><!-- End .sidenav-widget -->
 
+                
                 <div class="mainnav">
                     <ul>
                         <li><a href="@Url.Action("Index","Plan5W2H")"><span class="icon16 icomoon-icon-stats-up"></span>Projetos</a></li>
@@ -62,6 +64,8 @@
                                 <li><a href="support.html"><span class="icon16 wpzoom-support"></span>Support page</a></li>
                             </ul>
                         </li>*@
+                        
                     </ul>
                 </div>
+            }
             </div><!-- End sidenav -->

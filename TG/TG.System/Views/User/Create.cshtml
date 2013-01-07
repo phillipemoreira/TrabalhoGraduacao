@@ -1,365 +1,95 @@
-﻿@model TG.Model.Models.User
+﻿@model Plan5W2HPlusPlus.Model.Models.User
 
-    <!-- loading animation -->
-    <div id="qLoverlay"></div>
-    <div id="qLbar"></div>
-    
-    @Html.Partial("Header")
+@{
+    ViewBag.Titulo = "Criar usuário";
+    ViewBag.Localizacao = "Criar usuário";
+}
 
-    <div id="wrapper">
-
-        <!--Responsive navigation button-->  
-        <div class="resBtn">
-            <a href="#"><span class="icon16 minia-icon-list-3"></span></a>
-        </div>
-        
-        <!--Sidebar collapse button-->  
-        <div class="collapseBtn">
-             <a href="#" class="tipR" title="Hide sidebar"><span class="icon12 minia-icon-layout"></span></a>
-        </div>
-
-        <!--Sidebar background-->
-        <div id="sidebarbg"></div>
-        <!--Sidebar content-->
-        <div id="sidebar">
-
-            <div class="shortcuts">
-                <ul>
-                    <li><a href="support.html" title="Support section" class="tip"><span class="icon24 icomoon-icon-support"></span></a></li>
-                    <li><a href="#" title="Database backup" class="tip"><span class="icon24 icomoon-icon-database"></span></a></li>
-                    <li><a href="charts.html" title="Sales statistics" class="tip"><span class="icon24 iconic-icon-chart"></span></a></li>
-                    <li><a href="#" title="Write post" class="tip"><span class="icon24 icomoon-icon-pencil"></span></a></li>
-                </ul>
-            </div><!-- End search -->            
-
-            <div class="sidenav">
-
-                <div class="sidebar-widget" style="margin: -1px 0 0 0;">
-                    <h5 class="title" style="margin-bottom:0">Navigation</h5>
-                </div><!-- End .sidenav-widget -->
-
-                <div class="mainnav">
-                    <ul>
-                        <li><a href="charts.html"><span class="icon16 icomoon-icon-stats-up"></span>Charts</a></li>
-                        <li>
-                            <a href="#"><span class="icon16 minia-icon-list-4"></span>Forms</a>
-                            <ul class="sub">
-                                <li><a href="forms.html"><span class="icon16 icomoon-icon-paper"></span>Forms Stuff</a></li>
-                                <li><a href="forms-validation.html"><span class="icon16 icomoon-icon-paper"></span>Validation</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#"><span class="icon16 silk-icon-columns"></span>Tables</a>
-                            <ul class="sub">
-                                <li><a href="tables.html"><span class="icon16 icomoon-icon-arrow-right"></span>Static</a></li>
-                                <li><a href="data-table.html"><span class="icon16 icomoon-icon-arrow-right"></span>Data table</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#"><span class="icon16 brocco-icon-grid"></span>UI Elements</a>
-                            <ul class="sub">
-                                <li><a href="icons.html"><span class="icon16 icomoon-icon-rocket"></span>Icons</a></li>
-                                <li><a href="buttons.html"><span class="icon16 icomoon-icon-paper"></span>Buttons</a></li>
-                                <li><a href="elements.html"><span class="icon16 minia-icon-cog"></span>Elements</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="typo.html"><span class="icon16 icomoon-icon-font"></span>Typography</a></li>
-                        <li><a href="grid.html"><span class="icon16 icomoon-icon-grid-view"></span>Grid</a></li>
-                        <li><a href="calendar.html"><span class="icon16 brocco-icon-calendar"></span>Calendar</a></li>
-                        <li>
-                            <a href="widgets.html"><span class="icon16 icomoon-icon-cube"></span>Widgets<span class="notification green">30</span></a>
-                        </li>
-                        <li><a href="file.html"><span class="icon16 icomoon-icon-upload-2"></span>File Manager</a></li>
-                        <li>
-                            <a href="#"><span class="icon16 icomoon-icon-paper"></span>Error pages<span class="notification">6</span></a>
-                            <ul class="sub">
-                                <li><a href="403.html"><span class="icon16 icomoon-icon-paper"></span>Error 403</a></li>
-                                <li><a href="404.html"><span class="icon16 icomoon-icon-paper"></span>Error 404</a></li>
-                                <li><a href="405.html"><span class="icon16 icomoon-icon-paper"></span>Error 405</a></li>
-                                <li><a href="500.html"><span class="icon16 icomoon-icon-paper"></span>Error 500</a></li>
-                                <li><a href="503.html"><span class="icon16 icomoon-icon-paper"></span>Error 503</a></li>
-                                <li><a href="offline.html"><span class="icon16 icomoon-icon-paper"></span>Offline page</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#"><span class="icon16 iconic-icon-box"></span>Other pages<span class="notification blue">5</span></a>
-                            <ul class="sub">
-                                <li><a href="invoice.html"><span class="icon16 icomoon-icon-paper"></span>Invoice page</a></li>
-                                <li><a href="profile.html"><span class="icon16 icomoon-icon-paper"></span>User profile</a></li>
-                                <li><a href="search.html"><span class="icon16 wpzoom-search"></span>Search page</a></li>
-                                <li><a href="email.html"><span class="icon16 icomoon-icon-mail"></span>Email page</a></li>
-                                <li><a href="support.html"><span class="icon16 wpzoom-support"></span>Support page</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div><!-- End sidenav -->
-
-            <div class="sidebar-widget">
-                <h5 class="title">Monthly Bandwidth Transfer</h5>
-                <div class="content">
-                    <span class="icon16 iconic-icon-transfer left"></span>
-                    <div class="progress progress-mini progress-danger left tip" title="87%">
-                      <div class="bar" style="width: 87%;"></div>
-                    </div>
-                    <span class="percent">87%</span>
-                    <div class="stat">19419.94 / 12000 MB</div>
-                </div>
-
-            </div><!-- End .sidenav-widget -->
-
-            <div class="sidebar-widget">
-                <h5 class="title">Disk Space Usage</h5>
-                <div class="content">
-                    <span class="icon16 icomoon-icon-cloud left"></span>
-                    <div class="progress progress-mini progress-success left tip" title="16%">
-                      <div class="bar" style="width: 16%;"></div>
-                    </div>
-                    <span class="percent">16%</span>
-                    <div class="stat">304.44 / 8000 MB</div>
-                </div>
-
-            </div><!-- End .sidenav-widget -->
-
-            <div class="sidebar-widget">
-                <h5 class="title">Ad sense stats</h5>
-                <div class="content">
-                    
-                    <div class="stats">
-                        <div class="item">
-                            <div class="head clearfix">
-                                <div class="txt">Advert View</div>
-                            </div>
-                            <span class="icon16 icomoon-icon-eye left"></span>
-                            <div class="number">21,501</div>
-                            <div class="change">
-                                <span class="icon24 icomoon-icon-arrow-up green"></span>
-                                5%
-                            </div>
-                            <span id="stat1" class="spark"></span>
-                        </div>
-                        <div class="item">
-                            <div class="head clearfix">
-                                <div class="txt">Clicks</div>
-                            </div>
-                            <span class="icon16 entypo-icon-thumbs-up left"></span>
-                            <div class="number">308</div>
-                            <div class="change">
-                                <span class="icon24 icomoon-icon-arrow-down red"></span>
-                                8%
-                            </div>
-                            <span id="stat2" class="spark"></span>
-                        </div>
-                        <div class="item">
-                            <div class="head clearfix">
-                                <div class="txt">Page CTR</div>
-                            </div>
-                            <span class="icon16 icomoon-icon-heart left"></span>
-                            <div class="number">4%</div>
-                            <div class="change">
-                                <span class="icon24 icomoon-icon-arrow-down red"></span>
-                                1%
-                            </div>
-                            <span id="stat3" class="spark"></span>
-                        </div>
-                        <div class="item">
-                            <div class="head clearfix">
-                                <div class="txt">Earn money</div>
-                            </div>
-                            <span class="icon16 icomoon-icon-calculate left"></span>
-                            <div class="number">$376</div>
-                            <div class="change">
-                                <span class="icon24 icomoon-icon-arrow-up green"></span>
-                                26%
-                            </div>
-                            <span id="stat4" class="spark"></span>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div><!-- End .sidenav-widget -->
-
-            <div class="sidebar-widget">
-                <h5 class="title">Right now</h5>
-                <div class="content">
-                    <div class="rightnow">
-                        <ul class="unstyled">
-                            <li><span class="number">34</span><span class="icon16 icomoon-icon-new"></span>Posts</li>
-                            <li><span class="number">7</span><span class="icon16 icomoon-icon-paper"></span>Pages</li>
-                            <li><span class="number">14</span><span class="icon16 brocco-icon-list"></span>Categories</li>
-                            <li><span class="number">201</span><span class="icon16 icomoon-icon-tag"></span>Tags</li>
-                        </ul>
-                    </div>
-                </div>
-
-            </div><!-- End .sidenav-widget -->
-
-        </div><!-- End #sidebar -->
-
-        <!--Body content-->
-        <div id="content" class="clearfix">
-            <div class="contentwrapper"><!--Content wrapper-->
-
-                <div class="heading">
-
-                    <h3>User profile</h3>                    
-
-                    <div class="resBtnSearch">
-                        <a href="#"><span class="icon16 brocco-icon-search"></span></a>
-                    </div>
-
-                    <div class="search">
-
-                        <form id="searchform" action="search.html">
-                            <input type="text" id="tipue_search_input" class="top-search" placeholder="Search here ..." />
-                            <input type="submit" id="tipue_search_button" class="search-btn" value=""/>
-                        </form>
-                
-                    </div><!-- End search -->
-                    
-                    <ul class="breadcrumb">
-                        <li>You are here:</li>
-                        <li>
-                            <a href="#" class="tip" title="back to dashboard">
-                                <span class="icon16 icomoon-icon-screen"></span>
-                            </a> 
-                            <span class="divider">
-                                <span class="icon16 icomoon-icon-arrow-right"></span>
-                            </span>
-                        </li>
-                        <li class="active">User profile Page</li>
-                    </ul>
-
-                </div><!-- End .heading-->
+@Html.Partial("BodyFirstPart")
 
                 <!-- Build page from here: -->
                 <div class="row-fluid">
 
                     <div class="span12">
 
-                        <div class="page-header">
-                            <h4>User profile</h4>
-                        </div>
-
-        @using (Html.BeginForm("Create", "User", FormMethod.Post, new { @Class="form-horizontal", @Id="form-validate"}))
-        {
-            @Html.ValidationSummary(true)
-            <div class="form-row row-fluid">
-                <div class="span12">
-                    <div class="row-fluid">
-                        <label class="form-label span3" for="username">Username:</label>
-                        @Html.TextBoxFor(model => model.UserName, new { @Class = "span4 required" })
-                    </div>
-                </div>
-            </div>
-            <div class="form-row row-fluid">
-                <div class="span12">
-                    <div class="row-fluid">
-                        <label class="form-label span3" for="name">First Name:</label>
-                        @Html.TextBoxFor(model => model.FirstName, new { @class = "span4 required" })
-                    </div>
-                </div>
-            </div>
-            <div class="form-row row-fluid">
-                <div class="span12">
-                    <div class="row-fluid">
-                        <label class="form-label span3" for="name">Last Name:</label>
-                        @Html.TextBoxFor(model => model.LastName, new { @class = "span4 required" })
-                    </div>
-                </div>
-            </div>
-            <div class="form-row row-fluid">
-                <div class="span12">
-                    <div class="row-fluid">
-                        <label class="form-label span3" for="email">Email:</label>
-                        @Html.TextBoxFor(model => model.Email, new { @class = "span4 required" })
-                    </div>
-                </div>
-            </div>
-            <div class="form-row row-fluid">
-                <div class="span12">
-                    <div class="row-fluid">
-                        <label class="form-label span3" for="normal">Password fields</label>
-                        <div class="span9 controls">
-                            @Html.PasswordFor(model => model.Password, new { @Class = "span4", @Name = "password"})                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="form-row row-fluid">        
-                <div class="span12">
-                    <div class="row-fluid">
-                        <div class="form-actions">
-                        <div class="span3"></div>
-                        <div class="span4 controls">
-                            <button type="submit" class="btn btn-info marginR10">Save changes</button>
-                            <button type="reset" id="cancel" class="btn btn-danger">Cancel</button>
-                        </div>
-                        </div>
-                    </div>
-                </div>   
-            </div>
-        } 
+                            @using (Html.BeginForm("Create", "User", FormMethod.Post, new { @Class="form-horizontal", @Id="form-validate"}))
+                            {
+                                @Html.ValidationSummary(true)
+                                <div class="form-row row-fluid">
+                                    <div class="span12">
+                                        <div class="row-fluid">
+                                            <label class="form-label span3" for="username">Username:</label>
+                                            @Html.TextBoxFor(model => model.UserName, new { @Class = "span4 required" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row row-fluid">
+                                    <div class="span12">
+                                        <div class="row-fluid">
+                                            <label class="form-label span3" for="name">First Name:</label>
+                                            @Html.TextBoxFor(model => model.FirstName, new { @class = "span4 required" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row row-fluid">
+                                    <div class="span12">
+                                        <div class="row-fluid">
+                                            <label class="form-label span3" for="name">Last Name:</label>
+                                            @Html.TextBoxFor(model => model.LastName, new { @class = "span4 required" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row row-fluid">
+                                    <div class="span12">
+                                        <div class="row-fluid">
+                                            <label class="form-label span3" for="email">Email:</label>
+                                            @Html.TextBoxFor(model => model.Email, new { @class = "span4 required" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row row-fluid">
+                                    <div class="span12">
+                                        <div class="row-fluid">
+                                            <label class="form-label span3" for="normal">Password:</label>
+                                            <div class="span9 controls">
+                                                @Html.PasswordFor(model => model.Password, new { @Class = "span4", @Name = "password"})                            
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row row-fluid">
+                                    <div class="span12">
+                                        <div class="row-fluid">
+                                            <label class="form-label span3" for="normal">Avatar:</label>
+                                            <div class="span9 controls">
+                                                <input type="file" name="fileinput" id="file" />
+                                            </div>
+                                        </div>
+                                    </div>  
+                                </div>
+                                <div class="form-row row-fluid">        
+                                    <div class="span12">
+                                        <div class="row-fluid">
+                                            <div class="form-actions">
+                                            <div class="span3"></div>
+                                            <div class="span4 controls">
+                                                <button type="submit" class="btn btn-info marginR10">Save changes</button>
+                                                <button type="reset" id="cancel" class="btn btn-danger">Cancel</button>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>   
+                                </div>
+                            } 
 
                     </div><!-- End .span12 -->
 
                 </div><!-- End .row-fluid -->
 
-                <div class="modal fade hide" id="myModal1">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><span class="icon12 minia-icon-close"></span></button>
-                        <h3>Chat layout</h3>
-                    </div>
-                    <div class="modal-body">
-                        <ul class="messages">
-                            <li class="user clearfix">
-                                <a href="#" class="avatar">
-                                    <img src="images/avatar2.jpeg" alt="" />
-                                </a>
-                                <div class="message">
-                                    <div class="head clearfix">
-                                        <span class="name"><strong>Lazar</strong> says:</span>
-                                        <span class="time">25 seconds ago</span>
-                                    </div>
-                                    <p>
-                                        Time to go i call you tomorrow.
-                                    </p>
-                                </div>
-                            </li>
-                            <li class="admin clearfix">
-                                <a href="#" class="avatar">
-                                    <img src="images/avatar3.jpeg" alt="" />
-                                </a>
-                                <div class="message">
-                                    <div class="head clearfix">
-                                        <span class="name"><strong>Sugge</strong> says:</span>
-                                        <span class="time">just now</span>
-                                    </div>
-                                    <p>
-                                        OK, have a nice day.
-                                    </p>
-                                </div>
-                            </li>
+                @*Content End*@
 
-                            <li class="sendMsg">
-                                <form class="form-horizontal" action="#">
-                                    <textarea class="elastic" id="textarea1" rows="1" placeholder="Enter your message ..." style="width:98%;"></textarea>
-                                    <button type="submit" class="btn btn-info marginT10">Send message</button>
-                                </form>
-                            </li>
-                            
-                        </ul>
-                    </div>
-                    <div class="modal-footer">
-                        <a href="#" class="btn" data-dismiss="modal">Close</a>
-                    </div>
-                </div>
-                
-            </div><!-- End contentwrapper -->
-        </div><!-- End #content -->
-    
-    </div><!-- End #wrapper -->
+@Html.Partial("BodySecondPart")
+
 <script type="text/javascript">
     $(function () {
         $("#cancel").click(function () {

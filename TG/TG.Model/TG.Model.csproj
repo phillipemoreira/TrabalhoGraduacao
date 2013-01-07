@@ -8,7 +8,7 @@
     <ProjectGuid>{EEB0252F-77A0-4B13-ADE7-CEF925E675EF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TG.Model</RootNamespace>
+    <RootNamespace>Plan5W2HPlusPlus.Model</RootNamespace>
     <AssemblyName>TG.Model</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
@@ -71,12 +71,16 @@
     <Compile Include="Models\Plan5W2H.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\Implemments\Plan5W2HRepository.cs" />
     <Compile Include="Repository\Implemments\Repository.cs" />
     <Compile Include="Repository\Implemments\UserRepository.cs" />
+    <Compile Include="Repository\Interface\IPlan5W2HRepository.cs" />
     <Compile Include="Repository\Interface\IRepository.cs" />
     <Compile Include="Repository\Interface\IUserRepository.cs" />
+    <Compile Include="Services\Implemments\Plan5W2HService.cs" />
     <Compile Include="Services\Implemments\Service.cs" />
     <Compile Include="Services\Implemments\UserService.cs" />
+    <Compile Include="Services\Interface\IPlan5W2HService.cs" />
     <Compile Include="Services\Interface\IService.cs" />
     <Compile Include="Services\Interface\IUserService.cs" />
   </ItemGroup>

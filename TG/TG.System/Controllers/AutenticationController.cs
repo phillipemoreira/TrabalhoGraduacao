@@ -1,15 +1,16 @@
 ﻿using System.Web.Mvc;
-using TG.Application.Models;
-using TG.Model.Services;
-using TG.Model.Models;
-using TG.Model.Repository;
+using Plan5W2HPlusPlus.Application.Models;
+using Plan5W2HPlusPlus.Model.Services;
+using Plan5W2HPlusPlus.Model.Models;
+using Plan5W2HPlusPlus.Model.Repository;
 using System.Web.Security;
-using TG.Application.ActionFilter;
+using Plan5W2HPlusPlus.Application.ActionFilter;
+using System.Web;
 
-namespace TG.Application.Controllers
+namespace Plan5W2HPlusPlus.Application.Controllers
 {
     [NHibernateActionFilter]
-    public class AutenticationController : SessionController
+    public class AutenticationController : LoggedController
     {
         private IUserService service;
         private IUserService Service
@@ -57,10 +58,11 @@ namespace TG.Application.Controllers
                 User user = Service.FindByUsernamePassword(model.UserName, model.Password);
                 if (user != null)
                 {
-                    FormsAuthentication.SetAuthCookie(user.Code.ToString(), false);
                     var obj = new { status = "ok" };
+
+                    this.AddUserAuthenticatedCookie(user.Code.ToString());
+                    
                     return Json(obj, JsonRequestBehavior.AllowGet);
-                    //return RedirectToAction("Index", "Home");
                 }
                 else
                 {

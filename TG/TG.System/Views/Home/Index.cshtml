@@ -1,9 +1,12 @@
-﻿@Html.Partial("BodyFirstPart")
+﻿@{
+    ViewBag.Titulo = "Home";
+}
+
+@Html.Partial("BodyFirstPart")
 
 @*Content Here*@
 
-                    HOME
-
+    @ViewBag.Titulo
 
 
 @Html.Partial("BodySecondPart")

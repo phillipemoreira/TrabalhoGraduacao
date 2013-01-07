@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using TG.Model.Models;
+using Plan5W2HPlusPlus.Model.Models;
 
-namespace TG.Model.Services
+namespace Plan5W2HPlusPlus.Model.Services
 {
-    public interface IUserService
+    public interface IUserService : IService<User>
     {
         User FindByUsernamePassword(string username, string password);
+
+        User FindByCode(Guid code);
     }
 }

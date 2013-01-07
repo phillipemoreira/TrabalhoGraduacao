@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using TG.Model.Services;
-using TG.Model.Repository;
+using Plan5W2HPlusPlus.Model.Services;
+using Plan5W2HPlusPlus.Model.Repository;
 
-namespace TG.Model.Services
+namespace Plan5W2HPlusPlus.Model.Services
 {
     public class Service<T> : IService<T> where T : class
     {

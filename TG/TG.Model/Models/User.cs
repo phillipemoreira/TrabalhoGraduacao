@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace TG.Model.Models
+namespace Plan5W2HPlusPlus.Model.Models
 {
     public class User
     {
@@ -14,10 +14,13 @@ namespace TG.Model.Models
         public virtual string UserName { get; set; }
         public virtual string Password { get; set; }
         public virtual IList<Plan5W2H> Plans { get; set; }
-        
+        public virtual IList<User> Friends { get; set; }
+
         public User()
         {
             this.Code = Guid.NewGuid();
+            this.Plans = new List<Plan5W2H>();
+            this.Friends = new List<User>();
         }
     }
 }

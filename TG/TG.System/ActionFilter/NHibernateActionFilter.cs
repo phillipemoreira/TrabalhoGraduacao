@@ -7,11 +7,11 @@ using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
 using FluentNHibernate.Cfg;
 using NHibernate;
-using TG.Application.Controllers;
-using TG.Model.Models;
+using Plan5W2HPlusPlus.Application.Controllers;
+using Plan5W2HPlusPlus.Model.Models;
 using System.IO;
 
-namespace TG.Application.ActionFilter
+namespace Plan5W2HPlusPlus.Application.ActionFilter
 {
     public class NHibernateActionFilter : ActionFilterAttribute 
     {    

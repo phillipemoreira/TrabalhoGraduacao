@@ -1272,7 +1272,7 @@ select {width: 150px;}
 	padding: 67px 25px 25px 25px;
 	margin-left: 213px;
 	padding-top: 67px;
-	min-height: 100%;
+	min-height: 600px;
 	background: url(../images/patterns/5.png) repeat;
 }
 .contentwrapper {
@@ -1312,7 +1312,7 @@ select {width: 150px;}
 		-moz-box-shadow:0 1px 0px rgba(255, 255, 255, 1);
 		-webkit-box-shadow: 0 1px 0px rgba(255, 255, 255, 1);
 		box-shadow: 0 1px 0px rgba(255, 255, 255, 1);
-		height: auto;
+		height: 42px;
 		width: 100%;
 		padding-bottom: 0px;
 		padding-top:7px;
@@ -1533,7 +1533,7 @@ select {width: 150px;}
 		padding-left:25px;
 		padding-right:10px;
 		}
-			.mainnav ul li .sub li .sub a span[class*=" icon-"], .mainnav ul li .sub li .sub a span[class*=" brocco-icon-"], .mainnav ul li .sub li .sub a span[class*=" cut-icon-"], .mainnav ul li .sub li .sub a span[class*=" entypo-icon-"], .mainnav ul li .sub li .sub a span[class*=" icomoon-icon-"], , .mainnav ul li .sub li .sub a span[class*=" minia-icon-"], .mainnav ul li .sub li .sub a span[class*=" iconic-icon-"], .mainnav ul li .sub li .sub a span[class*=" meteo-icon-"], .mainnav ul li .sub li .sub a span[class*=" silk-icon-"], .mainnav ul li .sub li .sub a span[class*=" typ-icon-"], .mainnav ul li .sub li .sub a span[class*=" wpzoom-"],.mainnav ul li .sub li .sub a span[class*=" eco-"]  {
+			.mainnav ul li .sub li .sub a span[class*=" icon-"], .mainnav ul li .sub li .sub a span[class*=" brocco-icon-"], .mainnav ul li .sub li .sub a span[class*=" cut-icon-"], .mainnav ul li .sub li .sub a span[class*=" entypo-icon-"], .mainnav ul li .sub li .sub a span[class*=" icomoon-icon-"],  .mainnav ul li .sub li .sub a span[class*=" minia-icon-"], .mainnav ul li .sub li .sub a span[class*=" iconic-icon-"], .mainnav ul li .sub li .sub a span[class*=" meteo-icon-"], .mainnav ul li .sub li .sub a span[class*=" silk-icon-"], .mainnav ul li .sub li .sub a span[class*=" typ-icon-"], .mainnav ul li .sub li .sub a span[class*=" wpzoom-"],.mainnav ul li .sub li .sub a span[class*=" eco-"]  {
 			padding-left:35px;
 			padding-right:10px;
 			}
@@ -1725,9 +1725,9 @@ select {width: 150px;}
 	}
 
 	.heading .breadcrumb {
-		float: right;
+		float: left;
 		padding: 15px 10px 6px 10px;
-		margin:0 20px 0 0;
+		margin: 0 20px 0 150px;
 		background: none;
 		border: none;
 		box-shadow: none;

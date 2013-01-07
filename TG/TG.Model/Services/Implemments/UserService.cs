@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using TG.Model.Models;
-using TG.Model.Repository;
+using Plan5W2HPlusPlus.Model.Models;
+using Plan5W2HPlusPlus.Model.Repository;
 
-namespace TG.Model.Services
+namespace Plan5W2HPlusPlus.Model.Services
 {
     public class UserService : Service<User>, IUserService
     {
@@ -18,7 +18,12 @@ namespace TG.Model.Services
         
         public User FindByUsernamePassword(string username, string password)
         {
-            return _repository.FindByUsernamePassword(username, password);
+            return _repository.FindByUsernameAndPassword(username, password);
+        }
+
+        public User FindByCode(Guid code)
+        {
+            return _repository.FindByCode(code);
         }
     }
 }

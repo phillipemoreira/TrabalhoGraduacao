@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using TG.Model.Models;
+using Plan5W2HPlusPlus.Model.Models;
 using NHibernate;
 
-namespace TG.Model.Repository
+namespace Plan5W2HPlusPlus.Model.Repository
 {
     public class UserRepository : Repository<User>, IUserRepository
     {
@@ -16,12 +16,21 @@ namespace TG.Model.Repository
             this.session = session;
         }
         
-        public User  FindByUsernamePassword(string username, string password)
+        public User  FindByUsernameAndPassword(string username, string password)
         {
             return session
                 .QueryOver<User>()
                 .Where(x => x.UserName == username)
                 .And(x => x.Password == password)   
+                .SingleOrDefault();
+        }
+
+
+        public User FindByCode(Guid code)
+        {
+            return session
+                .QueryOver<User>()
+                .Where(x => x.Code == code)
                 .SingleOrDefault();
         }
     }

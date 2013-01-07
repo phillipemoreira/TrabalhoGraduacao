@@ -1,6 +1,16 @@
-﻿@Html.Partial("BodyFirstPart")
+﻿@using Plan5W2HPlusPlus.Model.Models
 
-@*Content Here*@
+@model Plan5W2HPlusPlus.Application.Models.Plan5W2HModel
+
+@{
+    ViewBag.Titulo = "Projetos";
+    ViewBag.Localizacao = "Projetos";
+    ViewBag.Username = Model.Usuario.UserName;
+}
+
+@Html.Partial("BodyFirstPart")
+
+@*Content Start*@
 
                     <div class="row-fluid">
 
@@ -19,7 +29,7 @@
                                                 <span class="caret"></span>
                                             </a>
                                             <ul style="margin-right:70px" class="dropdown-menu" >
-                                                <li><a href="#"><span class="icon-plus"></span> Adicionar</a></li>
+                                                <li><a href="@Url.Action("Create", "Plan5W2H")"><span class="icon-plus"></span> Adicionar</a></li>
                                             </ul>
                                         </form>
                                        
@@ -37,44 +47,34 @@
                                             <th>Actions</th>
                                           </tr>
                                         </thead>
-                                        <tbody>
-                                          <tr>
-                                            <td>1</td>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>mdo</td>
-                                            <td>
-                                                <div class="controls center">
-                                                    <a href="#" title="Edit task" class="tip"><span class="icon12 icomoon-icon-pencil"></span></a>
-                                                    <a href="#" title="Remove task" class="tip"><span class="icon12 icomoon-icon-remove"></span></a>
-                                                </div>
-                                            </td>
-                                          </tr>
-                                          <tr>
-                                            <td>2</td>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <td>fat</td>
-                                            <td>
-                                                <div class="controls center">
-                                                    <a href="#" title="Edit task" class="tip"><span class="icon12 icomoon-icon-pencil"></span></a>
-                                                    <a href="#" title="Remove task" class="tip"><span class="icon12 icomoon-icon-remove"></span></a>
-                                                </div>
-                                            </td>
-                                          </tr>
-                                          <tr>
-                                            <td>3</td>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                            <td>twitter</td>
-                                            <td>
-                                                <div class="controls center">
-                                                    <a href="#" title="Edit task" class="tip"><span class="icon12 icomoon-icon-pencil"></span></a>
-                                                    <a href="#" title="Remove task" class="tip"><span class="icon12 icomoon-icon-remove"></span></a>
-                                                </div>
-                                            </td>
-                                          </tr>
-                                        </tbody>
+                                        @if(Model.Plans.Count > 0) {
+                                            <tbody>
+                                              @foreach(Plan5W2H plan in Model.Plans) {
+                                               <tr>                                            
+                                                <td>@plan.</td>
+                                                <td>Mark</td>
+                                                <td>Otto</td>
+                                                <td>mdo</td>
+                                                <td>
+                                                    <div class="controls center">
+                                                        <a href="#" class="tip" oldtitle="Editar tarefa" title="" aria-describedby="ui-tooltip-3"><span class="icon24 icomoon-icon-pencil"></span></a>
+                                                        <a href="#" class="tip" oldtitle="Remover tarefa" title="" aria-describedby="ui-tooltip-3"><span class="icon24 icomoon-icon-remove"></span></a>
+                                                    </div>
+                                                </td>
+                                              </tr>
+                                              }
+                                            </tbody>
+                                        }else{
+                                             <tbody>
+                                               <tr>                                            
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                              </tr>
+                                            </tbody>
+                                        }
                                     </table>
                                 </div>
 
@@ -83,7 +83,7 @@
                         </div><!-- End .span6 -->
 
                     </div><!-- End .row-fluid -->
-
+@*Content End*@
 
 @Html.Partial("BodySecondPart")
                 

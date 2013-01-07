@@ -6,10 +6,8 @@ using Plan5W2HPlusPlus.Model.Models;
 
 namespace Plan5W2HPlusPlus.Model.Repository
 {
-    public interface IUserRepository : IRepository<User>
+    public interface IPlan5W2HRepository : IRepository<Plan5W2H>
     {
-        User FindByUsernameAndPassword(string username, string password);
-
-        User FindByCode(Guid code);
+      
     }
 }

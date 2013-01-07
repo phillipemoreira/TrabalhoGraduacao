@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace TG.Application.Controllers
+namespace Plan5W2HPlusPlus.Application.Controllers
 {
     public class WSController : Controller
     {

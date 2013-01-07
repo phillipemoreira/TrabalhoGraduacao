@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using TG.Application.ActionFilter;
+using Plan5W2HPlusPlus.Application.ActionFilter;
 
-namespace TG.Application.Controllers
+namespace Plan5W2HPlusPlus.Application.Controllers
 {
     [NHibernateActionFilter]
     [Authorize]
-    public class HomeController : SessionController
+    public class HomeController : LoggedController
     {
         //
         // GET: /Home/
-
+        [Authorize]
         public ActionResult Index()
         {
             return View();

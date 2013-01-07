@@ -4,11 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 
-namespace TG.Application.Util
+namespace Plan5W2HPlusPlus.Application.Util
 {
     public class Tools
     {
-        public static String retrieveUserFromCookie(TG.Application.MvcApplication app)
+        public static String retrieveUserFromCookie(Plan5W2HPlusPlus.Application.MvcApplication app)
         {
             if (app.User.Identity.IsAuthenticated)
             {

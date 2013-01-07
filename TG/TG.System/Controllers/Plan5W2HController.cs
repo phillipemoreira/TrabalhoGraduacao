@@ -1,65 +1,56 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using TG.Application.ActionFilter;
-using TG.Model.Models;
-using TG.Model.Repository;
-using TG.Model.Services;
-using System.Web.Security;
-using TG.Application.Util;
+using Plan5W2HPlusPlus.Application.ActionFilter;
+using Plan5W2HPlusPlus.Model.Repository;
+using Plan5W2HPlusPlus.Model.Services;
+using Plan5W2HPlusPlus.Model.Models;
+using Plan5W2HPlusPlus.Application.Models;
 
-namespace TG.Application.Controllers
+namespace Plan5W2HPlusPlus.Application.Controllers
 {
     [NHibernateActionFilter]
-    public class Plan5W2HController : SessionController
+    public class Plan5W2HController : LoggedController
     {
-
-        private String UserLoggedCode;
-
-        private IService<Plan5W2H> servicePlan5W2H;
-        private IService<Plan5W2H> ServicePlan5W2H
+        private IPlan5W2HService servicePlan5W2H;
+        private IPlan5W2HService ServicePlan5W2H
         {
             get
             {
-                if (servicePlan5W2H == null) servicePlan5W2H = new Service<Plan5W2H>(RepPlan5W2H);
-
+                if (servicePlan5W2H == null) servicePlan5W2H = new Plan5W2HService(RepPlan5W2H);
                 return servicePlan5W2H;
             }
 
         }
 
-        private IRepository<Plan5W2H> repPlan5W2H;
-        private IRepository<Plan5W2H> RepPlan5W2H
+        private IPlan5W2HRepository repPlan5W2H;
+        private IPlan5W2HRepository RepPlan5W2H
         {
             get
             {
-                if (repPlan5W2H == null) repPlan5W2H = new Repository<Plan5W2H>(this.ISession);
-
+                if (repPlan5W2H == null) repPlan5W2H = new Plan5W2HRepository(this.ISession);
                 return repPlan5W2H;
             }
 
         }
 
-        private IService<User> service;
-        private IService<User> Service
+        private IUserService serviceUser;
+        private IUserService ServiceUser
         {
             get
             {
-                if (service == null) service = new Service<User>(RepUser);
+                if (serviceUser == null) serviceUser = new UserService(RepUser);
 
-                return service;
+                return serviceUser;
             }
 
         }
 
-        private IRepository<User> repUser;
-        private IRepository<User> RepUser
+        private IUserRepository repUser;
+        private IUserRepository RepUser
         {
             get
             {
-                if (repUser == null) repUser = new Repository<User>(this.ISession);
+                if (repUser == null) repUser = new UserRepository(this.ISession);
 
                 return repUser;
             }
@@ -68,18 +59,17 @@ namespace TG.Application.Controllers
 
         //
         // GET: /Plan5W2H/
-
+        [Authorize]
         public ActionResult Index()
         {
-            //if (HttpContext != null)
-            //    this.UserLoggedCode = Tools.retrieveUserFromCookie(HttpContext.ApplicationInstance as MvcApplication);
-            
-            return View();
+            User usuario = this.GetUserAuthenticatedCookie();
+            return View(new Plan5W2HModel() { Usuario = usuario, Plans = usuario.Plans });
         }
 
+        [Authorize]
         public ActionResult Create()
         {
-            return View();
+            return View(new Plan5W2HModel() { Usuario = this.GetUserAuthenticatedCookie(), Plan = new Plan5W2H() });
         }
 
     }

@@ -6,7 +6,7 @@ using NHibernate.Cfg;
 using NHibernate;
 using FluentNHibernate.Cfg;
 
-namespace TG.Model.Repository
+namespace Plan5W2HPlusPlus.Model.Repository
 {
     public class Repository<T> : IRepository<T> where T : class
     {

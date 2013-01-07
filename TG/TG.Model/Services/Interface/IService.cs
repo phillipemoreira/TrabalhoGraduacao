@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace TG.Model.Services
+namespace Plan5W2HPlusPlus.Model.Services
 {
     public interface IService<T>
     {

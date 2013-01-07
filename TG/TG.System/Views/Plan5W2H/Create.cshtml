@@ -1,0 +1,95 @@
+﻿@model Plan5W2HPlusPlus.Application.Models.Plan5W2HModel
+
+@{
+    ViewBag.Titulo = "Criar Projeto";
+    ViewBag.LocalizacaoPai = "<a class='tip' href='" + Url.Action("Index", "Plan5W2h") + "'>Projetos</a>";
+    ViewBag.Localizacao = "Criar Projeto";
+    ViewBag.Username = Model.Usuario.UserName;
+}
+
+@Html.Partial("BodyFirstPart")
+
+@*Content Start*@
+
+                <!-- Build page from here: -->
+                <div class="row-fluid">
+
+                    <div class="span12">
+
+                            @using (Html.BeginForm("Create", "User", FormMethod.Post, new { @Class="form-horizontal", @Id="form-validate"}))
+                            {
+                                @Html.ValidationSummary(true)
+                                <div class="form-row row-fluid">
+                                    <div class="span12">
+                                        <div class="row-fluid">
+                                            <label class="form-label span3" for="username">Nome:</label>
+                                            @Html.TextBoxFor(model => model.Plan.Name, new { @Class = "span4 required" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row row-fluid">
+                                    <div class="span12">
+                                        <div class="row-fluid">
+                                            <label class="form-label span3" for="textarea">Descrição:</label>
+                                            @Html.TextAreaFor(model => model.Plan.Description, new { @class = "span4 required" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row row-fluid">
+                                    <div class="span12">
+                                        <div class="row-fluid">
+                                            <label class="form-label span3" for="name">Custo Inicial:</label>
+                                            @Html.TextBoxFor(model => model.Plan.InitialCost, new { @class = "span4 required" })<span class="add-on">,00</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row row-fluid">
+                                    <div class="span12">
+                                        <div class="row-fluid">
+                                            <label class="form-label span3" for="email">Término:</label>
+                                            @Html.TextBoxFor(model => model.Plan.End, new { @class = "span4 required" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row row-fluid">
+                                    <div class="span12">
+                                        <div class="row-fluid">
+                                            <label class="form-label span3" for="normal">Password fields</label>
+                                            <div class="span9 controls">
+                                                @Html.PasswordFor(model => model.Password, new { @Class = "span4", @Name = "password"})                            
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row row-fluid">
+                                    <div class="span12">
+                                        <div class="row-fluid">
+                                            <label class="form-label span3" for="normal">Foto</label>
+                                            <div class="span9 controls">
+                                                <input type="file" name="fileinput" id="file" />
+                                            </div>
+                                        </div>
+                                    </div>  
+                                </div>
+                                <div class="form-row row-fluid">        
+                                    <div class="span12">
+                                        <div class="row-fluid">
+                                            <div class="form-actions">
+                                            <div class="span3"></div>
+                                            <div class="span4 controls">
+                                                <button type="submit" class="btn btn-info marginR10">Save changes</button>
+                                                <button type="reset" id="cancel" class="btn btn-danger">Cancel</button>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>   
+                                </div>
+                            } 
+
+                    </div><!-- End .span12 -->
+
+                </div><!-- End .row-fluid -->
+
+@*Content End*@
+
+@Html.Partial("BodySecondPart")

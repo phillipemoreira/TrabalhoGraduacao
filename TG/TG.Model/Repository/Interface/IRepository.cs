@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace TG.Model.Repository
+namespace Plan5W2HPlusPlus.Model.Repository
 {
     public interface IRepository<T>
     {
