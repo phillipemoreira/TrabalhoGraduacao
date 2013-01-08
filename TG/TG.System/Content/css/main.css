@@ -2832,3 +2832,32 @@ form input.valid {border: 1px solid #9FC569 !important;}
 .row-fluid .tableBox {
     width: 100%;
 }
+
+.firstcolumn {
+    width: 25px;
+}
+
+.nomecolumn {
+    width: 150px
+}
+
+.desccolumn {
+    width: 300px;
+}
+
+.lastcolumn {
+    width: 240px;
+    vertical-align: middle;
+}
+
+.finalizado{
+    background-color: #55D97E;
+}
+
+.parado{
+    background-color: #f7b554;
+}
+
+.emandamento {
+    background-color: #AFEEEE;
+}

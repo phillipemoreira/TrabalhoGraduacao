@@ -13,8 +13,8 @@ namespace Plan5W2HPlusPlus.Model.Models
         public virtual string Email { get; set; }
         public virtual string UserName { get; set; }
         public virtual string Password { get; set; }
-        public virtual IList<Plan5W2H> Plans { get; set; }
-        public virtual IList<User> Friends { get; set; }
+        public virtual ICollection<Plan5W2H> Plans { get; set; }
+        public virtual ICollection<User> Friends { get; set; }
 
         public User()
         {

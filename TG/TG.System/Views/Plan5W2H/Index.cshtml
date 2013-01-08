@@ -1,5 +1,7 @@
 ﻿@using Plan5W2HPlusPlus.Model.Models
 
+@model IList<Plan5W2H>
+
 @{
     ViewBag.Titulo = "Projetos";
     ViewBag.Localizacao = "Projetos";
@@ -26,7 +28,7 @@
                                                 <span class="caret"></span>
                                             </a>
                                             <ul style="margin-right:70px" class="dropdown-menu" >
-                                                <li><a href="@Url.Action("Create", "Plan5W2H")"><span class="icon-plus"></span> Adicionar</a></li>
+                                                <li><a href="@Url.Action("Create", "Plan5W2H", new { @id = "" })"><span class="icon-plus"></span> Adicionar</a></li>
                                             </ul>
                                         </form>
                                        
@@ -37,25 +39,69 @@
                                     <table class="responsive table table-bordered" id="checkAll">
                                         <thead>
                                           <tr>
-                                            <th>#</th>
-                                            <th>First Name</th>
-                                            <th>Last Name</th>
-                                            <th>Username</th>
-                                            <th>Actions</th>
+                                            <th class="firstcolumn">#</th>
+                                            <th class="nomecolumn">Nome</th>
+                                            <th class="desccolumn">Descrição</th>
+                                            <th>Início</th>
+                                            <th>Término</th>
+                                            <th>Status</th>
+                                            <th>Ações</th>
                                           </tr>
                                         </thead>
                                         @if(Model.Count > 0) {
+                                            
                                             <tbody>
-                                              @foreach(Plan5W2H plan in Model) {
+                                              @foreach(Plan5W2H plan in Model.OrderBy(x => x.Start)) {
                                                <tr>                                            
-                                                <td>@plan.</td>
-                                                <td>Mark</td>
-                                                <td>Otto</td>
-                                                <td>mdo</td>
-                                                <td>
-                                                    <div class="controls center">
-                                                        <a href="#" class="tip" oldtitle="Editar tarefa" title="" aria-describedby="ui-tooltip-3"><span class="icon24 icomoon-icon-pencil"></span></a>
-                                                        <a href="#" class="tip" oldtitle="Remover tarefa" title="" aria-describedby="ui-tooltip-3"><span class="icon24 icomoon-icon-remove"></span></a>
+                                                <td class="firstcolumn">@(Model.IndexOf(plan) + 1)</td>
+                                                <td class="nomecolumn">@plan.Name</td>
+                                                <td class="desccolumn">@plan.Description</td>
+                                                <td>@plan.Start</td>
+                                                <td>@plan.End</td>
+                                                
+                                                   @{
+                                                        string  classe;
+                                                        if (plan.Andamento == Status.EmAndamento)
+                                                        {
+                                                            classe = "emandamento";
+                                                        }
+                                                        else if (plan.Andamento == Status.Finalizado)
+                                                        {
+                                                            classe = "finalizado";
+                                                        }
+                                                        else
+                                                        {
+                                                            classe = "parado";
+                                                        }
+                                                   }
+                                                   
+                                                <td class="@classe">@plan.Andamento</td>
+                                                <td class="lastcolumn">
+                                                    <div class="shortcuts center">
+                                                        <ul>
+                                                            <li>
+                                                                <a href="@Url.Action("Create", "Plan5W2H", new { @id = plan.Code.ToString() })" class="tip" oldtitle="Editar" title="Editar" aria-describedby="ui-tooltip-3" ><span class="icon24 icomoon-icon-pencil"></span></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="@Url.Action("Remove", "Plan5W2H", new { @id = plan.Code.ToString() })" class="tip" oldtitle="Adicionar tarefas" title="Adicionar tarefas" aria-describedby="ui-tooltip-3"><span class="icon24  icomoon-icon-copy"></span></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="@Url.Action("Remove", "Plan5W2H", new { @id = plan.Code.ToString() })" class="tip" oldtitle="Acompanhamento" title="Acompanhamento" aria-describedby="ui-tooltip-3"><span class="icon24 icomoon-icon-puzzle"></span></a>
+                                                            </li>
+                                                            <li>
+                                                                @if(plan.Andamento == Status.Finalizado)
+                                                                {
+                                                                <a href="@Url.Action("OpenProject", "Plan5W2H", new { @id = plan.Code.ToString() })" class="tip" oldtitle="Abrir projeto" title="Abrir projeto" aria-describedby="ui-tooltip-3" ><span class="icon24 wpzoom-refresh"></span></a>
+                                                                }
+                                                                else
+                                                                {
+                                                                <a href="@Url.Action("FinalizeProject", "Plan5W2H", new { @id = plan.Code.ToString() })" class="tip" oldtitle="Finalizar projeto" title="Finalizar projeto" aria-describedby="ui-tooltip-3" ><span class="icon24 wpzoom-thumbs-up"></span></a>
+                                                                }
+                                                            </li>
+                                                            <li>
+                                                                <a href="@Url.Action("Remove", "Plan5W2H", new { @id = plan.Code.ToString() })" class="tip" oldtitle="Remover" title="Remover" aria-describedby="ui-tooltip-3"><span class="icon24 wpzoom-trashcan"></span></a>
+                                                            </li>
+                                                        </ul>
                                                     </div>
                                                 </td>
                                               </tr>
@@ -63,12 +109,14 @@
                                             </tbody>
                                         }else{
                                              <tbody>
-                                               <tr>                                            
+                                               <tr class="firstcolumn">                                            
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
+                                                <td></td>
+                                                <td class="lastcolumn"></td>
                                               </tr>
                                             </tbody>
                                         }

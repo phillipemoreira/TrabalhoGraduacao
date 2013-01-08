@@ -37,6 +37,21 @@ namespace Plan5W2HPlusPlus.Application.Controllers
             return null;
         }
 
+        public string GetUserIDAuthenticatedCookie()
+        {
+            HttpCookie authCookie = Request.Cookies[FormsAuthentication.FormsCookieName];
+            if (authCookie != null)
+            {
+                UserRepository repUser = new UserRepository(this.ISession);
+                UserService serviceUser = new UserService(repUser);
+
+                FormsAuthenticationTicket authTicket = FormsAuthentication.Decrypt(authCookie.Value);
+                var identity = new GenericIdentity(authTicket.Name, "Forms");
+                return identity.Name;
+            }
+            return null;
+        }
+
         public void IncludUserViewBag()
         {
             ViewBag.Usuario = this.GetUserAuthenticatedCookie();

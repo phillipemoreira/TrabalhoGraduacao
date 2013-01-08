@@ -68,7 +68,8 @@ namespace Plan5W2HPlusPlus.Application.Controllers
                 }
                 else
                 {
-                    Service.Save(usuario);
+                    if(Service.Get(usuario.Code) == null)
+                        Service.Save(usuario);
                 }
                 
                 ViewBag.Message = "SUCCESS";

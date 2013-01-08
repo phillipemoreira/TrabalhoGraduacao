@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
@@ -49,8 +46,6 @@ namespace Plan5W2HPlusPlus.Application.ActionFilter
 
             sessionController.ISession = sessionFactory.OpenSession();
             sessionController.ISession.BeginTransaction();
-
-
         }
 
         public override void OnActionExecuted(ActionExecutedContext filterContext)

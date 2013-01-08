@@ -12,13 +12,14 @@ namespace Plan5W2HPlusPlus.Model.Mappings
         public Plan5W2HMap()
         {
             Id(x => x.Code).GeneratedBy.Assigned();
+            Map(x => x.Andamento);
             Map(x => x.Name);
             Map(x => x.Creation);
             Map(x => x.Start);
             Map(x => x.End);
             Map(x => x.InitialCost);
             Map(x => x.Description).CustomSqlType("text");
-            HasMany(x => x.PlanItens).Not.LazyLoad();
+            HasMany(x => x.PlanItens).Cascade.AllDeleteOrphan().Not.LazyLoad();
         }
     }
 }

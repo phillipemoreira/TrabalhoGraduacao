@@ -38,5 +38,16 @@ namespace Plan5W2HPlusPlus.Model.Services
         {
             _repository.Delete(value);
         }
+
+
+        public void SaveOrUpdate(T value)
+        {
+            _repository.SaveOrUpdate(value);
+        }
+
+        public IList<T> GetWhere(System.Linq.Expressions.Expression<Func<T, bool>> where)
+        {
+            return _repository.GetWhere(where);
+        }
     }
 }

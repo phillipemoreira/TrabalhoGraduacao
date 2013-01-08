@@ -5,6 +5,7 @@ using System.Text;
 using NHibernate.Cfg;
 using NHibernate;
 using FluentNHibernate.Cfg;
+using System.Linq.Expressions;
 
 namespace Plan5W2HPlusPlus.Model.Repository
 {
@@ -34,6 +35,11 @@ namespace Plan5W2HPlusPlus.Model.Repository
             session.Save(value);
         }
 
+        public void SaveOrUpdate(T value)
+        {
+            session.SaveOrUpdate(value);
+        }
+
         public void Update(T value)
         {
             session.Update(value);
@@ -44,14 +50,14 @@ namespace Plan5W2HPlusPlus.Model.Repository
             session.Delete(value);
         }
 
-        T IRepository<T>.Get(object id)
-        {
-            return Get(id);
-        }
-
         public virtual T Get(object id)
         {
             return session.Get<T>(id);
+        }
+
+        public virtual IList<T> GetWhere(Expression<Func<T,bool>> where)
+        {
+            return session.QueryOver<T>().Where(where).List();
         }
 
         public IList<T> GetAll()
