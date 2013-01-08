@@ -47,22 +47,37 @@ namespace Plan5W2HPlusPlus.Application.Controllers
 
         public ActionResult Create()
         {
+            User usuario = this.GetUserAuthenticatedCookie();
+            this.IncludUserViewBag();
+            if(usuario != null)
+                return View(usuario);
             return View(new User());
         }
 
         [HttpPost]
-        public ActionResult Create(User model)
+        public ActionResult Create(User usuario)
         {
             try
             {
-                Service.Save(model);
-                ViewBag.Success = true;
-                return View(model);
+                User userSession = this.GetUserAuthenticatedCookie();
+                if (userSession != null)
+                {
+                    usuario = Service.Get(usuario.Code);
+                    TryUpdateModel(usuario);
+                    this.IncludUserViewBag();
+                }
+                else
+                {
+                    Service.Save(usuario);
+                }
+                
+                ViewBag.Message = "SUCCESS";
+                return View(usuario);
             }
             catch
             {
-                ViewBag.Success = false;
-                return View(model);
+                ViewBag.Message = "ERROR";
+                return View(usuario);
             }
         }
     }

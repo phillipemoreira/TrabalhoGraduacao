@@ -37,5 +37,10 @@ namespace Plan5W2HPlusPlus.Application.Controllers
             return null;
         }
 
+        public void IncludUserViewBag()
+        {
+            ViewBag.Usuario = this.GetUserAuthenticatedCookie();
+        }
+
     }
 }

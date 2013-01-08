@@ -17,7 +17,7 @@ namespace Plan5W2HPlusPlus.Model.Mappings
             Map(x => x.Email);
             Map(x => x.UserName);
             Map(x => x.Password);
-            HasMany(x => x.Plans).Not.LazyLoad();
+            HasMany(x => x.Plans).Cascade.AllDeleteOrphan().Not.LazyLoad();
             HasMany(x => x.Friends).Not.LazyLoad();
         }
     }

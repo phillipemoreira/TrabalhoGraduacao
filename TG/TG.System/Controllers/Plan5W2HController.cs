@@ -63,13 +63,36 @@ namespace Plan5W2HPlusPlus.Application.Controllers
         public ActionResult Index()
         {
             User usuario = this.GetUserAuthenticatedCookie();
-            return View(new Plan5W2HModel() { Usuario = usuario, Plans = usuario.Plans });
+            this.IncludUserViewBag();
+            return View(usuario.Plans);
         }
 
         [Authorize]
         public ActionResult Create()
         {
-            return View(new Plan5W2HModel() { Usuario = this.GetUserAuthenticatedCookie(), Plan = new Plan5W2H() });
+            this.IncludUserViewBag();
+            return View(new Plan5W2H());
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult Create(Plan5W2H model)
+        {
+            try
+            {
+                User ususario = this.GetUserAuthenticatedCookie();
+                ususario.Plans.Add(model);
+                TryUpdateModel(ususario);
+                this.IncludUserViewBag();
+
+                ViewBag.Message = "SUCCESS";
+                return View(model);
+            }
+            catch
+            {
+                ViewBag.Message = "ERROR";
+                return View();
+            }
         }
 
     }

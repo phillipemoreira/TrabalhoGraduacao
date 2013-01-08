@@ -7,6 +7,8 @@
 
 @Html.Partial("BodyFirstPart")
 
+@Html.Partial("Messages")
+
                 <!-- Build page from here: -->
                 <div class="row-fluid">
 
@@ -15,6 +17,7 @@
                             @using (Html.BeginForm("Create", "User", FormMethod.Post, new { @Class="form-horizontal", @Id="form-validate"}))
                             {
                                 @Html.ValidationSummary(true)
+                                @Html.HiddenFor(model => model.Code)
                                 <div class="form-row row-fluid">
                                     <div class="span12">
                                         <div class="row-fluid">

@@ -1086,6 +1086,7 @@
     <Content Include="Views\Shared\BodyFirstPart.cshtml" />
     <Content Include="Views\Shared\BodySecondPart.cshtml" />
     <Content Include="Views\Plan5W2H\Create.cshtml" />
+    <Content Include="Views\Shared\Messages.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
