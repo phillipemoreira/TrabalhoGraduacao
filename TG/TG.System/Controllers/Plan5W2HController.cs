@@ -4,7 +4,7 @@ using Plan5W2HPlusPlus.Application.ActionFilter;
 using Plan5W2HPlusPlus.Model.Repository;
 using Plan5W2HPlusPlus.Model.Services;
 using Plan5W2HPlusPlus.Model.Models;
-using Plan5W2HPlusPlus.Application.Models;
+using System.Collections.Generic;
 
 namespace Plan5W2HPlusPlus.Application.Controllers
 {
@@ -62,17 +62,20 @@ namespace Plan5W2HPlusPlus.Application.Controllers
         // GET: /Plan5W2H/        
         public ActionResult Index()
         {
-            User usuario = this.GetUserAuthenticatedCookie();
+            IList<Plan5W2H> plans = ISession.QueryOver<Plan5W2H>()
+                                        .Where(p => p.Owner == this.Usuario)
+                                        .List();
             this.IncludUserViewBag();
-            return View(usuario.Plans);
+            return View(plans);
         }
 
         public ActionResult Create(string id)
         {
             this.IncludUserViewBag();
+            Plan5W2H plan;
             if (id != null)
             {
-                Plan5W2H plan = ServicePlan5W2H.Get(new Guid(id.ToString()));
+                plan = ServicePlan5W2H.Get(new Guid(id.ToString()));
                 return View(plan);
             }
             return View(new Plan5W2H());
@@ -83,10 +86,13 @@ namespace Plan5W2HPlusPlus.Application.Controllers
         {
             try
             {
-                User usuario;
+                User usuario = this.Usuario;
+                
+                if (model.Owner == null)
+                    model.Owner = usuario;
+
                 if (ServicePlan5W2H.Get(model.Code) != null)
                 {
-                    usuario = (User)ISession.Load(typeof(User), new Guid(this.GetUserIDAuthenticatedCookie()));
                     Plan5W2H plan = ServicePlan5W2H.Get(model.Code);
                     usuario.Plans.Remove(plan);
                     usuario.Plans.Add(model);
@@ -94,8 +100,8 @@ namespace Plan5W2HPlusPlus.Application.Controllers
                 }
                 else
                 {
-                    usuario = this.GetUserAuthenticatedCookie();
-                    usuario.Plans.Add(model);
+                    
+                    this.Usuario.Plans.Add(model);
                 }
                 this.IncludUserViewBag();
 
@@ -112,11 +118,10 @@ namespace Plan5W2HPlusPlus.Application.Controllers
         public ActionResult Remove(string id)
         {
 
-            User usuario = this.GetUserAuthenticatedCookie();
             if (id != null)
             {
                 Plan5W2H plan = ServicePlan5W2H.Get(new Guid(id.ToString()));
-                usuario.Plans.Remove(plan);
+                this.Usuario.Plans.Remove(plan);
             }
             this.IncludUserViewBag();
             return RedirectToAction("Index");
@@ -124,7 +129,7 @@ namespace Plan5W2HPlusPlus.Application.Controllers
 
         public ActionResult FinalizeProject(string id)
         {
-            User usuario = (User)ISession.Load(typeof(User), new Guid(this.GetUserIDAuthenticatedCookie()));
+            User usuario = this.Usuario;
             Plan5W2H plan = ServicePlan5W2H.Get(new Guid(id));
             usuario.Plans.Remove(plan);
             plan.Andamento = Status.Finalizado;
@@ -136,13 +141,21 @@ namespace Plan5W2HPlusPlus.Application.Controllers
 
         public ActionResult OpenProject(string id)
         {
-            User usuario = (User)ISession.Load(typeof(User), new Guid(this.GetUserIDAuthenticatedCookie()));
+            User usuario = this.Usuario;
             Plan5W2H plan = ServicePlan5W2H.Get(new Guid(id));
             usuario.Plans.Remove(plan);
             plan.Andamento = Status.EmAndamento;
             usuario.Plans.Add(plan);
             ISession.Merge(usuario);
             return RedirectToAction("Index");
+        }
+
+        public ActionResult Ordenacao(int ordem)
+        {
+            
+                                            
+
+            return View();
         }
     }
 }

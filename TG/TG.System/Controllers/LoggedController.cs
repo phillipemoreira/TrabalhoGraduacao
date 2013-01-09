@@ -14,27 +14,37 @@ namespace Plan5W2HPlusPlus.Application.Controllers
     public class LoggedController : SessionController
     {
 
+        private User usuario;
+
+        public User Usuario
+        {
+
+            get
+            {
+                if (usuario == null)
+                {
+                    HttpCookie authCookie = Request.Cookies[FormsAuthentication.FormsCookieName];
+                    if (authCookie != null)
+                    {
+                        UserRepository repUser = new UserRepository(this.ISession);
+                        UserService serviceUser = new UserService(repUser);
+
+                        FormsAuthenticationTicket authTicket = FormsAuthentication.Decrypt(authCookie.Value);
+                        var identity = new GenericIdentity(authTicket.Name, "Forms");
+                        usuario = serviceUser.FindByCode(new Guid(identity.Name));
+                    }
+                }
+
+                return usuario;
+            }
+        }
+
         public void AddUserAuthenticatedCookie(string dados)
         {
             FormsAuthenticationTicket authenticationTicket = new FormsAuthenticationTicket(dados, false, 60);
             string encryptTicket = FormsAuthentication.Encrypt(authenticationTicket);
             HttpCookie authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptTicket);
             Response.Cookies.Add(authCookie);
-        }
-
-        public User GetUserAuthenticatedCookie()
-        {
-            HttpCookie authCookie = Request.Cookies[FormsAuthentication.FormsCookieName];
-            if (authCookie != null)
-            {
-                UserRepository repUser = new UserRepository(this.ISession);
-                UserService serviceUser = new UserService(repUser);
-
-                FormsAuthenticationTicket authTicket = FormsAuthentication.Decrypt(authCookie.Value);
-                var identity = new GenericIdentity(authTicket.Name, "Forms");
-                return serviceUser.FindByCode(new Guid(identity.Name));
-            }
-            return null;
         }
 
         public string GetUserIDAuthenticatedCookie()
@@ -54,8 +64,7 @@ namespace Plan5W2HPlusPlus.Application.Controllers
 
         public void IncludUserViewBag()
         {
-            ViewBag.Usuario = this.GetUserAuthenticatedCookie();
+            ViewBag.Usuario = this.Usuario;
         }
-
     }
 }

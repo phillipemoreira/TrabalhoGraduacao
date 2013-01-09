@@ -47,7 +47,7 @@ namespace Plan5W2HPlusPlus.Application.Controllers
 
         public ActionResult Create()
         {
-            User usuario = this.GetUserAuthenticatedCookie();
+            User usuario = this.Usuario;
             this.IncludUserViewBag();
             if(usuario != null)
                 return View(usuario);
@@ -59,7 +59,7 @@ namespace Plan5W2HPlusPlus.Application.Controllers
         {
             try
             {
-                User userSession = this.GetUserAuthenticatedCookie();
+                User userSession = this.Usuario;
                 if (userSession != null)
                 {
                     usuario = Service.Get(usuario.Code);

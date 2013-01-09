@@ -17,6 +17,7 @@ namespace Plan5W2HPlusPlus.Model.Models
         public virtual string Como { get; set; }
         public virtual ICollection<User> Quem { get; set; }
         public virtual string Quanto { get; set; }
+        public virtual Plan5W2H Plan { get; set; }
 
         public Item5W2H()
         {

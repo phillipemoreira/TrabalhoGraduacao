@@ -16,6 +16,7 @@ namespace Plan5W2HPlusPlus.Model.Models
         public virtual String Description { get; set; }
         public virtual String InitialCost { get; set; }
         public virtual ICollection<Item5W2H> PlanItens { get; set; }
+        public virtual User Owner { get; set; }
         
         public Plan5W2H()
         {

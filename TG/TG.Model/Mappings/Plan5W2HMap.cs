@@ -20,6 +20,7 @@ namespace Plan5W2HPlusPlus.Model.Mappings
             Map(x => x.InitialCost);
             Map(x => x.Description).CustomSqlType("text");
             HasMany(x => x.PlanItens).Cascade.AllDeleteOrphan().Not.LazyLoad();
+            References(x => x.Owner);
         }
     }
 }

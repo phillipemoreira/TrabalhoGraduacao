@@ -17,6 +17,7 @@ namespace Plan5W2HPlusPlus.Model.Mappings
             Map(x => x.Como);
             Map(x => x.Quanto);
             HasMany(x => x.Quem).Not.LazyLoad();
+            HasOne(x => x.Plan);
         }
     }
 }
