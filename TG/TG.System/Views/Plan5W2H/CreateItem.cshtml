@@ -1,9 +1,9 @@
-﻿@model Plan5W2HPlusPlus.Model.Models.Plan5W2H
+﻿@model Plan5W2HPlusPlus.Application.Models.Item5W2HModel
 
 @{
-    ViewBag.Titulo = "Criar Projeto";
+    ViewBag.Titulo = "Criar Tarefa";
     ViewBag.LocalizacaoPai = "<a class='tip' href='" + Url.Action("Index", "Plan5W2h") + "'>Projetos</a>";
-    ViewBag.Localizacao = "Criar Projeto";
+    ViewBag.Localizacao = "Criar Tarefa";
 }
 
 @Html.Partial("BodyFirstPart")
@@ -17,52 +17,56 @@
 
                     <div class="span12">
 
-                            @using (Html.BeginForm("Create", "Plan5W2H", FormMethod.Post, new { @Class="form-horizontal", @Id="form-validate"}))
+                            @using (Html.BeginForm("CreateItem", "Plan5W2H", FormMethod.Post, new { @Class="form-horizontal", @Id="form-validate"}))
                             {
                                 @Html.ValidationSummary(true)
-                                @Html.HiddenFor(model => model.Code)
+                                @Html.HiddenFor(model => model.Item.Code)
                                 <div class="form-row row-fluid">
                                     <div class="span12">
                                         <div class="row-fluid">
-                                            <label class="form-label span3" for="username">Nome:</label>
-                                            @Html.TextBoxFor(model => model.Name, new { @Class = "span4 required" })
+                                            <label class="form-label span3" for="username">O Que:</label>
+                                            @Html.TextBoxFor(model => model.Item.Oque, new { @Class = "span4 required" })
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-row row-fluid">
                                     <div class="span12">
                                         <div class="row-fluid">
-                                            <label class="form-label span3" for="textarea">Descrição:</label>
-                                            @Html.TextAreaFor(model => model.Description, new { @class = "span4" })
+                                            <label class="form-label span3" for="username">Por que:</label>
+                                            @Html.TextBoxFor(model => model.Item.Porque, new { @Class = "span4 required" })
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-row row-fluid">
                                     <div class="span12">
                                         <div class="row-fluid">
-                                            <label class="form-label span3" for="name">Custo Inicial:</label>
+                                            <label class="form-label span3" for="username">Quando:</label>
+                                            @Html.TextBoxFor(model => model.Item.Quando, new { @Class = "span4 required" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row row-fluid">
+                                    <div class="span12">
+                                        <div class="row-fluid">
+                                            <label class="form-label span3" for="username">Onde:</label>
+                                            @Html.TextBoxFor(model => model.Item.Onde, new { @Class = "span4 required" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row row-fluid">
+                                    <div class="span12">
+                                        <div class="row-fluid">
+                                            <label class="form-label span3" for="username">Como:</label>
+                                            @Html.TextBoxFor(model => model.Item.Como, new { @Class = "span4 required" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row row-fluid">
+                                    <div class="span12">
+                                        <div class="row-fluid">
+                                            <label class="form-label span3" for="name">Quanto:</label>
                                             <div class="input-append">
-                                                @Html.TextBoxFor(model => model.InitialCost, new { @class = "span8" })<span class="add-on">,00</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row row-fluid">
-                                    <div class="span12">
-                                        <div class="row-fluid">
-                                            <label class="form-label span3" for="normal">Início:</label>
-                                            <div class="span9 controls">
-                                                @Html.TextBoxFor(model => model.Start, new { @Class = "span2 required datetimePicker"})                            
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row row-fluid">
-                                    <div class="span12">
-                                        <div class="row-fluid">
-                                            <label class="form-label span3" for="normal">Término:</label>
-                                            <div class="span9 controls">
-                                                @Html.TextBoxFor(model => model.End, new { @Class = "span2 required datetimePicker" })
+                                                @Html.TextBoxFor(model => model.Item.Quanto, new { @class = "span8" })<span class="add-on">,00</span>
                                             </div>
                                         </div>
                                     </div>

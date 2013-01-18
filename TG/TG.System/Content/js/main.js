@@ -1630,4 +1630,5 @@ $(document).ready(function() {
 	//remove loadstate class from body and show the page
 	setTimeout('$("html").removeClass("loadstate")',500);
 
+	$('.datetimePicker').datetimepicker();
 });

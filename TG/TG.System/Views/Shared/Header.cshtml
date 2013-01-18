@@ -7,38 +7,7 @@
                 <div class="nav-no-collapse">
                     <ul class="nav">
                         <li class="active">
-                            <a href="@Url.Action("Index", "Home")"><span class="icon16 icomoon-icon-screen"></span> Home</a></li>
-                        @if(this.Request.IsAuthenticated)
-                        {
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <span class="icon16 icomoon-icon-mail"></span>Messages <span class="notification">8</span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li class="menu">
-                                    <ul class="messages">    
-                                        <li class="header"><strong>Messages</strong> (10) emails and (2) PM</li>
-                                        <li>
-                                           <span class="icon"><span class="icon16 icomoon-icon-user-2"></span></span>
-                                            <span class="name"><a data-toggle="modal" href="#myModal1"><strong>Sammy Morerira</strong></a><span class="time">35 min ago</span></span>
-                                            <span class="msg">I have question about new function ...</span>
-                                        </li>
-                                        <li>
-                                           <span class="icon avatar"><img src="@Url.Content("Content/images/avatar.jpg")" alt="" /></span>
-                                            <span class="name"><a data-toggle="modal" href="#myModal1"><strong>George Michael</strong></a><span class="time">1 hour ago</span></span>
-                                            <span class="msg">I need to meet you urgent please call me ...</span>
-                                        </li>
-                                        <li>
-                                            <span class="icon"><span class="icon16 icomoon-icon-mail"></span></span>
-                                            <span class="name"><a data-toggle="modal" href="#myModal1"><strong>Ivanovich</strong></a><span class="time">1 day ago</span></span>
-                                            <span class="msg">I send you my suggestion, please look and ...</span>
-                                        </li>
-                                        <li class="view-all"><a href="#">View all messages <span class="icon16  icomoon-icon-arrow-right-7"></span></a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        }
+                            <a href="@Url.Action("Index", "Home")"><span class="icon16 icomoon-icon-screen"></span> Home</a></li>                        
                     </ul>
                     @if(this.Request.IsAuthenticated)
                     {
@@ -46,18 +15,15 @@
                         
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle avatar" data-toggle="dropdown">
-                                <img src="@Request.Url.GetLeftPart(UriPartial.Authority)/@Url.Content("Content/images/avatar.jpg")" alt="" class="image" /> 
-                                <span class="txt">@if(ViewBag.Usuario != null){@ViewBag.Usuario.UserName} </span>
+                                <img src="@Request.Url.GetLeftPart(UriPartial.Authority)@if(ViewBag.UserModel != null){ @ViewBag.UserModel.UrlAvatar}" alt="" class="image" /> 
+                                <span class="txt">@if(ViewBag.UserModel.Usuario != null){@ViewBag.UserModel.Usuario.UserName} </span>
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu">
                                 <li class="menu">
                                     <ul>
                                         <li>
-                                            <a href="@if(ViewBag.Usuario != null){ @Url.Action("Create", "User", new { @id = ViewBag.Usuario.Code })}"><span class="icon16 icomoon-icon-user-3"></span>Editar perfil</a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><span class="icon16 entypo-icon-contact"></span>Add. colaboradores</a>
+                                            <a href="@if(ViewBag.UserModel.Usuario != null){ @Url.Action("Create", "User", new { @id = ViewBag.UserModel.Usuario.Code })}"><span class="icon16 icomoon-icon-user-3"></span>Editar perfil</a>
                                         </li>
                                     </ul>
                                 </li>

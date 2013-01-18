@@ -17,6 +17,7 @@ namespace Plan5W2HPlusPlus.Model.Models
         public virtual String InitialCost { get; set; }
         public virtual ICollection<Item5W2H> PlanItens { get; set; }
         public virtual User Owner { get; set; }
+        public virtual Double Concluido { get; set; }
         
         public Plan5W2H()
         {
@@ -24,6 +25,12 @@ namespace Plan5W2HPlusPlus.Model.Models
             this.Andamento = Status.EmAndamento;
             this.Creation = DateTime.Now;
             this.PlanItens = new List<Item5W2H>();
+        }
+
+        public virtual Double PorcentagemConcluido()
+        {
+            return this.PlanItens.Count > 0 ? 
+                    this.PlanItens.Count / this.PlanItens.Where(x => x.Andamento == Status.Finalizado).ToList().Count : 0;
         }
     }
 }

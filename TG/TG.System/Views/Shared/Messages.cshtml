@@ -6,14 +6,30 @@
                             {
                             <div class="alert alert-error">
                                 <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                <strong>Oh snap!</strong> Change a few things up and try submitting again.
+                                <strong>Erro!</strong>
+                                @if(ViewBag.MessageContent != null)
+                                { 
+                                    @ViewBag.MessageContent
+                                }
+                                else
+                                {
+                                    @("As alterações não foram aplicadas com sucesso.")
+                                }
                             </div>
                             }
                             else if(ViewBag.Message != null && ViewBag.Message.Equals("SUCCESS"))
                             {
                             <div class="alert alert-success">
                                 <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                <strong>Well done!</strong> You successfully read this important alert message.
+                                <strong>Sucesso!</strong> 
+                                @if(ViewBag.MessageContent != null)
+                                { 
+                                    @ViewBag.MessageContent
+                                }
+                                else
+                                {
+                                    @("As alterações foram aplicadas com sucesso.")
+                                }
                             </div>
                             }
                         </div><!-- End .span12 -->

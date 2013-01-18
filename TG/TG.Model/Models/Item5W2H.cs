@@ -9,6 +9,7 @@ namespace Plan5W2HPlusPlus.Model.Models
     {
         public virtual Guid Code { get; set; }
         public virtual Status Andamento { get; set; }
+        public virtual DateTime Created { get; set; }
 
         public virtual string Porque { get; set; }
         public virtual string Oque { get; set; }
@@ -22,6 +23,7 @@ namespace Plan5W2HPlusPlus.Model.Models
         public Item5W2H()
         {
             this.Code = Guid.NewGuid();
+            this.Created = DateTime.Now;
         }
     }
 }

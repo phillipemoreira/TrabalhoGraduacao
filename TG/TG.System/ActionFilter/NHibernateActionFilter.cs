@@ -29,7 +29,7 @@ namespace Plan5W2HPlusPlus.Application.ActionFilter
         private static void BuildSchema(Configuration config)
         {
 
-            if (true)
+            if (Convert.ToBoolean(System.Configuration.ConfigurationManager.AppSettings["GenerateSchema"]))
             {
                 // this NHibernate tool takes a configuration (with mapping info in)
                 // and exports a database schema from it

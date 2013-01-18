@@ -5,6 +5,7 @@ using Plan5W2HPlusPlus.Model.Repository;
 using Plan5W2HPlusPlus.Model.Services;
 using Plan5W2HPlusPlus.Model.Models;
 using System.Collections.Generic;
+using Plan5W2HPlusPlus.Application.Models;
 
 namespace Plan5W2HPlusPlus.Application.Controllers
 {
@@ -30,6 +31,28 @@ namespace Plan5W2HPlusPlus.Application.Controllers
             {
                 if (repPlan5W2H == null) repPlan5W2H = new Plan5W2HRepository(this.ISession);
                 return repPlan5W2H;
+            }
+
+        }
+
+        private IItem5W2HService serviceItem5W2H;
+        private IItem5W2HService ServiceItem5W2H
+        {
+            get
+            {
+                if (serviceItem5W2H == null) serviceItem5W2H = new Item5W2HService(RepItem5W2H);
+                return serviceItem5W2H;
+            }
+
+        }
+
+        private IItem5W2HRepository repItem5W2H;
+        private IItem5W2HRepository RepItem5W2H
+        {
+            get
+            {
+                if (repItem5W2H == null) repItem5W2H = new Item5W2HRepository(this.ISession);
+                return repItem5W2H;
             }
 
         }
@@ -157,5 +180,34 @@ namespace Plan5W2HPlusPlus.Application.Controllers
 
             return View();
         }
+
+        public ActionResult CreateItem(string id, string itemId)
+        {
+            Plan5W2H plan = ServicePlan5W2H.Get(new Guid(id));
+            Item5W2H item = new Item5W2H() { Plan = plan };
+            if (itemId == null)
+            {
+                this.Usuario.Plans.Remove(plan);
+                plan.PlanItens.Add(item);
+                this.Usuario.Plans.Add(plan);
+                ISession.Merge(this.Usuario);
+            }
+            else
+            {
+                item = ServiceItem5W2H.Get(new Guid(itemId));
+            }
+
+            this.IncludUserViewBag();
+            return View(new Item5W2HModel() { Usuario = this.Usuario, Item = item });
+        }
+
+        [HttpPost]
+        public ActionResult CreateItem(Item5W2H model)
+        {
+
+            this.IncludUserViewBag();
+            return View();
+        }
+
     }
 }

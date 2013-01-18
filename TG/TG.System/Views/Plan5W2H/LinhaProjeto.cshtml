@@ -1,0 +1,62 @@
+﻿@model Plan5W2HPlusPlus.Model.Models.Plan5W2H
+
+@using Plan5W2HPlusPlus.Model.Models
+
+<tr>                                            
+    <td class="firstcolumn"></td>
+    <td class="nomecolumn">@Model.Name</td>
+    <td class="desccolumn">@Model.Description</td>
+    <td>@Model.Start</td>
+    <td>@Model.End</td>
+    <td>@Model.PorcentagemConcluido().ToString("P")</td>
+
+        @{
+            string  classe;
+            if (Model.Andamento == Status.EmAndamento)
+            {
+                classe = "emandamento";
+            }
+            else if (Model.Andamento == Status.Finalizado)
+            {
+                classe = "finalizado";
+            }
+            else
+            {
+                classe = "parado";
+            }
+        }
+                                                   
+    <td class="@classe">@Model.Andamento</td>
+    <td class="lastcolumn">
+        <div class="shortcuts center">
+            <ul>
+                @if (Model.Andamento != Status.Finalizado)
+                {
+                <li>
+                    <a href="@Url.Action("Create", "Plan5W2H", new { @id = Model.Code.ToString() })" class="tip" oldtitle="Editar" title="Editar" aria-describedby="ui-tooltip-3" ><span class="icon24 icomoon-icon-pencil"></span></a>
+                </li>
+                }
+                @if (Model.Andamento != Status.Finalizado)
+                {
+                <li>
+                    <a href="@Url.Action("CreateItem", "Plan5W2H", new { @id = Model.Code.ToString() })" class="tip" oldtitle="Adicionar tarefas" title="Adicionar tarefas" aria-describedby="ui-tooltip-3"><span class="icon24  icomoon-icon-copy"></span></a>
+                </li>
+                }
+                <li>
+                    @if(Model.Andamento == Status.Finalizado)
+                    {
+                    <a href="@Url.Action("OpenProject", "Plan5W2H", new { @id = Model.Code.ToString() })" class="tip" oldtitle="Abrir projeto" title="Abrir projeto" aria-describedby="ui-tooltip-3" ><span class="icon24 wpzoom-refresh"></span></a>
+                    }
+                    else
+                    {
+                    <a href="@Url.Action("FinalizeProject", "Plan5W2H", new { @id = Model.Code.ToString() })" class="tip" oldtitle="Finalizar projeto" title="Finalizar projeto" aria-describedby="ui-tooltip-3" ><span class="icon24 wpzoom-thumbs-up"></span></a>
+                    }
+                </li>
+                <li>
+                    <a href="@Url.Action("Remove", "Plan5W2H", new { @id = Model.Code.ToString() })" class="tip" oldtitle="Remover" title="Remover" aria-describedby="ui-tooltip-3"><span class="icon24 wpzoom-trashcan"></span></a>
+                </li>
+            </ul>
+        </div>
+    </td>
+    </tr>
+

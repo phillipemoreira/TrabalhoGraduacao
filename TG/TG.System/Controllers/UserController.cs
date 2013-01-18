@@ -7,6 +7,9 @@ using Plan5W2HPlusPlus.Application.ActionFilter;
 using Plan5W2HPlusPlus.Model.Services;
 using Plan5W2HPlusPlus.Model.Models;
 using Plan5W2HPlusPlus.Model.Repository;
+using System.IO;
+using System.Drawing;
+using Plan5W2HPlusPlus.Application.Util;
 
 namespace Plan5W2HPlusPlus.Application.Controllers
 {
@@ -55,16 +58,26 @@ namespace Plan5W2HPlusPlus.Application.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(User usuario)
+        public ActionResult Create(User usuario, HttpPostedFileBase file)
         {
             try
             {
+                if (file != null && file.ContentLength > 0)
+                {
+                    Image avatar = Image.FromStream(file.InputStream, true, true);
+
+                    avatar = Tools.CropImageToSquare(avatar);
+                    avatar = Tools.ResizeImage(avatar, 60, 60);
+
+                    var fileName = "avatar-" + usuario.Code.ToString() + ".png";
+                    var path = Path.Combine(Server.MapPath("~/Content/UsersAvatar"), fileName);
+                    avatar.Save(path);
+                }
                 User userSession = this.Usuario;
                 if (userSession != null)
                 {
                     usuario = Service.Get(usuario.Code);
                     TryUpdateModel(usuario);
-                    this.IncludUserViewBag();
                 }
                 else
                 {
@@ -73,11 +86,13 @@ namespace Plan5W2HPlusPlus.Application.Controllers
                 }
                 
                 ViewBag.Message = "SUCCESS";
+                this.IncludUserViewBag();
                 return View(usuario);
             }
             catch
             {
                 ViewBag.Message = "ERROR";
+                this.IncludUserViewBag();
                 return View(usuario);
             }
         }

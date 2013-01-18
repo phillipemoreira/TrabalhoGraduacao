@@ -14,7 +14,7 @@
 
                     <div class="span12">
 
-                            @using (Html.BeginForm("Create", "User", FormMethod.Post, new { @Class="form-horizontal", @Id="form-validate"}))
+                            @using (Html.BeginForm("Create", "User", FormMethod.Post, new { @Class = "form-horizontal", @Id = "form-validate", enctype = "multipart/form-data" }))
                             {
                                 @Html.ValidationSummary(true)
                                 @Html.HiddenFor(model => model.Code)
@@ -65,7 +65,8 @@
                                         <div class="row-fluid">
                                             <label class="form-label span3" for="normal">Avatar:</label>
                                             <div class="span9 controls">
-                                                <input type="file" name="fileinput" id="file" />
+                                                <img src="@if(ViewBag.UserModel != null) { @ViewBag.UserModel.UrlAvatar }" alt="" class="image marginR10"/>
+                                                <input type="file" name="file" id="file" />
                                             </div>
                                         </div>
                                     </div>  

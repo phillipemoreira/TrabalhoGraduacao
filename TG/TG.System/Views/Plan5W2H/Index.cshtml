@@ -11,6 +11,8 @@
 
 @Html.Partial("BodyFirstPart")
 
+@Html.Partial("Messages")
+
 @*Content Start*@
 
                     <div class="row-fluid">
@@ -38,7 +40,7 @@
                                     <a href="#" class="minimize">Minimize</a>
                                 </div>
                                 <div class="content noPad">
-                                    <table class="responsive table table-bordered" id="checkAll">
+                                    <table class="responsive table table-bordered table-condensed" id="checkAll">
                                         <thead>
                                           <tr>
                                             <th class="firstcolumn">#</th>
@@ -46,6 +48,7 @@
                                             <th class="desccolumn">Descrição</th>
                                             <th>Início</th>
                                             <th>Término</th>
+                                            <th>Concluído (%)</th>
                                             <th>Status</th>
                                             <th>Ações</th>
                                           </tr>
@@ -54,64 +57,47 @@
                                             
                                             <tbody>
                                               @foreach(Plan5W2H plan in Model.OrderBy(x => x.Creation)) {
-                                               <tr>                                            
-                                                <td class="firstcolumn">@(++count)</td>
-                                                <td class="nomecolumn">@plan.Name</td>
-                                                <td class="desccolumn">@plan.Description</td>
-                                                <td>@plan.Start</td>
-                                                <td>@plan.End</td>
-                                                
-                                                   @{
-                                                        string  classe;
-                                                        if (plan.Andamento == Status.EmAndamento)
-                                                        {
-                                                            classe = "emandamento";
-                                                        }
-                                                        else if (plan.Andamento == Status.Finalizado)
-                                                        {
-                                                            classe = "finalizado";
-                                                        }
-                                                        else
-                                                        {
-                                                            classe = "parado";
-                                                        }
-                                                   }
-                                                   
-                                                <td class="@classe">@plan.Andamento</td>
-                                                <td class="lastcolumn">
-                                                    <div class="shortcuts center">
-                                                        <ul>
-                                                            <li>
-                                                                <a href="@Url.Action("Create", "Plan5W2H", new { @id = plan.Code.ToString() })" class="tip" oldtitle="Editar" title="Editar" aria-describedby="ui-tooltip-3" ><span class="icon24 icomoon-icon-pencil"></span></a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="@Url.Action("Remove", "Plan5W2H", new { @id = plan.Code.ToString() })" class="tip" oldtitle="Adicionar tarefas" title="Adicionar tarefas" aria-describedby="ui-tooltip-3"><span class="icon24  icomoon-icon-copy"></span></a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="@Url.Action("Remove", "Plan5W2H", new { @id = plan.Code.ToString() })" class="tip" oldtitle="Acompanhamento" title="Acompanhamento" aria-describedby="ui-tooltip-3"><span class="icon24 icomoon-icon-puzzle"></span></a>
-                                                            </li>
-                                                            <li>
-                                                                @if(plan.Andamento == Status.Finalizado)
-                                                                {
-                                                                <a href="@Url.Action("OpenProject", "Plan5W2H", new { @id = plan.Code.ToString() })" class="tip" oldtitle="Abrir projeto" title="Abrir projeto" aria-describedby="ui-tooltip-3" ><span class="icon24 wpzoom-refresh"></span></a>
-                                                                }
-                                                                else
-                                                                {
-                                                                <a href="@Url.Action("FinalizeProject", "Plan5W2H", new { @id = plan.Code.ToString() })" class="tip" oldtitle="Finalizar projeto" title="Finalizar projeto" aria-describedby="ui-tooltip-3" ><span class="icon24 wpzoom-thumbs-up"></span></a>
-                                                                }
-                                                            </li>
-                                                            <li>
-                                                                <a href="@Url.Action("Remove", "Plan5W2H", new { @id = plan.Code.ToString() })" class="tip" oldtitle="Remover" title="Remover" aria-describedby="ui-tooltip-3"><span class="icon24 wpzoom-trashcan"></span></a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </td>
-                                              </tr>
+                                               
+                                                    @Html.Partial("LinhaProjeto", plan)
+                                                  
+                                                    if (plan.PlanItens.Count == 0)
+                                                    {
+                                                        <tr>
+                                                            <td><a href="#" class="tip expandir" oldtitle="Expandir" title="Expandir" aria-describedby="ui-tooltip-3"><span  class="icon-plus"></span></a></td>
+                                                            <td colspan="7"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td colspan="8">
+                                                                <table class="responsive table table-bordered table-condensed" id="checkAll">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>O Que</th>
+                                                                            <th>Porque</th>
+                                                                            <th>Quando</th>
+                                                                            <th>Onde</th>
+                                                                            <th>Como</th>
+                                                                            <th>Quanto</th>
+                                                                            <th>Status</th>
+                                                                            <th>Ações</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        @foreach(Item5W2H item in plan.PlanItens.OrderBy(i => i.Created))
+                                                                        {
+                                                                            @Html.Partial("LinhaItem", item)
+                                                                        }
+                                                                    </tbody>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    }
                                               }
                                             </tbody>
                                         }else{
                                              <tbody>
                                                <tr class="firstcolumn">                                            
+                                                <td></td>
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>

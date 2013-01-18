@@ -9,6 +9,7 @@ namespace Plan5W2HPlusPlus.Model.Mappings
         {
             Id(x => x.Code).GeneratedBy.Assigned();
             Map(x => x.Andamento);
+            Map(x => x.Created);
 
             Map(x => x.Oque);
             Map(x => x.Quando);
