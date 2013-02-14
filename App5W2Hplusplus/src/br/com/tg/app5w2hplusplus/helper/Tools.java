@@ -23,25 +23,21 @@ public class Tools {
 	 *         <strong>Constant.SPLASH_SCREEN_INIT_TIME_VALIDITY</strong>
 	 *         milliseconds, false if it has been opened sooner
 	 */
-	// public static boolean isSplashScreenInitialized()
-	// {
-	// SharedPreferences preferences =
-	// BemMeQueroApplication.getBemMeQueroPreferences();
-	// String initDate =
-	// preferences.getString(Constants.PREF_KEY_INIT_SPLASH_DATE, null);
-	// if(initDate == null || initDate.length() == 0)
-	// return false;
-	//
-	// Date theDate = convertStringToDate(initDate);
-	// if(theDate == null)
-	// return false;
-	//
-	// if(theDate.getTime() < (new Date().getTime() -
-	// Constants.SPLASH_SCREEN_INIT_TIME_VALIDITY))
-	// return false;
-	//
-	// return true;
-	// }
+	 public static boolean isSplashScreenInitialized() {
+		 SharedPreferences preferences = App5W2HplusplusApplication.getApp5w2hPreferences();
+		 String initDate = preferences.getString(Constants.PREF_KEY_INIT_SPLASH_DATE, null);
+		 if(initDate == null || initDate.length() == 0)
+			 return false;
+		
+		 Date theDate = convertStringToDate(initDate);
+		 if(theDate == null)
+			 return false;
+		
+		 if(theDate.getTime() < (new Date().getTime() - Constants.SPLASH_SCREEN_INIT_TIME_VALIDITY))
+			 return false;
+		
+		 return true;
+	 }
 	/**
 	 * Function checking if the login activity needs to be shown
 	 * 
@@ -66,11 +62,9 @@ public class Tools {
 	 *            : The date on which the splash screen has been opened
 	 */
 	public static void saveInitDateSplashScreen(Date theDate) {
-		SharedPreferences preferences = App5W2HplusplusApplication
-				.getApp5w2hPreferences();
+		SharedPreferences preferences = App5W2HplusplusApplication.getApp5w2hPreferences();
 		Editor editPref = preferences.edit();
-		editPref.putString(Constants.PREF_KEY_INIT_SPLASH_DATE,
-				convertDateToString(theDate));
+		editPref.putString(Constants.PREF_KEY_INIT_SPLASH_DATE,	convertDateToString(theDate));
 		editPref.commit();
 	}
 

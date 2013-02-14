@@ -3,6 +3,7 @@ package br.com.tg.app5w2hplusplus.helper;
 import android.app.Activity;
 import android.content.Intent;
 import br.com.tg.app5w2hplusplus.activity.LoginActivity;
+import br.com.tg.app5w2hplusplus.activity.SplashscreenActivity;
 
 public class Redirector {
 
@@ -29,27 +30,21 @@ public class Redirector {
 	 *         needed.
 	 */
 	public static Intent getRedirection(Activity activity) {
-		// Redirection for the SplashScreen
-		// if(!Tools.isSplashScreenInitialized())
-		// {
-		// if(activity instanceof SplashActivity)
-		// {
-		// //We already are in the splash screen activity
-		// return null;
-		// }
-		// else
-		// {
-		// //We are not in the splash activity
-		// return new Intent(activity, SplashActivity.class);
-		// }
-		// }
-		// Redirection for the Login
+	 
+		if(!Tools.isSplashScreenInitialized()) {
+			if(activity instanceof SplashscreenActivity) {	
+				return null;
+			}
+			else
+			{	 
+				return new Intent(activity, SplashscreenActivity.class);
+			}
+		}
+	
 		if (!Tools.isUserLoggedIn()) {
 			if (activity instanceof LoginActivity) {
-				// We already are in the LoginActivity
 				return null;
 			} else {
-				// We are not in the LoginActivity
 				return new Intent(activity, LoginActivity.class);
 			}
 		}

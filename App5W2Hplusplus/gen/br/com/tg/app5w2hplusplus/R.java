@@ -9,44 +9,118 @@ package br.com.tg.app5w2hplusplus;
 
 public final class R {
     public static final class attr {
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int buttonBarButtonStyle=0x7f010001;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int buttonBarStyle=0x7f010000;
+    }
+    public static final class color {
+        public static final int black_overlay=0x7f040000;
+    }
+    public static final class dimen {
+        /**  Default screen margins, per the Android Design guidelines. 
+
+         Customize dimensions originally defined in res/values/dimens.xml (such as
+         screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
+    
+         */
+        public static final int activity_horizontal_margin=0x7f050000;
+        public static final int activity_vertical_margin=0x7f050001;
     }
     public static final class drawable {
         public static final int ic_action_search=0x7f020000;
         public static final int ic_launcher=0x7f020001;
     }
     public static final class id {
-        public static final int home_ws=0x7f070001;
-        public static final int login_btnTeste=0x7f070002;
-        public static final int menu_settings=0x7f070003;
-        public static final int textView1=0x7f070000;
+        public static final int action_settings=0x7f090004;
+        public static final int home_ws=0x7f090001;
+        public static final int login_btnTeste=0x7f090002;
+        public static final int menu_settings=0x7f090003;
+        public static final int textView1=0x7f090000;
     }
     public static final class layout {
         public static final int activity_home=0x7f030000;
         public static final int activity_login=0x7f030001;
+        public static final int activity_splashscreen=0x7f030002;
     }
     public static final class menu {
-        public static final int activity_home=0x7f060000;
-        public static final int activity_login=0x7f060001;
+        public static final int activity_home=0x7f080000;
+        public static final int activity_login=0x7f080001;
+        public static final int splashscreen=0x7f080002;
     }
     public static final class string {
-        public static final int app_error_backHome=0x7f040004;
-        public static final int app_name=0x7f040000;
-        public static final int connectivityProblem=0x7f04000a;
-        public static final int connectivityProblemRetry=0x7f04000b;
-        public static final int dialogButton_unhandledProblem=0x7f040007;
-        public static final int hello_world=0x7f040001;
-        public static final int login_progress=0x7f04000f;
-        public static final int menu_settings=0x7f040002;
-        public static final int problem=0x7f040005;
-        public static final int progressDialogMessage_unhandledProblem=0x7f040008;
-        public static final int progressDialog_title=0x7f04000d;
-        public static final int title_activity_home=0x7f040003;
-        public static final int title_activity_login=0x7f04000e;
-        public static final int unavailableItem=0x7f04000c;
-        public static final int unavailableService=0x7f040009;
-        public static final int unhandledProblem=0x7f040006;
+        public static final int action_settings=0x7f060013;
+        public static final int app_error_backHome=0x7f060004;
+        public static final int app_name=0x7f060000;
+        public static final int connectivityProblem=0x7f06000a;
+        public static final int connectivityProblemRetry=0x7f06000b;
+        public static final int dialogButton_unhandledProblem=0x7f060007;
+        public static final int dummy_button=0x7f060011;
+        public static final int dummy_content=0x7f060010;
+        public static final int hello_world=0x7f060001;
+        public static final int login_progress=0x7f06000f;
+        public static final int menu_settings=0x7f060002;
+        public static final int problem=0x7f060005;
+        public static final int progressDialogMessage_unhandledProblem=0x7f060008;
+        public static final int progressDialog_title=0x7f06000d;
+        public static final int title_activity_home=0x7f060003;
+        public static final int title_activity_login=0x7f06000e;
+        public static final int title_activity_splashscreen=0x7f060012;
+        public static final int unavailableItem=0x7f06000c;
+        public static final int unavailableService=0x7f060009;
+        public static final int unhandledProblem=0x7f060006;
     }
     public static final class style {
-        public static final int AppTheme=0x7f050000;
+        public static final int AppTheme=0x7f070000;
+        public static final int ButtonBar=0x7f070002;
+        public static final int ButtonBarButton=0x7f070001;
+        public static final int FullscreenActionBarStyle=0x7f070004;
+        public static final int FullscreenTheme=0x7f070003;
     }
+    public static final class styleable {
+        /** 
+         Declare custom theme attributes that allow changing which styles are
+         used for button bars depending on the API level.
+         ?android:attr/buttonBarStyle is new as of API 11 so this is
+         necessary to support previous API levels.
+    
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #ButtonBarContainerTheme_buttonBarButtonStyle br.com.tg.app5w2hplusplus:buttonBarButtonStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #ButtonBarContainerTheme_buttonBarStyle br.com.tg.app5w2hplusplus:buttonBarStyle}</code></td><td></td></tr>
+           </table>
+           @see #ButtonBarContainerTheme_buttonBarButtonStyle
+           @see #ButtonBarContainerTheme_buttonBarStyle
+         */
+        public static final int[] ButtonBarContainerTheme = {
+            0x7f010000, 0x7f010001
+        };
+        /**
+          <p>This symbol is the offset where the {@link br.com.tg.app5w2hplusplus.R.attr#buttonBarButtonStyle}
+          attribute's value can be found in the {@link #ButtonBarContainerTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name android:buttonBarButtonStyle
+        */
+        public static final int ButtonBarContainerTheme_buttonBarButtonStyle = 1;
+        /**
+          <p>This symbol is the offset where the {@link br.com.tg.app5w2hplusplus.R.attr#buttonBarStyle}
+          attribute's value can be found in the {@link #ButtonBarContainerTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name android:buttonBarStyle
+        */
+        public static final int ButtonBarContainerTheme_buttonBarStyle = 0;
+    };
 }
