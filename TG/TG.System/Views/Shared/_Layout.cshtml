@@ -45,6 +45,8 @@
     <link href="@Url.Content("~/Content/plugins/plupload/jquery.ui.plupload/css/jquery.ui.plupload.css")" type="text/css" rel="stylesheet" />
     <link href="@Url.Content("~/Content/plugins/search/tipuesearch.css")" type="text/css" rel="stylesheet" />
 
+    @RenderSection("AdditionalStyles", required: false)
+
     <!-- Main stylesheets -->
     <link href="@Url.Content("~/Content/css/main.css")" rel="stylesheet" type="text/css" /> 
 
@@ -129,6 +131,8 @@
     <script type="text/javascript" src="@Url.Content("~/Content/plugins/touch-punch/jquery.ui.touch-punch.min.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Content/js/jquery-ui-timepicker-addon.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Content/js/main.js")"></script>
+
+    @RenderSection("AdditionalJavascript", required: false)
 
     @RenderBody()
     </body>

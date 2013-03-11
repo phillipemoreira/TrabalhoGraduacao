@@ -1,5 +1,4 @@
 ﻿@model Plan5W2HPlusPlus.Application.Models.Item5W2HModel
-
 @{
     ViewBag.Titulo = "Criar Tarefa";
     ViewBag.LocalizacaoPai = "<a class='tip' href='" + Url.Action("Index", "Plan5W2h") + "'>Projetos</a>";
@@ -10,85 +9,110 @@
 
 @Html.Partial("Messages")
 
+@section AdditionalJavascript
+{
+    <script type="text/javascript" src="@Url.Content("~/Content/plugins/handsontable/jquery.handsontable.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/js/datatable.js")"></script>
+}
+
+@section AdditionalStyles
+{
+    <link href="@Url.Content("~/Content/plugins/handsontable/jquery.handsontable.css")" rel="stylesheet" type="text/css" />
+}
+
 @*Content Start*@
 
-                <!-- Build page from here: -->
-                <div class="row-fluid">
+<!-- Build page from here: -->
+<div class="row-fluid">
 
-                    <div class="span12">
+    <div class="span12">
 
-                            @using (Html.BeginForm("CreateItem", "Plan5W2H", FormMethod.Post, new { @Class="form-horizontal", @Id="form-validate"}))
-                            {
-                                @Html.ValidationSummary(true)
-                                @Html.HiddenFor(model => model.Item.Code)
-                                <div class="form-row row-fluid">
-                                    <div class="span12">
-                                        <div class="row-fluid">
-                                            <label class="form-label span3" for="username">O Que:</label>
-                                            @Html.TextBoxFor(model => model.Item.Oque, new { @Class = "span4 required" })
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row row-fluid">
-                                    <div class="span12">
-                                        <div class="row-fluid">
-                                            <label class="form-label span3" for="username">Por que:</label>
-                                            @Html.TextBoxFor(model => model.Item.Porque, new { @Class = "span4 required" })
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row row-fluid">
-                                    <div class="span12">
-                                        <div class="row-fluid">
-                                            <label class="form-label span3" for="username">Quando:</label>
-                                            @Html.TextBoxFor(model => model.Item.Quando, new { @Class = "span4 required" })
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row row-fluid">
-                                    <div class="span12">
-                                        <div class="row-fluid">
-                                            <label class="form-label span3" for="username">Onde:</label>
-                                            @Html.TextBoxFor(model => model.Item.Onde, new { @Class = "span4 required" })
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row row-fluid">
-                                    <div class="span12">
-                                        <div class="row-fluid">
-                                            <label class="form-label span3" for="username">Como:</label>
-                                            @Html.TextBoxFor(model => model.Item.Como, new { @Class = "span4 required" })
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row row-fluid">
-                                    <div class="span12">
-                                        <div class="row-fluid">
-                                            <label class="form-label span3" for="name">Quanto:</label>
-                                            <div class="input-append">
-                                                @Html.TextBoxFor(model => model.Item.Quanto, new { @class = "span8" })<span class="add-on">,00</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row row-fluid">        
-                                    <div class="span12">
-                                        <div class="row-fluid">
-                                            <div class="form-actions">
-                                            <div class="span3"></div>
-                                            <div class="span4 controls">
-                                                <button type="submit" class="btn btn-info marginR10">Save changes</button>
-                                                <button type="reset" id="cancel" class="btn btn-danger">Cancel</button>
-                                            </div>
-                                            </div>
-                                        </div>
-                                    </div>   
-                                </div>
-                            } 
+        @using (Html.BeginForm("CreateItem", "Plan5W2H", FormMethod.Post, new { @Class = "form-horizontal", @Id = "form-validate" }))
+        {
+            @Html.ValidationSummary(true)
+            @Html.HiddenFor(model => model.Item.Code)
+            <div class="form-row row-fluid">
+                <div class="span12">
+                    <div class="row-fluid">
+                        <label class="form-label span3" for="username">O Que:</label>
+                        @Html.TextBoxFor(model => model.Item.Oque, new { @Class = "span4 required" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-row row-fluid">
+                <div class="span12">
+                    <div class="row-fluid">
+                        <label class="form-label span3" for="username">Por que:</label>
+                        @Html.TextBoxFor(model => model.Item.Porque, new { @Class = "span4 required" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-row row-fluid">
+                <div class="span12">
+                    <div class="row-fluid">
+                        <label class="form-label span3" for="username">Quando:</label>
+                        @Html.TextBoxFor(model => model.Item.Quando, new { @Class = "span4 required" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-row row-fluid">
+                <div class="span12">
+                    <div class="row-fluid">
+                        <label class="form-label span3" for="username">Onde:</label>
+                        @Html.TextBoxFor(model => model.Item.Onde, new { @Class = "span4 required" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-row row-fluid">
+                <div class="span12">
+                    <div class="row-fluid">
+                        <label class="form-label span3" for="username">Como:</label>
+                        @Html.TextBoxFor(model => model.Item.Como, new { @Class = "span4 required" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-row row-fluid">
+                <div class="span12">
+                    <div class="row-fluid">
+                        <label class="form-label span3" for="name">Quanto:</label>
+                        <div class="input-append">
+                            @Html.TextBoxFor(model => model.Item.Quanto, new { @class = "span8" })<span class="add-on">,00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row row-fluid">
+                <div class="span12">
+                    <div class="row-fluid">
+                        <div class="form-actions">
+                            <div class="span3"></div>
+                            <div class="span4 controls">
+                                <button type="submit" class="btn btn-info marginR10">Save changes</button>
+                                <button type="reset" id="cancel" class="btn btn-danger">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
 
-                    </div><!-- End .span12 -->
+    </div>
+    <!-- End .span12 -->
 
-                </div><!-- End .row-fluid -->
+    <div class="reportIn wrapperFull">
+        <div id="dataTable" class="dataTable">
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var itensPlan = {};
+        itensPlan.Cols = 6;
+        itensPlan.Rows = @(Model.Itens.Count);
+        itensPlan.data  = @Html.Raw(Model.GetJsonItensData());
+    </script>
+
+</div>
+<!-- End .row-fluid -->
 
 @*Content End*@
 

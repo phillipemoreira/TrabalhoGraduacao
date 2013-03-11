@@ -9,7 +9,8 @@ using Plan5W2HPlusPlus.Application.Models;
 
 namespace Plan5W2HPlusPlus.Application.Controllers
 {
-    [NHibernateActionFilter]
+    [NHibernateActionFilter(Order = 1)]
+    [AuthorizationActionFilter(Order = 2)]
     [Authorize]
     public class Plan5W2HController : LoggedController
     {
@@ -88,13 +89,11 @@ namespace Plan5W2HPlusPlus.Application.Controllers
             IList<Plan5W2H> plans = ISession.QueryOver<Plan5W2H>()
                                         .Where(p => p.Owner == this.Usuario)
                                         .List();
-            this.IncludUserViewBag();
             return View(plans);
         }
 
         public ActionResult Create(string id)
         {
-            this.IncludUserViewBag();
             Plan5W2H plan;
             if (id != null)
             {
@@ -110,7 +109,7 @@ namespace Plan5W2HPlusPlus.Application.Controllers
             try
             {
                 User usuario = this.Usuario;
-                
+
                 if (model.Owner == null)
                     model.Owner = usuario;
 
@@ -123,10 +122,9 @@ namespace Plan5W2HPlusPlus.Application.Controllers
                 }
                 else
                 {
-                    
+
                     this.Usuario.Plans.Add(model);
                 }
-                this.IncludUserViewBag();
 
                 ViewBag.Message = "SUCCESS";
                 return View(model);
@@ -146,7 +144,6 @@ namespace Plan5W2HPlusPlus.Application.Controllers
                 Plan5W2H plan = ServicePlan5W2H.Get(new Guid(id.ToString()));
                 this.Usuario.Plans.Remove(plan);
             }
-            this.IncludUserViewBag();
             return RedirectToAction("Index");
         }
 
@@ -175,37 +172,22 @@ namespace Plan5W2HPlusPlus.Application.Controllers
 
         public ActionResult Ordenacao(int ordem)
         {
-            
-                                            
-
             return View();
         }
 
-        public ActionResult CreateItem(string id, string itemId)
+        public ActionResult CreateItem(string id)
         {
+            Item5W2H item;
             Plan5W2H plan = ServicePlan5W2H.Get(new Guid(id));
-            Item5W2H item = new Item5W2H() { Plan = plan };
-            if (itemId == null)
-            {
-                this.Usuario.Plans.Remove(plan);
-                plan.PlanItens.Add(item);
-                this.Usuario.Plans.Add(plan);
-                ISession.Merge(this.Usuario);
-            }
-            else
-            {
-                item = ServiceItem5W2H.Get(new Guid(itemId));
-            }
+            item = new Item5W2H() { Plan = plan };
+            IList<Item5W2H> itens = ISession.QueryOver<Item5W2H>().Where(i => i.Plan.Code == plan.Code).List();
 
-            this.IncludUserViewBag();
-            return View(new Item5W2HModel() { Usuario = this.Usuario, Item = item });
+            return View(new Item5W2HModel() { Usuario = this.Usuario, Item = item, Itens = itens });
         }
 
         [HttpPost]
         public ActionResult CreateItem(Item5W2H model)
         {
-
-            this.IncludUserViewBag();
             return View();
         }
 

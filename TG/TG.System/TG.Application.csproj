@@ -96,6 +96,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActionFilter\AuthorizationActionFilter.cs" />
     <Compile Include="ActionFilter\NHibernateActionFilter.cs" />
     <Compile Include="Controllers\AutenticationController.cs" />
     <Compile Include="Controllers\ColaboradoresController.cs" />
@@ -383,7 +384,10 @@
     <Content Include="Content\images\_oldcircle\cp2blue.png" />
     <Content Include="Content\images\_oldcircle\cp2green.png" />
     <Content Include="Content\images\_oldcircle\cp2red.png" />
+    <Content Include="Content\js\datatable.js" />
     <Content Include="Content\js\jquery-ui-timepicker-addon.js" />
+    <Content Include="Content\plugins\handsontable\jquery.handsontable.css" />
+    <Content Include="Content\plugins\handsontable\jquery.handsontable.js" />
     <Content Include="Global.asax" />
     <Content Include="hibernate.cfg.xml">
       <SubType>Designer</SubType>
