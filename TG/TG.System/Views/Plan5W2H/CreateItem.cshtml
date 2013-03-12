@@ -74,6 +74,14 @@
             <div class="form-row row-fluid">
                 <div class="span12">
                     <div class="row-fluid">
+                        <label class="form-label span3" for="username">Como:</label>
+                        @Html.TextBoxFor(model => model.Item.Como, new { @Class = "span4 required" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-row row-fluid">
+                <div class="span12">
+                    <div class="row-fluid">
                         <label class="form-label span3" for="name">Quanto:</label>
                         <div class="input-append">
                             @Html.TextBoxFor(model => model.Item.Quanto, new { @class = "span8" })<span class="add-on">,00</span>
@@ -106,7 +114,7 @@
 
     <script type="text/javascript">
         var itensPlan = {};
-        itensPlan.Cols = 6;
+        itensPlan.Cols = 9;
         itensPlan.Rows = @(Model.Itens.Count);
         itensPlan.data  = @Html.Raw(Model.GetJsonItensData());
     </script>

@@ -16,7 +16,7 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle avatar" data-toggle="dropdown">
                                 <img src="@Request.Url.GetLeftPart(UriPartial.Authority)@if(ViewBag.UserModel != null){ @ViewBag.UserModel.UrlAvatar}" alt="" class="image" /> 
-                                <span class="txt">@if(ViewBag.UserModel != null){@ViewBag.UserModel.Usuario.UserName} </span>
+                                <span class="txt">@if(ViewBag.UserModel.Usuario != null){@ViewBag.UserModel.Usuario.UserName} </span>
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu">

@@ -109,6 +109,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ColaboradoresModel.cs" />
     <Compile Include="Models\Item5W2HModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\Plan5W2HModel.cs" />
@@ -1099,6 +1100,7 @@
     <Content Include="Views\Plan5W2H\LinhaProjeto.cshtml" />
     <Content Include="Views\Plan5W2H\LinhaItem.cshtml" />
     <Content Include="Views\Plan5W2H\CreateItem.cshtml" />
+    <Content Include="Views\Colaboradores\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
