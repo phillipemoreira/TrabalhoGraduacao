@@ -9,7 +9,7 @@ namespace Plan5W2HPlusPlus.Application.Models
 {
     public class ColaboradoresModel
     {
-        public IList<User> Colaboradores { get; set; }
+        public IEnumerable<User> Colaboradores { get; set; }
         public IList<Invite> ConvidadosPorMim { get; set; }
         public IList<Invite> EstaoMeConvidando { get; set; }
 

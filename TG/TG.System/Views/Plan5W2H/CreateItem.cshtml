@@ -12,7 +12,7 @@
 @section AdditionalJavascript
 {
     <script type="text/javascript" src="@Url.Content("~/Content/plugins/handsontable/jquery.handsontable.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Content/js/datatable.js")"></script>
+    @*<script type="text/javascript" src="@Url.Content("~/Content/js/datatable.js")"></script>*@
 }
 
 @section AdditionalStyles
@@ -75,7 +75,7 @@
                 <div class="span12">
                     <div class="row-fluid">
                         <label class="form-label span3" for="username">Como:</label>
-                        @Html.TextBoxFor(model => model.Item.Como, new { @Class = "span4 required" })
+                        @Html.DropDownList("Quem", Model.GetColaboradores(), new { @style = "", @class = "nostyle", @Id = "Colaboradores", @multiple = "multiple" })
                     </div>
                 </div>
             </div>
@@ -107,17 +107,17 @@
     </div>
     <!-- End .span12 -->
 
-    <div class="reportIn wrapperFull">
+    @*<div class="reportIn wrapperFull">
         <div id="dataTable" class="dataTable">
         </div>
-    </div>
+    </div>*@
 
-    <script type="text/javascript">
+    @*<script type="text/javascript">
         var itensPlan = {};
         itensPlan.Cols = 9;
         itensPlan.Rows = @(Model.Itens.Count);
         itensPlan.data  = @Html.Raw(Model.GetJsonItensData());
-    </script>
+    </script>*@
 
 </div>
 <!-- End .row-fluid -->
@@ -129,5 +129,20 @@
 <script type="text/javascript">
     $(function () {
         $("li a.first").addClass("current");
+    });
+
+    $(function () {
+        function format(state) {
+            if (!state.id) return state.text; // optgroup
+            return "<img style='width:36px;height:32px;' class='avatar' src='/Content/UsersAvatar/avatar-" + state.id.toLowerCase() + ".png'/>" + state.text;
+        }
+
+        $("#Colaboradores").select2({
+            placeholder: "Selecione o colaborador",
+            formatResult: format,
+            formatSelection: format,
+            escapeMarkup: function (m) { return m; }
+        });
+
     });
 </script>

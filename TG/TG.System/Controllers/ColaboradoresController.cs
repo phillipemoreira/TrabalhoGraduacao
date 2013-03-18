@@ -4,6 +4,7 @@ using Plan5W2HPlusPlus.Model.Models;
 using Plan5W2HPlusPlus.Model.Repository;
 using Plan5W2HPlusPlus.Model.Services;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -17,14 +18,14 @@ namespace Plan5W2HPlusPlus.Application.Controllers
     [Authorize]
     public class ColaboradoresController : LoggedController
     {
-        private IService<User> service;
-        private IService<User> Service
+        private IService<User> serviceUser;
+        private IService<User> ServiceUser
         {
             get
             {
-                if (service == null) service = new Service<User>(RepUser);
+                if (serviceUser == null) serviceUser = new Service<User>(RepUser);
 
-                return service;
+                return serviceUser;
             }
 
         }
@@ -41,24 +42,86 @@ namespace Plan5W2HPlusPlus.Application.Controllers
 
         }
 
+        private IService<Invite> serviceInvite;
+        private IService<Invite> ServiceInvite
+        {
+            get
+            {
+                if (serviceInvite == null) serviceInvite = new Service<Invite>(RepInvite);
+
+                return serviceInvite;
+            }
+
+        }
+
+        private IRepository<Invite> repInvite;
+        private IRepository<Invite> RepInvite
+        {
+            get
+            {
+                if (repInvite == null) repInvite = new Repository<Invite>(this.ISession);
+
+                return repInvite;
+            }
+
+        }
+
         public ActionResult Index()
         {
             IList<User> colaboradores = ISession.QueryOver<User>().Where(x => x.Code != this.Usuario.Code).List();
             IList<Invite> convidadosPorMim = ISession.QueryOver<Invite>().Where(x => x.De.Code == this.Usuario.Code).List();
             IList<Invite> estaoMeConvidando = ISession.QueryOver<Invite>().Where(x => x.Para.Code == this.Usuario.Code).List();
 
+            IEnumerable<User> users = colaboradores.Except(convidadosPorMim.Select(c => c.Para).AsEnumerable<User>());
+            
             return View(new ColaboradoresModel()
             {
-                Colaboradores = colaboradores,
+                Colaboradores = users,
                 ConvidadosPorMim = convidadosPorMim,
                 EstaoMeConvidando = estaoMeConvidando
             });
         }
 
         [HttpPost]
-        public ActionResult SalvarColaboradores(Guid id, FormCollection form)
+        public ActionResult SalvarColaboradores(FormCollection form)
         {
-            return Json();
+            string[] usuariosConvidados = form["Colaboradores"].Split(',');
+            string mensagem = form["mensagem"].ToString();
+
+            foreach (string usuarioId in usuariosConvidados)
+            {
+                User usuario = ServiceUser.Get(new Guid(usuarioId));
+                Invite convite = new Invite() {De = this.Usuario , Para = usuario, Message = mensagem};
+                ServiceInvite.Save(convite);
+            }
+
+            ViewBag.Message = "SUCCESS";
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Aceitar(string convite, string id)
+        {
+            User usuario = ServiceUser.Get(new Guid(id));
+            Invite invite = ServiceInvite.Get(new Guid(convite));
+            invite.Aceito = Invite.SatusConvite.Aceito;
+
+            this.Usuario.Friends.Add(usuario);
+
+            ISession.Merge(this.Usuario);
+            ServiceInvite.SaveOrUpdate(invite);
+
+            ViewBag.Message = "SUCCESS";
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Rejeitar(string convite)
+        {
+            Invite invite = ServiceInvite.Get(new Guid(convite));
+            invite.Aceito = Invite.SatusConvite.Rejeitado;
+            ServiceInvite.SaveOrUpdate(invite);
+
+            ViewBag.Message = "SUCCESS";
+            return RedirectToAction("Index");
         }
     }
 }

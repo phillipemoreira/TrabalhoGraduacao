@@ -182,7 +182,7 @@ namespace Plan5W2HPlusPlus.Application.Controllers
             item = new Item5W2H() { Plan = plan };
             IList<Item5W2H> itens = ISession.QueryOver<Item5W2H>().Where(i => i.Plan.Code == plan.Code).List();
 
-            return View(new Item5W2HModel() { Usuario = this.Usuario, Item = item, Itens = itens });
+            return View(new Item5W2HModel() { Usuario = this.Usuario, Item = item, Itens = itens, Colaboradores = this.Usuario.Friends });
         }
 
         [HttpPost]
