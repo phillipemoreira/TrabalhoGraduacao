@@ -1,4 +1,6 @@
 ﻿@model Plan5W2HPlusPlus.Application.Models.Item5W2HModel
+@using Plan5W2HPlusPlus.Model.Models
+
 @{
     ViewBag.Titulo = "Criar Tarefa";
     ViewBag.LocalizacaoPai = "<a class='tip' href='" + Url.Action("Index", "Plan5W2h") + "'>Projetos</a>";
@@ -30,6 +32,7 @@
         @using (Html.BeginForm("CreateItem", "Plan5W2H", FormMethod.Post, new { @Class = "form-horizontal", @Id = "form-validate" }))
         {
             @Html.ValidationSummary(true)
+            @Html.HiddenFor(model => model.Plan.Code)
             @Html.HiddenFor(model => model.Item.Code)
             <div class="form-row row-fluid">
                 <div class="span12">
@@ -51,7 +54,7 @@
                 <div class="span12">
                     <div class="row-fluid">
                         <label class="form-label span3" for="username">Quando:</label>
-                        @Html.TextBoxFor(model => model.Item.Quando, new { @Class = "span4 required" })
+                        @Html.TextBoxFor(model => model.Item.Quando, new { @Class = "span2 required datetimePicker" })
                     </div>
                 </div>
             </div>
@@ -75,7 +78,7 @@
                 <div class="span12">
                     <div class="row-fluid">
                         <label class="form-label span3" for="username">Como:</label>
-                        @Html.DropDownList("Quem", Model.GetColaboradores(), new { @style = "", @class = "nostyle", @Id = "Colaboradores", @multiple = "multiple" })
+                        @Html.DropDownList("Quem", Model.GetColaboradores(), new { @style = "width: 343px;", @class = "nostyle", @Id = "Colaboradores", @multiple = "multiple" })
                     </div>
                 </div>
             </div>
@@ -107,20 +110,75 @@
     </div>
     <!-- End .span12 -->
 
-    @*<div class="reportIn wrapperFull">
-        <div id="dataTable" class="dataTable">
-        </div>
-    </div>*@
-
-    @*<script type="text/javascript">
-        var itensPlan = {};
-        itensPlan.Cols = 9;
-        itensPlan.Rows = @(Model.Itens.Count);
-        itensPlan.data  = @Html.Raw(Model.GetJsonItensData());
-    </script>*@
-
 </div>
 <!-- End .row-fluid -->
+<div class="row-fluid">
+    <div class="span12">
+
+        <div class="box">
+
+            <div class="title">
+
+                <h4>
+                    <span class="icon16 brocco-icon-grid"></span>
+                    <span>Lista de Tarefas</span>
+                </h4>
+                <a href="#" class="minimize">Minimize</a>
+            </div>
+            <div class="content noPad">
+                <table class="responsive table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>O que</th>
+                            <th>Por que</th>
+                            <th>Quando</th>
+                            <th>Onde</th>
+                            <th>Como</th>
+                            <th>Quem</th>
+                            <th>Quanto (R$)</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{ int count = 1;
+                           foreach (Item5W2H item in Model.Itens)
+                           {
+                            <tr>
+                                <td>@count</td>
+                                <td>@item.Oque</td>
+                                <td>@item.Porque</td>
+                                <td>@item.Quando</td>
+                                <td>@item.Onde</td>
+                                <td>@item.Como</td>
+                                <td>
+                                    @foreach (User colaboradores in item.Quem)
+                                    { 
+                                        @(colaboradores.GetNomeCompleto() + "; ")
+                                    
+                                    }
+                                </td>
+                                <td>@item.Quanto.ToString()</td>
+                                <td>
+                                    <div class="controls center">
+                                        <a href="@Url.Action("RemoveTask", "Plan5W2H", new { @planId = Model.Plan.Code, @taskId = item.Code.ToString() })" title="Remover tarefa" class="tip"><span class="icon12 icomoon-icon-remove"></span></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            
+                                    ++count;
+                           }
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        <!-- End .box -->
+
+    </div>
+    <!-- End .span6 -->
+</div>
 
 @*Content End*@
 

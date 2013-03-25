@@ -19,8 +19,8 @@ namespace Plan5W2HPlusPlus.Model.Mappings
             Map(x => x.Password);
             HasMany(x => x.Plans).Cascade.AllDeleteOrphan().Not.LazyLoad();
             HasManyToMany(x => x.Friends)
-                .ParentKeyColumn("UserId")
-                .ChildKeyColumn("FriendId")
+                .ParentKeyColumn("FriendId")
+                .ChildKeyColumn("UserId")
                 .Table("UserFriends")
                 .Cascade.SaveUpdate().Not.LazyLoad();
         }

@@ -60,39 +60,6 @@
                             {
                                                
                                 @Html.Partial("LinhaProjeto", plan)
-                                                  
-                                if (plan.PlanItens.Count == 0)
-                                {
-                                <tr>
-                                    <td><a href="#" class="tip expandir" oldtitle="Expandir" title="Expandir" aria-describedby="ui-tooltip-3"><span class="icon-plus"></span></a></td>
-                                    <td colspan="7"></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td colspan="8">
-                                        <table class="responsive table table-bordered table-condensed" id="checkAll">
-                                            <thead>
-                                                <tr>
-                                                    <th>O Que</th>
-                                                    <th>Porque</th>
-                                                    <th>Quando</th>
-                                                    <th>Onde</th>
-                                                    <th>Como</th>
-                                                    <th>Quanto</th>
-                                                    <th>Status</th>
-                                                    <th>Ações</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach (Item5W2H item in plan.PlanItens.OrderBy(i => i.Created))
-                                                {
-                                                    @Html.Partial("LinhaItem", item)
-                                                }
-                                            </tbody>
-                                        </table>
-                                    </td>
-                                </tr>
-                                }
                             }
                         </tbody>
                     }

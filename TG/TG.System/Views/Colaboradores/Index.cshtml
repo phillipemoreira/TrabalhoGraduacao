@@ -50,7 +50,7 @@
                         @{
                             string cssClass = "";
                             int cont = 1;
-                            foreach (Invite convite in Model.ConvidadosPorMim)
+                            foreach (Invite convite in Model.EstaoMeConvidando)
                             {
 
                                 if (convite.Aceito == Invite.SatusConvite.Aceito)
@@ -67,13 +67,13 @@
                                 }
                             <tr class="@cssClass">
                                 <td>@(cont++)</td>
-                                <td>@convite.Para.GetNomeCompleto()</td>
+                                <td>@convite.De.GetNomeCompleto()</td>
                                 <td>@convite.Invited.ToString("dd/mm/yyyy")</td>
                                 <td>@convite.Aceito.ToString()</td>
                                 <td>
                                     @if (convite.Aceito == Invite.SatusConvite.Pendente)
                                     {
-                                        <a href="@Url.Action("Aceitar", "Colaboradores", new { @convite = convite.Code.ToString(), @id = convite.Para.Code.ToString() })" class="tip" oldtitle="Aceitar convite" title="Aceitar convite" aria-describedby="ui-tooltip-3">
+                                        <a href="@Url.Action("Aceitar", "Colaboradores", new { @convite = convite.Code.ToString(), @id = convite.De.Code.ToString() })" class="tip" oldtitle="Aceitar convite" title="Aceitar convite" aria-describedby="ui-tooltip-3">
                                             <span aria-hidden="true" class="icomoon-icon-thumbs-up"></span>
                                         </a>
                                         <a href="@Url.Action("Rejeitar", "Colaboradores", new { @convite = convite.Code.ToString() })" class="tip" oldtitle="Rejeitar convite" title="Rejeitar convite" aria-describedby="ui-tooltip-3">

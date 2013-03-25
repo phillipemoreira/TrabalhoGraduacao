@@ -1630,5 +1630,8 @@ $(document).ready(function() {
 	//remove loadstate class from body and show the page
 	setTimeout('$("html").removeClass("loadstate")',500);
 
-	$('.datetimePicker').datetimepicker();
+	$('.datetimePicker').datetimepicker({
+	    dateFormat: "dd/mm/y",
+	    timeFormat: "hh:mm"
+    });
 });

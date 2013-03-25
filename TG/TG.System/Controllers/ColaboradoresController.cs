@@ -104,7 +104,7 @@ namespace Plan5W2HPlusPlus.Application.Controllers
             User usuario = ServiceUser.Get(new Guid(id));
             Invite invite = ServiceInvite.Get(new Guid(convite));
             invite.Aceito = Invite.SatusConvite.Aceito;
-
+            usuario.Friends.Add(this.Usuario);
             this.Usuario.Friends.Add(usuario);
 
             ISession.Merge(this.Usuario);

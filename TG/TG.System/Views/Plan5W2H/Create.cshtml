@@ -1,5 +1,4 @@
 ﻿@model Plan5W2HPlusPlus.Model.Models.Plan5W2H
-
 @{
     ViewBag.Titulo = "Criar Projeto";
     ViewBag.LocalizacaoPai = "<a class='tip' href='" + Url.Action("Index", "Plan5W2h") + "'>Projetos</a>";
@@ -12,79 +11,87 @@
 
 @*Content Start*@
 
-                <!-- Build page from here: -->
-                <div class="row-fluid">
+<style type="text/css">
+    #ui-datepicker-div {
+        z-index: 9999 !important;
+    }
+</style>
 
-                    <div class="span12">
+<!-- Build page from here: -->
+<div class="row-fluid">
 
-                            @using (Html.BeginForm("Create", "Plan5W2H", FormMethod.Post, new { @Class="form-horizontal", @Id="form-validate"}))
-                            {
-                                @Html.ValidationSummary(true)
-                                @Html.HiddenFor(model => model.Code)
-                                <div class="form-row row-fluid">
-                                    <div class="span12">
-                                        <div class="row-fluid">
-                                            <label class="form-label span3" for="username">Nome:</label>
-                                            @Html.TextBoxFor(model => model.Name, new { @Class = "span4 required" })
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row row-fluid">
-                                    <div class="span12">
-                                        <div class="row-fluid">
-                                            <label class="form-label span3" for="textarea">Descrição:</label>
-                                            @Html.TextAreaFor(model => model.Description, new { @class = "span4" })
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row row-fluid">
-                                    <div class="span12">
-                                        <div class="row-fluid">
-                                            <label class="form-label span3" for="name">Custo Inicial:</label>
-                                            <div class="input-append">
-                                                @Html.TextBoxFor(model => model.InitialCost, new { @class = "span8" })<span class="add-on">,00</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row row-fluid">
-                                    <div class="span12">
-                                        <div class="row-fluid">
-                                            <label class="form-label span3" for="normal">Início:</label>
-                                            <div class="span9 controls">
-                                                @Html.TextBoxFor(model => model.Start, new { @Class = "span2 required datetimePicker"})                            
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row row-fluid">
-                                    <div class="span12">
-                                        <div class="row-fluid">
-                                            <label class="form-label span3" for="normal">Término:</label>
-                                            <div class="span9 controls">
-                                                @Html.TextBoxFor(model => model.End, new { @Class = "span2 required datetimePicker" })
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row row-fluid">        
-                                    <div class="span12">
-                                        <div class="row-fluid">
-                                            <div class="form-actions">
-                                            <div class="span3"></div>
-                                            <div class="span4 controls">
-                                                <button type="submit" class="btn btn-info marginR10">Save changes</button>
-                                                <button type="reset" id="cancel" class="btn btn-danger">Cancel</button>
-                                            </div>
-                                            </div>
-                                        </div>
-                                    </div>   
-                                </div>
-                            } 
+    <div class="span12">
 
-                    </div><!-- End .span12 -->
+        @using (Html.BeginForm("Create", "Plan5W2H", FormMethod.Post, new { @Class = "form-horizontal", @Id = "form-validate" }))
+        {
+            @Html.ValidationSummary(true)
+            @Html.HiddenFor(model => model.Code)
+            <div class="form-row row-fluid">
+                <div class="span12">
+                    <div class="row-fluid">
+                        <label class="form-label span3" for="username">Nome:</label>
+                        @Html.TextBoxFor(model => model.Name, new { @Class = "span4 required" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-row row-fluid">
+                <div class="span12">
+                    <div class="row-fluid">
+                        <label class="form-label span3" for="textarea">Descrição:</label>
+                        @Html.TextAreaFor(model => model.Description, new { @class = "span4" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-row row-fluid">
+                <div class="span12">
+                    <div class="row-fluid">
+                        <label class="form-label span3" for="name">Custo Inicial:</label>
+                        <div class="input-append">
+                            @Html.TextBoxFor(model => model.InitialCost, new { @class = "span8" })<span class="add-on">,00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row row-fluid">
+                <div class="span12">
+                    <div class="row-fluid">
+                        <label class="form-label span3" for="normal">Início:</label>
+                        <div class="span9 controls">
+                            @Html.TextBoxFor(model => model.Start, new { @Style = "z-index: 9999;", @Class = "span2 required datetimePicker" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row row-fluid">
+                <div class="span12">
+                    <div class="row-fluid">
+                        <label class="form-label span3" for="normal">Término:</label>
+                        <div class="span9 controls">
+                            @Html.TextBoxFor(model => model.End, new { @Class = "span2 required datetimePicker" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row row-fluid">
+                <div class="span12">
+                    <div class="row-fluid">
+                        <div class="form-actions">
+                            <div class="span3"></div>
+                            <div class="span4 controls">
+                                <button type="submit" class="btn btn-info marginR10">Save changes</button>
+                                <button type="reset" id="cancel" class="btn btn-danger">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
 
-                </div><!-- End .row-fluid -->
+    </div>
+    <!-- End .span12 -->
+
+</div>
+<!-- End .row-fluid -->
 
 @*Content End*@
 
