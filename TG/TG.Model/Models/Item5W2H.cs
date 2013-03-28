@@ -24,6 +24,8 @@ namespace Plan5W2HPlusPlus.Model.Models
         {
             this.Code = Guid.NewGuid();
             this.Created = DateTime.Now;
+            this.Andamento = Status.EmAndamento;
+            this.Quem = new List<User>();
         }
     }
 }

@@ -8,15 +8,24 @@ namespace Plan5W2HPlusPlus.Model.Models
     public class Invite
     {
         public virtual Guid Code { get; set; }
-        public virtual DateTime InvitedIn { get; set; }
+        public virtual DateTime Invited { get; set; }
         public virtual User De { get; set; }
         public virtual User Para { get; set; }
         public virtual String Message { get; set; }
-        public virtual Boolean Aceito { get; set; }
+        public virtual SatusConvite Aceito { get; set; }
 
         public Invite ()
         {
-            this.Code = new Guid();
+            this.Code = Guid.NewGuid();
+            this.Aceito = SatusConvite.Pendente;
+            this.Invited = DateTime.Now;
+        }
+
+        public enum SatusConvite
+        {
+            Aceito,
+            Rejeitado,
+            Pendente
         }
     }
 }

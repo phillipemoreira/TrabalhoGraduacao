@@ -7,7 +7,8 @@ using Plan5W2HPlusPlus.Application.ActionFilter;
 
 namespace Plan5W2HPlusPlus.Application.Controllers
 {
-    [NHibernateActionFilter]
+    [NHibernateActionFilter(Order = 1)]
+    [AuthorizationActionFilter(Order = 2)]
     [Authorize]
     public class HomeController : LoggedController
     {
@@ -16,7 +17,6 @@ namespace Plan5W2HPlusPlus.Application.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            this.IncludUserViewBag();
             return View();
         }
 

@@ -1,0 +1,194 @@
+﻿@model Plan5W2HPlusPlus.Application.Models.ColaboradoresModel
+@using Plan5W2HPlusPlus.Model.Models
+
+@{
+    ViewBag.Titulo = "Colaboradores";
+    ViewBag.Localizacao = "Colaboradores";
+    int count = 0;
+    ViewBag.Current = 3;
+}
+
+@Html.Partial("BodyFirstPart")
+
+@Html.Partial("Messages")
+
+@*Content Start*@
+
+<div class="left marginT5" style="margin-bottom: 16px;">
+
+    <button data-toggle="modal" class="btn btn-primary" style="margin-bottom: 21px;" href="#myModal1">Adicionar</button>
+</div>
+<div class="row-fluid">
+</div>
+
+<div class="row-fluid">
+
+    <div class="span6">
+
+        <div class="box">
+
+            <div class="title">
+
+                <h4>
+                    <span class="icon16 brocco-icon-grid"></span>
+                    <span>Lista de Convites</span>
+                </h4>
+                <a href="#" class="minimize" style="display: none;">Minimize</a>
+            </div>
+            <div class="content noPad">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Colaborador</th>
+                            <th>Data do Convite</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            string cssClass = "";
+                            int cont = 1;
+                            foreach (Invite convite in Model.EstaoMeConvidando)
+                            {
+
+                                if (convite.Aceito == Invite.SatusConvite.Aceito)
+                                {
+                                    cssClass = "success";
+                                }
+                                else if (convite.Aceito == Invite.SatusConvite.Pendente)
+                                {
+                                    cssClass = "info";
+                                }
+                                else
+                                {
+                                    cssClass = "error";
+                                }
+                            <tr class="@cssClass">
+                                <td>@(cont++)</td>
+                                <td>@convite.De.GetNomeCompleto()</td>
+                                <td>@convite.Invited.ToString("dd/mm/yyyy")</td>
+                                <td>@convite.Aceito.ToString()</td>
+                                <td>
+                                    @if (convite.Aceito == Invite.SatusConvite.Pendente)
+                                    {
+                                        <a href="@Url.Action("Aceitar", "Colaboradores", new { @convite = convite.Code.ToString(), @id = convite.De.Code.ToString() })" class="tip" oldtitle="Aceitar convite" title="Aceitar convite" aria-describedby="ui-tooltip-3">
+                                            <span aria-hidden="true" class="icomoon-icon-thumbs-up"></span>
+                                        </a>
+                                        <a href="@Url.Action("Rejeitar", "Colaboradores", new { @convite = convite.Code.ToString() })" class="tip" oldtitle="Rejeitar convite" title="Rejeitar convite" aria-describedby="ui-tooltip-3">
+                                            <span aria-hidden="true" class="icomoon-icon-thumbs-down"></span>
+                                        </a>
+                                    }
+                                </td>
+                            </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        <!-- End .box -->
+
+    </div>
+    <!-- End .span6 -->
+
+    <div class="span6">
+
+        <div class="box">
+
+            <div class="title">
+
+                <h4>
+                    <span class="icon16 brocco-icon-grid"></span>
+                    <span>Colaboradores Associados</span>
+                </h4>
+                <a href="#" class="minimize">Minimize</a>
+            </div>
+            <div class="content noPad">
+                <table class="responsive table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nome</th>
+                            <th>Sobrenome</th>
+                            <th>Username</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            foreach (User colaborador in Model.Usuario.Friends)
+                            { 
+                            <tr>
+                                <td>1</td>
+                                <td>@colaborador.FirstName</td>
+                                <td>@colaborador.LastName</td>
+                                <td>@colaborador.UserName</td>
+                                <td>
+                                    <div class="controls center">
+                                        <a href="@Url.Action("RemoverColaborador", "Colaboradores", new { @id = colaborador.Code.ToString() })" title="Remover tarefa" class="tip">
+                                            <span class="icon12 icomoon-icon-remove"></span>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        <!-- End .box -->
+
+    </div>
+
+    <!-- End .span6 -->
+
+    <div class="modal fade hide" id="myModal1">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span class="icon12 minia-icon-close"></span></button>
+            <h3>Convidar Colaboradores</h3>
+        </div>
+        @using (Html.BeginForm("SalvarColaboradores", "Colaboradores", FormMethod.Post, new { @Class = "form-horizontal", @Id = "form-validate" }))
+        {
+            <div class="modal-body">
+                <ul class="messages">
+                    <li class="admin clearfix">
+
+
+                        @Html.DropDownList("Colaboradores", Model.GetColaboradores(), new { @style = "width:100%; height:48px", @class = "nostyle", @Id = "Colaboradores", @multiple = "multiple" })
+
+                    </li>
+                    <li class="sendMsg">
+                        <form class="form-horizontal" action="#">
+                            <textarea class="elastic" name="mensagem" id="textarea" rows="1" placeholder="Escreva a sua mensagem ..." style="width: 98%;"></textarea>
+                            <button type="submit" class="btn btn-info marginT10">Convidar</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        }
+        <div class="modal-footer">
+            <a href="#" class="btn" data-dismiss="modal">Close</a>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        function format(state) {
+            if (!state.id) return state.text; // optgroup
+            return "<img style='width:36px;height:32px;' class='avatar' src='/Content/UsersAvatar/avatar-" + state.id.toLowerCase() + ".png'/>" + state.text;
+        }
+
+        $("#Colaboradores").select2({
+            placeholder: "Selecione o colaborador",
+            formatResult: format,
+            formatSelection: format,
+            escapeMarkup: function (m) { return m; }
+        });
+
+    });
+</script>

@@ -6,8 +6,8 @@
     <td class="firstcolumn"></td>
     <td class="nomecolumn">@Model.Name</td>
     <td class="desccolumn">@Model.Description</td>
-    <td>@Model.Start</td>
-    <td>@Model.End</td>
+    <td>@Model.Start.ToString("dd/MM/yyyy HH:mm")</td>
+    <td>@Model.End.ToString("dd/MM/yyyy HH:mm")</td>
     <td>@Model.PorcentagemConcluido().ToString("P")</td>
 
         @{

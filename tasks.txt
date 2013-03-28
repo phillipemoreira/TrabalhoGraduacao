@@ -1,15 +1,34 @@
 * Listagem de projetos
+
 	- Adicionar uma coluna com o progresso do projeto.
-	- Adicionar controle para gerenciamento da ordenação da lista.	
+	
+- Adicionar controle para gerenciamento da ordenação da lista.	
+
 
 * Listagem de tarefas
-	- Adicionar controle para gerenciamento da ordenação da lista.
-	- Irá conter uma lista das tarefas que o usuário criou para si e as que foram atribuídas a ele.
-	- 
+	
+- Adicionar controle para gerenciamento da ordenação da lista.
+	
+- Irá conter uma lista das tarefas que o usuário criou para si e as que foram atribuídas a ele.
+	
+- 
 
 * Adicionar Tarefas
-	- Implementar sistema da comentários.
+	
+- Implementar sistema da comentários.
+
 
 * Home
+<<<<<<< HEAD
 	- Mostrar calendário com todas as tarefas do usuário.
 	- Mostrar uma lista dos comentários adicionados às tarefas do usuário e os comentário feito pelo usuário.
+
+TESTETESTETESTETESTETESTETESTETESTETESTE
+=======
+	
+- Mostrar calendário com todas as tarefas do usuário.
+	
+- Mostrar uma lista dos comentários adicionados às tarefas do usuário e os comentário feito pelo usuário.
+
+lkjflakjdflaksdjflaksdfj
+>>>>>>> 83080e2362a5f2cff69d03e603496b22e03b1311

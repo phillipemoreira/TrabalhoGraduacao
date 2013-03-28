@@ -13,7 +13,8 @@ using Plan5W2HPlusPlus.Application.Util;
 
 namespace Plan5W2HPlusPlus.Application.Controllers
 {
-    [NHibernateActionFilter]
+    [NHibernateActionFilter(Order = 1)]
+    [AuthorizationActionFilter(Order = 2)]
     public class UserController : LoggedController
     {
         private IService<User> service;
@@ -51,7 +52,6 @@ namespace Plan5W2HPlusPlus.Application.Controllers
         public ActionResult Create()
         {
             User usuario = this.Usuario;
-            this.IncludUserViewBag();
             if(usuario != null)
                 return View(usuario);
             return View(new User());
@@ -86,13 +86,11 @@ namespace Plan5W2HPlusPlus.Application.Controllers
                 }
                 
                 ViewBag.Message = "SUCCESS";
-                this.IncludUserViewBag();
                 return View(usuario);
             }
             catch
             {
                 ViewBag.Message = "ERROR";
-                this.IncludUserViewBag();
                 return View(usuario);
             }
         }

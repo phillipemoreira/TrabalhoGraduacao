@@ -6,10 +6,13 @@ using Plan5W2HPlusPlus.Model.Services;
 using Plan5W2HPlusPlus.Model.Models;
 using System.Collections.Generic;
 using Plan5W2HPlusPlus.Application.Models;
+using System.Globalization;
+using System.Collections.ObjectModel;
 
 namespace Plan5W2HPlusPlus.Application.Controllers
 {
-    [NHibernateActionFilter]
+    [NHibernateActionFilter(Order = 1)]
+    [AuthorizationActionFilter(Order = 2)]
     [Authorize]
     public class Plan5W2HController : LoggedController
     {
@@ -88,13 +91,11 @@ namespace Plan5W2HPlusPlus.Application.Controllers
             IList<Plan5W2H> plans = ISession.QueryOver<Plan5W2H>()
                                         .Where(p => p.Owner == this.Usuario)
                                         .List();
-            this.IncludUserViewBag();
             return View(plans);
         }
 
         public ActionResult Create(string id)
         {
-            this.IncludUserViewBag();
             Plan5W2H plan;
             if (id != null)
             {
@@ -105,12 +106,15 @@ namespace Plan5W2HPlusPlus.Application.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Plan5W2H model)
+        public ActionResult Create(Plan5W2H model, FormCollection form)
         {
             try
             {
+                model.Start = Convert.ToDateTime(form["Start"], new CultureInfo("pt-BR"));
+                model.End = Convert.ToDateTime(form["End"], new CultureInfo("pt-BR")); ;
+
                 User usuario = this.Usuario;
-                
+
                 if (model.Owner == null)
                     model.Owner = usuario;
 
@@ -123,10 +127,9 @@ namespace Plan5W2HPlusPlus.Application.Controllers
                 }
                 else
                 {
-                    
+
                     this.Usuario.Plans.Add(model);
                 }
-                this.IncludUserViewBag();
 
                 ViewBag.Message = "SUCCESS";
                 return View(model);
@@ -146,7 +149,6 @@ namespace Plan5W2HPlusPlus.Application.Controllers
                 Plan5W2H plan = ServicePlan5W2H.Get(new Guid(id.ToString()));
                 this.Usuario.Plans.Remove(plan);
             }
-            this.IncludUserViewBag();
             return RedirectToAction("Index");
         }
 
@@ -175,39 +177,56 @@ namespace Plan5W2HPlusPlus.Application.Controllers
 
         public ActionResult Ordenacao(int ordem)
         {
-            
-                                            
-
             return View();
         }
 
-        public ActionResult CreateItem(string id, string itemId)
+        public ActionResult CreateItem(string id)
         {
+            Item5W2H item;
             Plan5W2H plan = ServicePlan5W2H.Get(new Guid(id));
-            Item5W2H item = new Item5W2H() { Plan = plan };
-            if (itemId == null)
+            item = new Item5W2H();
+            item.Plan = plan;
+            ICollection<Item5W2H> itens = plan.PlanItens;
+            IList<User> todosColoboradores = new List<User>();
+            todosColoboradores.Add(this.Usuario);
+
+            foreach (User user in this.Usuario.Friends)
             {
-                this.Usuario.Plans.Remove(plan);
-                plan.PlanItens.Add(item);
-                this.Usuario.Plans.Add(plan);
-                ISession.Merge(this.Usuario);
-            }
-            else
-            {
-                item = ServiceItem5W2H.Get(new Guid(itemId));
+                todosColoboradores.Add(user);
             }
 
-            this.IncludUserViewBag();
-            return View(new Item5W2HModel() { Usuario = this.Usuario, Item = item });
+            return View(new Item5W2HModel() { Item = item, Itens = itens, Colaboradores = todosColoboradores, Plan = plan });
         }
 
         [HttpPost]
-        public ActionResult CreateItem(Item5W2H model)
+        public ActionResult CreateItem(Item5W2HModel model, FormCollection form)
         {
+            Plan5W2H plan = ServicePlan5W2H.Get(model.Plan.Code);
 
-            this.IncludUserViewBag();
-            return View();
+            string[] usuarios = form["Quem"].ToString().Split(',');
+            foreach (string usuario in usuarios)
+            {
+                User selectedUser = ISession.QueryOver<User>()
+                    .Where(x => x.Code == new Guid(usuario)).SingleOrDefault();
+                model.Item.Quem.Add(selectedUser);
+            }
+            model.Item.Plan = plan;
+            plan.PlanItens.Add(model.Item);
+
+            return RedirectToAction("CreateItem", "Plan5W2H", new { @id = plan.Code.ToString() });
         }
 
+        public ActionResult RemoveTask(string planId, string taskId)
+        {
+
+            Plan5W2H plan = ISession.QueryOver<Plan5W2H>()
+                                    .Where(p => p.Code == new Guid(planId))
+                                    .SingleOrDefault();
+
+            plan.PlanItens.Remove(ServiceItem5W2H.Get(new Guid(taskId)));
+            ISession.Update(plan);
+
+            return RedirectToAction("CreateItem", "Plan5W2H", new { @id = planId });
+        }
     }
 }

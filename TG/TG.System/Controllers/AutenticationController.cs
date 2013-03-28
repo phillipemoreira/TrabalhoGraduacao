@@ -9,7 +9,7 @@ using System.Web;
 
 namespace Plan5W2HPlusPlus.Application.Controllers
 {
-    [NHibernateActionFilter]
+    [NHibernateActionFilter(Order = 1)]
     public class AutenticationController : LoggedController
     {
         private IUserService service;

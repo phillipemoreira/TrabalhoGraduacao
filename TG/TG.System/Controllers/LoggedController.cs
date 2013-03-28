@@ -65,7 +65,7 @@ namespace Plan5W2HPlusPlus.Application.Controllers
             return null;
         }
 
-        public void IncludUserViewBag()
+        public UserModel GetUserModel()
         {
             String urlavatar;
             if(this.Usuario != null)
@@ -73,10 +73,10 @@ namespace Plan5W2HPlusPlus.Application.Controllers
             else
                 urlavatar = GetGenericAvatar();
 
-            ViewBag.UserModel = new UserModel() { Usuario = this.Usuario, UrlAvatar = urlavatar };
+            return new UserModel() { Usuario = this.Usuario, UrlAvatar = urlavatar };
         }
 
-        public String GetAvatarUrl(String id)
+        private String GetAvatarUrl(String id)
         {
             string filePath = Server.MapPath(Url.Content("~/Content/UsersAvatar/avatar-" + id + ".png"));
             if (Tools.FileExists(filePath))
@@ -84,7 +84,7 @@ namespace Plan5W2HPlusPlus.Application.Controllers
             return GetGenericAvatar();
         }
 
-        public String GetGenericAvatar()
+        private String GetGenericAvatar()
         {
             return Url.Content("~/Content/UsersAvatar/avatar.png");
         }

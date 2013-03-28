@@ -1,7 +1,6 @@
 ﻿@using Plan5W2HPlusPlus.Model.Models
 
 @model IList<Plan5W2H>
-
 @{
     ViewBag.Titulo = "Projetos";
     ViewBag.Localizacao = "Projetos";
@@ -15,111 +14,85 @@
 
 @*Content Start*@
 
-                    <div class="row-fluid">
+<div class="row-fluid">
 
-                       <div class="tableBox">
-                            
-                            <div class="box">
+    <div class="tableBox">
 
-                                <div class="title">
+        <div class="box">
 
-                                    <h4>
-                                        <span class="icon16 brocco-icon-grid"></span>
-                                        <span>Lista de Projetos</span>
-                                        <form class="box-form right" action="">
-                                            <a style="margin-right:70px" class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-                                                <span class="icon16 iconic-icon-cog"></span>
-                                                <span class="caret"></span>
-                                            </a>
-                                            <ul style="margin-right:70px" class="dropdown-menu" >
-                                                <li><a href="@Url.Action("Create", "Plan5W2H", new { @id = "" })"><span class="icon-plus"></span> Adicionar</a></li>
-                                            </ul>
-                                        </form>
-                                       
-                                    </h4>
-                                    <a href="#" class="minimize">Minimize</a>
-                                </div>
-                                <div class="content noPad">
-                                    <table class="responsive table table-bordered table-condensed" id="checkAll">
-                                        <thead>
-                                          <tr>
-                                            <th class="firstcolumn">#</th>
-                                            <th class="nomecolumn">Nome</th>
-                                            <th class="desccolumn">Descrição</th>
-                                            <th>Início</th>
-                                            <th>Término</th>
-                                            <th>Concluído (%)</th>
-                                            <th>Status</th>
-                                            <th>Ações</th>
-                                          </tr>
-                                        </thead>
-                                        @if(Model.Count > 0) {
+            <div class="title">
+
+                <h4>
+                    <span class="icon16 brocco-icon-grid"></span>
+                    <span>Lista de Projetos</span>
+                    <form class="box-form right" action="">
+                        <a style="margin-right: 70px" class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                            <span class="icon16 iconic-icon-cog"></span>
+                            <span class="caret"></span>
+                        </a>
+                        <ul style="margin-right: 70px" class="dropdown-menu">
+                            <li><a href="@Url.Action("Create", "Plan5W2H", new { @id = "" })"><span class="icon-plus"></span>Adicionar</a></li>
+                        </ul>
+                    </form>
+
+                </h4>
+                <a href="#" class="minimize">Minimize</a>
+            </div>
+            <div class="content noPad">
+                <table class="responsive table table-bordered table-condensed" id="checkAll">
+                    <thead>
+                        <tr>
+                            <th class="firstcolumn">#</th>
+                            <th class="nomecolumn">Nome</th>
+                            <th class="desccolumn">Descrição</th>
+                            <th>Início</th>
+                            <th>Término</th>
+                            <th>Concluído (%)</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    @if (Model.Count > 0)
+                    {
                                             
-                                            <tbody>
-                                              @foreach(Plan5W2H plan in Model.OrderBy(x => x.Creation)) {
+                        <tbody>
+                            @foreach (Plan5W2H plan in Model.OrderBy(x => x.Creation))
+                            {
                                                
-                                                    @Html.Partial("LinhaProjeto", plan)
-                                                  
-                                                    if (plan.PlanItens.Count == 0)
-                                                    {
-                                                        <tr>
-                                                            <td><a href="#" class="tip expandir" oldtitle="Expandir" title="Expandir" aria-describedby="ui-tooltip-3"><span  class="icon-plus"></span></a></td>
-                                                            <td colspan="7"></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td></td>
-                                                            <td colspan="8">
-                                                                <table class="responsive table table-bordered table-condensed" id="checkAll">
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th>O Que</th>
-                                                                            <th>Porque</th>
-                                                                            <th>Quando</th>
-                                                                            <th>Onde</th>
-                                                                            <th>Como</th>
-                                                                            <th>Quanto</th>
-                                                                            <th>Status</th>
-                                                                            <th>Ações</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        @foreach(Item5W2H item in plan.PlanItens.OrderBy(i => i.Created))
-                                                                        {
-                                                                            @Html.Partial("LinhaItem", item)
-                                                                        }
-                                                                    </tbody>
-                                                                </table>
-                                                            </td>
-                                                        </tr>
-                                                    }
-                                              }
-                                            </tbody>
-                                        }else{
-                                             <tbody>
-                                               <tr class="firstcolumn">                                            
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td class="lastcolumn"></td>
-                                              </tr>
-                                            </tbody>
-                                        }
-                                    </table>
-                                </div>
+                                @Html.Partial("LinhaProjeto", plan)
+                            }
+                        </tbody>
+                    }
+                    else
+                    {
+                        <tbody>
+                            <tr class="firstcolumn">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td class="lastcolumn"></td>
+                            </tr>
+                        </tbody>
+                    }
+                </table>
+            </div>
 
-                            </div><!-- End .box -->
+        </div>
+        <!-- End .box -->
 
-                        </div><!-- End .span6 -->
+    </div>
+    <!-- End .span6 -->
 
-                    </div><!-- End .row-fluid -->
+</div>
+<!-- End .row-fluid -->
 @*Content End*@
 
 @Html.Partial("BodySecondPart")
-                
+
 <script type="text/javascript">
     $(function () {
         $("li a.first").addClass("current");

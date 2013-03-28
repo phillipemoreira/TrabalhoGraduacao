@@ -17,8 +17,13 @@ namespace Plan5W2HPlusPlus.Model.Mappings
             Map(x => x.Porque);
             Map(x => x.Como);
             Map(x => x.Quanto);
-            HasMany(x => x.Quem).Not.LazyLoad();
-            HasOne(x => x.Plan);
+            HasManyToMany<User>(x => x.Quem)
+                .Table("UserItem")
+                .ParentKeyColumn("ItemID")
+                .ChildKeyColumn("UserID")
+                .Cascade.SaveUpdate()
+                .Not.LazyLoad();
+            References(x => x.Plan).Not.LazyLoad();
         }
     }
 }
