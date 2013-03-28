@@ -8,10 +8,11 @@ namespace Plan5W2HPlusPlus.Model.Models
     public class Invite
     {
         public virtual Guid Code { get; set; }
-        public virtual DateTime Invited { get; set; }
+        public virtual DateTime InvitedIn { get; set; }
         public virtual User De { get; set; }
         public virtual User Para { get; set; }
         public virtual String Message { get; set; }
+        public virtual Boolean Aceito { get; set; }
 
         public Invite ()
         {
