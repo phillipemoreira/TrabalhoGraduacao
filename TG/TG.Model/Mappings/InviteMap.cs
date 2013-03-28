@@ -14,6 +14,7 @@ namespace Plan5W2HPlusPlus.Model.Mappings
             Id(x => x.Code).GeneratedBy.Assigned();
             References(x => x.De);
             References(x => x.Para);
+            Map(x => x.Invited);
             Map(x => x.Message);
             Map(x => x.Aceito);
         }

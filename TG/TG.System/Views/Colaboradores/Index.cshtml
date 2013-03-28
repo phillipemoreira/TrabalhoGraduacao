@@ -103,92 +103,39 @@
                 <h4>
                     <span class="icon16 brocco-icon-grid"></span>
                     <span>Colaboradores Associados</span>
-                    <form class="box-form right" action="">
-                        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-                            <span class="icon16 iconic-icon-cog"></span>
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#"><span class="icon-pencil"></span>Edit</a></li>
-                            <li><a href="#"><span class="icon-trash"></span>Delete</a></li>
-                        </ul>
-                    </form>
-
                 </h4>
-                <a href="#" class="minimize" style="display: none;">Minimize</a>
+                <a href="#" class="minimize">Minimize</a>
             </div>
             <div class="content noPad">
-                <table class="responsive table table-bordered" id="checkAll">
+                <table class="responsive table table-bordered">
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
+                            <th>Nome</th>
+                            <th>Sobrenome</th>
                             <th>Username</th>
-                            <th id="masterCh" class="ch">
-                                <div class="checker" id="uniform-undefined">
-                                    <span>
-                                        <input type="checkbox" name="checkbox" value="all" class="styled" style="opacity: 0;"></span>
-                                </div>
-                            </th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>mdo</td>
-                            <td class="chChildren">
-                                <div class="checker" id="uniform-undefined">
-                                    <span>
-                                        <input type="checkbox" name="checkbox" value="1" class="styled" style="opacity: 0;"></span>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="controls center">
-                                    <a href="#" class="tip" oldtitle="Edit task" title=""><span class="icon12 icomoon-icon-pencil"></span></a>
-                                    <a href="#" class="tip" oldtitle="Remove task" title=""><span class="icon12 icomoon-icon-remove"></span></a>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>fat</td>
-                            <td class="chChildren">
-                                <div class="checker" id="uniform-undefined">
-                                    <span>
-                                        <input type="checkbox" name="checkbox" value="2" class="styled" style="opacity: 0;"></span>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="controls center">
-                                    <a href="#" class="tip" oldtitle="Edit task" title=""><span class="icon12 icomoon-icon-pencil"></span></a>
-                                    <a href="#" class="tip" oldtitle="Remove task" title=""><span class="icon12 icomoon-icon-remove"></span></a>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>twitter</td>
-                            <td class="chChildren">
-                                <div class="checker" id="uniform-undefined">
-                                    <span>
-                                        <input type="checkbox" name="checkbox" value="3" class="styled" style="opacity: 0;"></span>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="controls center">
-                                    <a href="#" class="tip" oldtitle="Edit task" title=""><span class="icon12 icomoon-icon-pencil"></span></a>
-                                    <a href="#" class="tip" oldtitle="Remove task" title=""><span class="icon12 icomoon-icon-remove"></span></a>
-                                </div>
-                            </td>
-                        </tr>
+                        @{
+                            foreach (User colaborador in Model.Usuario.Friends)
+                            { 
+                            <tr>
+                                <td>1</td>
+                                <td>@colaborador.FirstName</td>
+                                <td>@colaborador.LastName</td>
+                                <td>@colaborador.UserName</td>
+                                <td>
+                                    <div class="controls center">
+                                        <a href="@Url.Action("RemoverColaborador", "Colaboradores", new { @id = colaborador.Code.ToString() })" title="Remover tarefa" class="tip">
+                                            <span class="icon12 icomoon-icon-remove"></span>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            }
+                        }
                     </tbody>
                 </table>
             </div>
@@ -197,6 +144,7 @@
         <!-- End .box -->
 
     </div>
+
     <!-- End .span6 -->
 
     <div class="modal fade hide" id="myModal1">

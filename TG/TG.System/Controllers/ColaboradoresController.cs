@@ -78,7 +78,8 @@ namespace Plan5W2HPlusPlus.Application.Controllers
             {
                 Colaboradores = users,
                 ConvidadosPorMim = convidadosPorMim,
-                EstaoMeConvidando = estaoMeConvidando
+                EstaoMeConvidando = estaoMeConvidando,
+                Usuario = this.Usuario
             });
         }
 
@@ -121,6 +122,16 @@ namespace Plan5W2HPlusPlus.Application.Controllers
             ServiceInvite.SaveOrUpdate(invite);
 
             ViewBag.Message = "SUCCESS";
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult RemoverColaborador(string id)
+        {
+            User colaborador = ISession.QueryOver<User>().Where(x => x.Code == new Guid(id)).SingleOrDefault();
+            this.Usuario.Friends.Remove(colaborador);
+            colaborador.Friends.Remove(this.Usuario);
+            ISession.Merge(this.Usuario);
+
             return RedirectToAction("Index");
         }
     }

@@ -12,6 +12,7 @@ namespace Plan5W2HPlusPlus.Application.Models
         public IEnumerable<User> Colaboradores { get; set; }
         public IList<Invite> ConvidadosPorMim { get; set; }
         public IList<Invite> EstaoMeConvidando { get; set; }
+        public User Usuario { get; set; }
 
         public MultiSelectList GetColaboradores()
         {

@@ -7,6 +7,7 @@ using Plan5W2HPlusPlus.Model.Models;
 using System.Collections.Generic;
 using Plan5W2HPlusPlus.Application.Models;
 using System.Globalization;
+using System.Collections.ObjectModel;
 
 namespace Plan5W2HPlusPlus.Application.Controllers
 {
@@ -186,8 +187,13 @@ namespace Plan5W2HPlusPlus.Application.Controllers
             item = new Item5W2H();
             item.Plan = plan;
             ICollection<Item5W2H> itens = plan.PlanItens;
-            User usuario = ISession.QueryOver<User>().Where(x => x.Code == this.Usuario.Code).SingleOrDefault();
-            ICollection<User> todosColoboradores = usuario.Friends;
+            IList<User> todosColoboradores = new List<User>();
+            todosColoboradores.Add(this.Usuario);
+
+            foreach (User user in this.Usuario.Friends)
+            {
+                todosColoboradores.Add(user);
+            }
 
             return View(new Item5W2HModel() { Item = item, Itens = itens, Colaboradores = todosColoboradores, Plan = plan });
         }
