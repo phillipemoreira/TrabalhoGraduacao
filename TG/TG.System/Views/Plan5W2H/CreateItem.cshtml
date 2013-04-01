@@ -14,7 +14,6 @@
 @section AdditionalJavascript
 {
     <script type="text/javascript" src="@Url.Content("~/Content/plugins/handsontable/jquery.handsontable.js")"></script>
-    @*<script type="text/javascript" src="@Url.Content("~/Content/js/datatable.js")"></script>*@
 }
 
 @section AdditionalStyles
@@ -77,7 +76,7 @@
             <div class="form-row row-fluid">
                 <div class="span12">
                     <div class="row-fluid">
-                        <label class="form-label span3" for="username">Como:</label>
+                        <label class="form-label span3" for="username">Quem:</label>
                         @Html.DropDownList("Quem", Model.GetColaboradores(), new { @style = "width: 343px;", @class = "nostyle", @Id = "Colaboradores", @multiple = "multiple" })
                     </div>
                 </div>
@@ -137,6 +136,7 @@
                             <th>Como</th>
                             <th>Quem</th>
                             <th>Quanto (R$)</th>
+                            <th>Status</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -159,6 +159,7 @@
                                     }
                                 </td>
                                 <td>@item.Quanto.ToString()</td>
+                                <td>@item.Andamento</td>
                                 <td>
                                     <div class="controls center">
                                         <a href="@Url.Action("RemoveTask", "Plan5W2H", new { @planId = Model.Plan.Code, @taskId = item.Code.ToString() })" title="Remover tarefa" class="tip"><span class="icon12 icomoon-icon-remove"></span></a>

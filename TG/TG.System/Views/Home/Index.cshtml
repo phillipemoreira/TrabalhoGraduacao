@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Plan5W2HPlusPlus.Model.Models
+@model IList<Plan5W2H>
+@{
     ViewBag.Titulo = "Home";
 }
 
@@ -6,6 +8,58 @@
 
 @*Content Here*@
 
-    @ViewBag.Titulo
+<div class="row-fluid">
 
+    <div class="span8">
+        <div class="box calendar gradient">
+
+            <div class="title">
+
+                <h4>
+                    <i class="icon16 brocco-icon-calendar"></i>
+                    <span>Calendário</span>
+                </h4>
+            </div>
+            <div class="content noPad">
+                <div id="meucalendario">
+                </div>
+            </div>
+
+        </div>
+        <!-- End .box -->
+    </div>
+    <!-- End .span8 -->
+</div>
+<script type="text/javascript">
+    $(function () {
+        var date = new Date();
+        var d = date.getDate();
+        var m = date.getMonth();
+        var y = date.getFullYear();
+        $('#meucalendario').fullCalendar({
+            //theme: true,
+            editable: false,
+            events: [
+                @{
+                    String dados = "";
+                    int count = 0;
+                    foreach (Plan5W2H plan in Model)
+                    {
+                        foreach (Item5W2H item in plan.GetItensByUser(ViewBag.UserModel.Usuario))
+                        {
+                            dados += "{ title: \"" + item.Oque + "\","+
+                                "start: $.fullCalendar.formatDate(new Date(\"" + item.Quando + "\"), 'dd-MM-yyyy') }";
+                            if (count < plan.GetItensByUser(ViewBag.UserModel.Usuario).Count)
+                            {
+                                dados += ",";
+                            }
+                            count++;
+                        }
+                    }
+                    @Html.Raw(dados)
+                }
+            ]
+        });
+    });
+</script>
 @Html.Partial("BodySecondPart")

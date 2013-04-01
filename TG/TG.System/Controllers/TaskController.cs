@@ -49,13 +49,34 @@ namespace Plan5W2HPlusPlus.Application.Controllers
                         .OrderBy(p => p.Creation)
                         .ToList();
 
-            foreach(Plan5W2H plan in plans)
-            {
-                var values = plan.GetItensByUser(this.Usuario);
-            }
-
             return View(new TaskModel() { Plans = plans });
         }
 
+        public ActionResult ConcluirTask(String taskId)
+        {
+            Item5W2H item = ISession.QueryOver<Item5W2H>()
+                                .Where(p => p.Code == new Guid(taskId)).SingleOrDefault();
+            item.Andamento = Status.Finalizado;
+
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult PararTask(String taskId)
+        {
+            Item5W2H item = ISession.QueryOver<Item5W2H>()
+                                .Where(p => p.Code == new Guid(taskId)).SingleOrDefault();
+            item.Andamento = Status.Parado;
+
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult ContinuarTask(String taskId)
+        {
+            Item5W2H item = ISession.QueryOver<Item5W2H>()
+                                .Where(p => p.Code == new Guid(taskId)).SingleOrDefault();
+            item.Andamento = Status.EmAndamento;
+
+            return RedirectToAction("Index");
+        }
     }
 }

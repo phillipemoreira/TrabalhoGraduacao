@@ -1,7 +1,114 @@
 ﻿@model Plan5W2HPlusPlus.Application.Models.TaskModel
-
+@using Plan5W2HPlusPlus.Model.Models;
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Titulo = "Tarefas";
+    ViewBag.Localizacao = "Tarefas";
+    int count = 1;
+    String cssClass = "";
+    ViewBag.Current = 2;
 }
 
-<h2>Index</h2>
+@Html.Partial("BodyFirstPart")
+
+@Html.Partial("Messages")
+
+@*Content Here*@
+
+@foreach (Plan5W2H plan in Model.Plans)
+{
+    <div class="row-fluid">
+        <div class="span12">
+
+            <div class="box">
+
+                <div class="title">
+
+                    <h4>
+                        <span class="icon16 brocco-icon-grid"></span>
+                        <span>@plan.Name</span>
+                    </h4>
+                    <a href="#" class="minimize">Minimize</a>
+                </div>
+                <div class="content noPad">
+                    <table class="responsive table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>O que</th>
+                                <th>Por que</th>
+                                <th>Quando</th>
+                                <th>Onde</th>
+                                <th>Como</th>
+                                <th>Quem</th>
+                                <th>Quanto (R$)</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+    count = 1;
+    foreach (Item5W2H item in plan.GetItensByUser(ViewBag.UserModel.Usuario))
+    {
+
+        if (item.Andamento == Status.EmAndamento)
+        {
+            cssClass = "info";
+        }
+        else if (item.Andamento == Status.Finalizado)
+        {
+            cssClass = "success";
+        }
+        else
+        {
+            cssClass = "error";
+        }
+                                <tr class="@cssClass">
+                                    <td>@count</td>
+                                    <td>@item.Oque</td>
+                                    <td>@item.Porque</td>
+                                    <td>@item.Quando</td>
+                                    <td>@item.Onde</td>
+                                    <td>@item.Como</td>
+                                    <td>
+                                        @foreach (User colaboradores in item.Quem)
+                                        { 
+                                            @(colaboradores.GetNomeCompleto() + "; ")
+                                    
+                                        }
+                                    </td>
+                                    <td>@item.Quanto.ToString()</td>
+                                    <td>@item.Andamento</td>
+                                    <td>
+                                        <div class="controls center">
+                                            @if (item.Andamento != Status.Finalizado)
+                                            {
+                                                <a href="@Url.Action("ConcluirTask", "Task", new { @taskId = item.Code })" title="Concluir tarefa" class="tip"><span class="icon12 wpzoom-thumbs-up"></span></a>
+                                            }
+                                            @if (item.Andamento == Status.EmAndamento)
+                                            {
+                                                <a href="@Url.Action("PararTask", "Task", new { @taskId = item.Code })" title="Parar tarefa" class="tip"><span class="icon12 wpzoom-thumbs-down"></span></a>
+                                            }
+                                            @if (item.Andamento == Status.Parado)
+                                            {
+                                                <a href="@Url.Action("ContinuarTask", "Task", new { @taskId = item.Code })" title="Continuar tarefa" class="tip"><span class="icon12 brocco-icon-forward"></span></a>
+                                            }
+                                        </div>
+                                    </td>
+                                </tr>
+                            
+                                            ++count;
+    }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+            <!-- End .box -->
+
+        </div>
+        <!-- End .span6 -->
+    </div>
+}
+@Html.Partial("BodySecondPart")

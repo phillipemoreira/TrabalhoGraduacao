@@ -29,14 +29,15 @@ namespace Plan5W2HPlusPlus.Model.Models
 
         public virtual Double PorcentagemConcluido()
         {
-            if (this.PlanItens.Count > 0 && this.PlanItens.Where(x => x.Andamento == Status.Finalizado).ToList().Count > 0)
-                return this.PlanItens.Count / this.PlanItens.Where(x => x.Andamento == Status.Finalizado).ToList().Count;
+            int totalFinalizados = this.PlanItens.Where(x => x.Andamento == Status.Finalizado).ToList().Count;
+            if (this.PlanItens.Count > 0 && totalFinalizados > 0)
+                return (Double)totalFinalizados / (Double)this.PlanItens.Count;
             return 0;
         }
 
         public virtual IList<Item5W2H> GetItensByUser(User usuario)
         {
-            return this.PlanItens.Where(i => i.Quem.Contains(usuario)).ToList();
+            return this.PlanItens.Where(i => i.Quem.Contains(usuario)).OrderBy(i => i.Created).ToList();
         }
     }
 }
