@@ -71,21 +71,16 @@ namespace Plan5W2HPlusPlus.Application.Controllers
             if(this.Usuario != null)
                 urlavatar = GetAvatarUrl(this.Usuario.Code.ToString());
             else
-                urlavatar = GetGenericAvatar();
+                urlavatar = Url.Content("~/Content/UsersAvatar/avatar.png");
 
             return new UserModel() { Usuario = this.Usuario, UrlAvatar = urlavatar };
         }
 
         private String GetAvatarUrl(String id)
         {
-            string filePath = Server.MapPath(Url.Content("~/Content/UsersAvatar/avatar-" + id + ".png"));
+            string filePath = Server.MapPath(Url.Content("~/Content/UsersAvatar/avatar" + id + ".png"));
             if (Tools.FileExists(filePath))
-                return Url.Content("~/Content/UsersAvatar/avatar-" + id + ".png");
-            return GetGenericAvatar();
-        }
-
-        private String GetGenericAvatar()
-        {
+                return Url.Content("~/Content/UsersAvatar/avatar" + id + ".png");
             return Url.Content("~/Content/UsersAvatar/avatar.png");
         }
     }

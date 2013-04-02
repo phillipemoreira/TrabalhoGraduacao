@@ -69,7 +69,7 @@ namespace Plan5W2HPlusPlus.Application.Controllers
                     avatar = Tools.CropImageToSquare(avatar);
                     avatar = Tools.ResizeImage(avatar, 60, 60);
 
-                    var fileName = "avatar-" + usuario.Code.ToString() + ".png";
+                    var fileName = "avatar" + usuario.Code.ToString() + ".png";
                     var path = Path.Combine(Server.MapPath("~/Content/UsersAvatar"), fileName);
                     avatar.Save(path);
                 }

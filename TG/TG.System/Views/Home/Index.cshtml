@@ -48,7 +48,23 @@
                         foreach (Item5W2H item in plan.GetItensByUser(ViewBag.UserModel.Usuario))
                         {
                             dados += "{ title: \"" + item.Oque + "\","+
-                                "start: $.fullCalendar.formatDate(new Date(\"" + item.Quando + "\"), 'dd-MM-yyyy') }";
+                                "start: $.fullCalendar.formatDate(new Date(\"" + item.Quando + "\"), 'dd-MM-yyyy'),"; 
+                            
+                            if(item.Andamento == Status.EmAndamento)
+                            {
+                                dados += "color: \"#528eee\"";
+                            }
+                            else if(item.Andamento == Status.Finalizado)
+                            {
+                                dados += "color: \"#7ccd24\"";
+                            }
+                            else
+                            {
+                                dados += "color: \"#ff4e50\"";
+                            }   
+                                
+                            dados += "}";
+                            
                             if (count < plan.GetItensByUser(ViewBag.UserModel.Usuario).Count)
                             {
                                 dados += ",";
