@@ -1,0 +1,320 @@
+﻿@{
+    ViewBag.Titulo = "Comunicação";
+    ViewBag.Localizacao = "Comunicação";
+    ViewBag.Current = 4;
+}
+
+@Html.Partial("BodyFirstPart")
+
+@Html.Partial("Messages")
+
+@section AdditionalJavascript
+{
+    <script type="text/javascript" src="@Url.Content("~/Content/plugins/nicescroll/jquery.nicescroll.min.js")"></script>
+}
+<!-- Build page from here: -->
+<div class="row-fluid">
+
+    <div class="support-section span12">
+
+        <div class="support-search">
+
+            <form id="searchform" action="search.html">
+                <input type="text" class="searchfield text" placeholder="Find user ...">
+                <input type="submit" class="search-btn nostyle" value="">
+            </form>
+
+        </div>
+
+        <div id="supportTab" class="tabbable tabs-left">
+            <ul class="nav nav-tabs scroll-y">
+                <li class="active online">
+                    <a href="#user1" data-toggle="tab" class="clearfix">
+                        <span class="avatar">
+                            <img src="@Url.Content("~/Content/images/avatar2.jpeg")" alt="Lazar Angelov" />
+                        </span>
+                        <span class="name">Lazar Angelov</span>
+                    </a>
+                </li>
+                <li class="online">
+                    <a href="#user2" data-toggle="tab" class="clearfix">
+                        <span class="avatar">
+                            <span class="icon icomoon-icon-user-2"></span>
+                        </span>
+                        <span class="name">Jenna Haiz</span>
+                        <span class="notification">3</span>
+                    </a>
+                </li>
+                <li class="disconnected">
+                    <a href="#user3" data-toggle="tab" class="clearfix">
+                        <span class="avatar">
+                            <span class="icon icomoon-icon-user-2"></span>
+                        </span>
+                        <span class="name">Tod Gream</span>
+                    </a>
+                </li>
+                <li class="offline">
+                    <a href="#user4" data-toggle="tab" class="clearfix">
+                        <span class="avatar">
+                            <span class="icon icomoon-icon-user-2"></span>
+                        </span>
+                        <span class="name">Anthony Danner</span>
+                    </a>
+                </li>
+                <li class="online">
+                    <a href="#user5" data-toggle="tab" class="clearfix">
+                        <span class="avatar">
+                            <span class="icon icomoon-icon-user-2"></span>
+                        </span>
+                        <span class="name">Steve Mcguinness</span>
+                    </a>
+                </li>
+                <li class="offline">
+                    <a href="#user6" data-toggle="tab" class="clearfix">
+                        <span class="avatar">
+                            <span class="icon icomoon-icon-user-2"></span>
+                        </span>
+                        <span class="name">Ruby Mclemore</span>
+                    </a>
+                </li>
+                <li class="offline">
+                    <a href="#user7" data-toggle="tab" class="clearfix">
+                        <span class="avatar">
+                            <span class="icon icomoon-icon-user-2"></span>
+                        </span>
+                        <span class="name">Scott Stidham</span>
+                    </a>
+                </li>
+                <li class="offline">
+                    <a href="#user8" data-toggle="tab" class="clearfix">
+                        <span class="avatar">
+                            <span class="icon icomoon-icon-user-2"></span>
+                        </span>
+                        <span class="name">Benjamin Larosa</span>
+                    </a>
+                </li>
+                <li class="offline">
+                    <a href="#user9" data-toggle="tab" class="clearfix">
+                        <span class="avatar">
+                            <span class="icon icomoon-icon-user-2"></span>
+                        </span>
+                        <span class="name">Antonio Ferrari</span>
+                    </a>
+                </li>
+                <li class="offline">
+                    <a href="#user10" data-toggle="tab" class="clearfix">
+                        <span class="avatar">
+                            <span class="icon icomoon-icon-user-2"></span>
+                        </span>
+                        <span class="name">Steven Neill</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="user1">
+
+                    <ul class="messages">
+                        <li class="user clearfix">
+                            <a href="#" class="avatar">
+                                <img src="@Url.Content("~/Content/images/avatar2.jpeg")" alt="">
+                            </a>
+                            <div class="message">
+                                <div class="head clearfix">
+                                    <span class="name"><strong>Lazar</strong> says:</span>
+                                    <span class="time">25 seconds ago</span>
+                                </div>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                                    tempor incididunt ut labore et dolore magna aliqua.
+                                </p>
+                            </div>
+                        </li>
+                        <li class="admin clearfix">
+                            <a href="#" class="avatar">
+                                <img src="@Url.Content("~/Content/images/avatar3.jpeg")" alt="">
+                            </a>
+                            <div class="message">
+                                <div class="head clearfix">
+                                    <span class="name"><strong>Sugge</strong> says:</span>
+                                    <span class="time">just now</span>
+                                </div>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                                    tempor incididunt ut labore et dolore magna aliqua.
+                                </p>
+                            </div>
+                        </li>
+
+                    </ul>
+                    <!-- end messages -->
+
+                </div>
+                <div class="tab-pane active" id="user2">
+
+                    <ul class="messages">
+
+                        <li class="user clearfix">
+                            <a href="#" class="avatar">
+                                <span class="icon icomoon-icon-user-2"></span>
+                            </a>
+                            <div class="message">
+                                <div class="head clearfix">
+                                    <span class="name"><strong>Jena Haiz</strong> says:</span>
+                                    <span class="time">1 minute ago</span>
+                                </div>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                                                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                                                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                </p>
+                            </div>
+                        </li>
+                        <li class="user clearfix">
+                            <a href="#" class="avatar">
+                                <span class="icon icomoon-icon-user-2"></span>
+                            </a>
+                            <div class="message">
+                                <div class="head clearfix">
+                                    <span class="name"><strong>Jena Haiz</strong> says:</span>
+                                    <span class="time">1 minute ago</span>
+                                </div>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                                                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                                                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                </p>
+                            </div>
+                        </li>
+                        <li class="user clearfix">
+                            <a href="#" class="avatar">
+                                <span class="icon icomoon-icon-user-2"></span>
+                            </a>
+                            <div class="message">
+                                <div class="head clearfix">
+                                    <span class="name"><strong>Jena Haiz</strong> says:</span>
+                                    <span class="time">1 minute ago</span>
+                                </div>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                                    tempor incididunt ut labore et dolore magna aliqua.
+                                </p>
+                            </div>
+                        </li>
+
+                    </ul>
+                    <!-- end messages -->
+
+                </div>
+                <div class="tab-pane active" id="user3">
+
+                    <ul class="messages">
+                    </ul>
+                    <!-- end messages -->
+
+                </div>
+                <div class="tab-pane active" id="user4">
+
+                    <ul class="messages">
+                    </ul>
+                    <!-- end messages -->
+
+                </div>
+                <div class="tab-pane active" id="user5">
+
+                    <ul class="messages">
+
+                        <li class="user clearfix">
+                            <a href="#" class="avatar">
+                                <span class="icon icomoon-icon-user-2"></span>
+                            </a>
+                            <div class="message">
+                                <div class="head clearfix">
+                                    <span class="name"><strong>Steve</strong> says:</span>
+                                    <span class="time">1 minute ago</span>
+                                </div>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                                    tempor incididunt ut labore et dolore magna aliqua. 
+                                </p>
+                            </div>
+                        </li>
+                        <li class="user clearfix">
+                            <a href="#" class="avatar">
+                                <span class="icon icomoon-icon-user-2"></span>
+                            </a>
+                            <div class="message">
+                                <div class="head clearfix">
+                                    <span class="name"><strong>Steve</strong> says:</span>
+                                    <span class="time">1 minute ago</span>
+                                </div>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                                    consequat.
+                                </p>
+                            </div>
+                        </li>
+
+                    </ul>
+                    <!-- end messages -->
+
+                </div>
+                <div class="tab-pane active" id="user6">
+
+                    <ul class="messages">
+                    </ul>
+                    <!-- end messages -->
+
+                </div>
+                <div class="tab-pane active" id="user7">
+
+                    <ul class="messages">
+                    </ul>
+                    <!-- end messages -->
+
+                </div>
+                <div class="tab-pane active" id="user8">
+
+                    <ul class="messages">
+                    </ul>
+                    <!-- end messages -->
+
+                </div>
+                <div class="tab-pane active" id="user9">
+
+                    <ul class="messages">
+                    </ul>
+                    <!-- end messages -->
+
+                </div>
+                <div class="tab-pane active" id="user10">
+
+                    <ul class="messages">
+                    </ul>
+                    <!-- end messages -->
+
+                </div>
+
+            </div>
+            <div class="sendMsg span12">
+                <form class="form-horizontal" action="#">
+                    <textarea class="elastic uniform" id="textarea" rows="1" placeholder="Escreva sua mensagem ..." style="overflow: hidden; height: 40px;"></textarea>
+                    <button type="submit" class="send btn btn-danger" style="margin-top: 20px;">Enviar Mensagem</button>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--End support section -->
+
+</div>
+<!-- End .row-fluid -->
+
+@Html.Partial("BodySecondPart")

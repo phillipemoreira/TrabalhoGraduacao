@@ -28,7 +28,34 @@
         </div>
         <!-- End .box -->
     </div>
-    <!-- End .span8 -->
+    <div class="span6" style="width: 340px !important;">
+
+        <div class="box boxMargin">
+
+            <div class="title">
+
+                <h4>
+                    <span class="icon16 entypo-icon-write"></span>
+                    <span>Olá @ViewBag.UserModel.Usuario.FirstName!</span>
+                </h4>
+                <a href="#" class="minimize" style="display: none;">Minimize</a>
+            </div>
+            <div class="content" style="display: block;">
+                <p>
+                    Lorem ipsum <strong>dolor sit amet</strong>, consectetur <em>adipisicing elit</em>, sed do eiusmod ut labore et dolore magna aliqua.
+                     <span class="red">Ut enim ad minim veniam</span>,
+                                    quis <span class="orange">nostrud exercitation</span> ullamco laboris nisi ut aliquip ex ea commodo
+                    <abbr title="attribute example">attribute</abbr>
+                    consequat.<span class="green">Duis aute irure</span> dolor in reprehenderit in voluptate velit esse
+                                    cillum dolore eu fugiat nulla pariatur. <span class="dark">Excepteur sint</span> occaecat cupidatat non
+                                    proident, <span class="blue">sunt in culpa</span> qui officia deserunt mollit anim id est laborum.
+                </p>
+            </div>
+
+        </div>
+        <!-- End .box -->
+    </div>
+    
 </div>
 <script type="text/javascript">
     $(function () {
@@ -47,24 +74,24 @@
                     {
                         foreach (Item5W2H item in plan.GetItensByUser(ViewBag.UserModel.Usuario))
                         {
-                            dados += "{ title: \"" + item.Oque + "\","+
-                                "start: $.fullCalendar.formatDate(new Date(\"" + item.Quando + "\"), 'dd-MM-yyyy'),"; 
-                            
-                            if(item.Andamento == Status.EmAndamento)
+                            dados += "{ title: \"" + item.Oque + "\"," +
+                                "start: $.fullCalendar.formatDate(new Date(\"" + item.Quando + "\"), 'dd-MM-yyyy'),";
+
+                            if (item.Andamento == Status.EmAndamento)
                             {
                                 dados += "color: \"#528eee\"";
                             }
-                            else if(item.Andamento == Status.Finalizado)
+                            else if (item.Andamento == Status.Finalizado)
                             {
                                 dados += "color: \"#7ccd24\"";
                             }
                             else
                             {
                                 dados += "color: \"#ff4e50\"";
-                            }   
-                                
+                            }
+
                             dados += "}";
-                            
+
                             if (count < plan.GetItensByUser(ViewBag.UserModel.Usuario).Count)
                             {
                                 dados += ",";

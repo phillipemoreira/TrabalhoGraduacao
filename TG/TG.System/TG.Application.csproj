@@ -100,6 +100,7 @@
     <Compile Include="ActionFilter\NHibernateActionFilter.cs" />
     <Compile Include="Controllers\AutenticationController.cs" />
     <Compile Include="Controllers\ColaboradoresController.cs" />
+    <Compile Include="Controllers\ComunicacaoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoggedController.cs" />
     <Compile Include="Controllers\Plan5W2HController.cs" />
@@ -1104,6 +1105,7 @@
     <Content Include="Views\Plan5W2H\CreateItem.cshtml" />
     <Content Include="Views\Colaboradores\Index.cshtml" />
     <Content Include="Views\Task\Index.cshtml" />
+    <Content Include="Views\Comunicacao\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
