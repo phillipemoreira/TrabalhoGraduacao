@@ -19,25 +19,25 @@ $(document).ready(function() {
 	  //if firefox 3.5+, hide content till load (or 3 seconds) to prevent FOUT
 	  var d = document, e = d.documentElement, s = d.createElement('style');
 	  if (e.style.MozTransform === ''){ // gecko 1.9.1 inference
-	    s.textContent = 'body{visibility:hidden}';
-	    e.firstChild.appendChild(s);
-	    function f(){ s.parentNode && s.parentNode.removeChild(s); }
-	    addEventListener('load',f,false);
-	    setTimeout(f,3000); 
+		s.textContent = 'body{visibility:hidden}';
+		e.firstChild.appendChild(s);
+		function f(){ s.parentNode && s.parentNode.removeChild(s); }
+		addEventListener('load',f,false);
+		setTimeout(f,3000); 
 	  }
 	})();
 	
-  	//Disable certain links
-    $('a[href^=#]').click(function (e) {
-      e.preventDefault()
-    })
+	//Disable certain links
+	$('a[href^=#]').click(function (e) {
+	  e.preventDefault()
+	})
 
-    $('.search-btn').addClass('nostyle');//tell uniform to not style this element
+	$('.search-btn').addClass('nostyle');//tell uniform to not style this element
 
-    //Simple solution for this bug https://github.com/twitter/bootstrap/issues/4497
-    $('body')
-    .off('click.dropdown touchstart.dropdown.data-api', '.dropdown')
-    .on('click.dropdown touchstart.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() })
+	//Simple solution for this bug https://github.com/twitter/bootstrap/issues/4497
+	$('body')
+	.off('click.dropdown touchstart.dropdown.data-api', '.dropdown')
+	.on('click.dropdown touchstart.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() })
 
 
 	//------------- Navigation -------------//
@@ -73,10 +73,10 @@ $(document).ready(function() {
 	//hover magic add blue color to icons when hover - remove or change the class if not you like.
 	mainNavLinkAll.hover(
 	  function () {
-	    $(this).find('span.icon16').addClass('blue');
+		$(this).find('span.icon16').addClass('blue');
 	  }, 
 	  function () {
-	    $(this).find('span.icon16').removeClass('blue');
+		$(this).find('span.icon16').removeClass('blue');
 	  }
 	);
 
@@ -154,11 +154,11 @@ $(document).ready(function() {
 			//hide sidbar
 			$('#sidebarbg').css('margin-left','-299'+'px');
 			$('#sidebar').css('margin-left','-299'+'px');
-		    $('.collapseBtn').animate({ //use .hide() if you experience heavy animation :)
-			    left: '200',
-			    top: '20'
+			$('.collapseBtn').animate({ //use .hide() if you experience heavy animation :)
+				left: '200',
+				top: '20'
 			  }, 500, 'easeInExpo', function() {
-			    // Animation complete.
+				// Animation complete.
 			  
 			}).addClass('shadow');
 			//expand content
@@ -202,7 +202,7 @@ $(document).ready(function() {
 
 	//show minimize and maximize icons
 	widget.hover(function() {
-		    $(this).find('.title>a').show(50);	
+			$(this).find('.title>a').show(50);	
 		}
 		, function(){
 			$(this).find('.title>a').hide();	
@@ -210,7 +210,7 @@ $(document).ready(function() {
 
 	//add shadow if hover box
 	widget.hover(function() {
-		    $(this).addClass('hover');	
+			$(this).addClass('hover');	
 		}
 		, function(){
 			$(this).removeClass('hover');	
@@ -272,7 +272,7 @@ $(document).ready(function() {
 	});
 
 	//--------------- Boostrap tooltips ------------------//
-    $('.btip').tooltip();
+	$('.btip').tooltip();
 
 	//------------- Full calendar  -------------//
 	$(function () {
@@ -290,9 +290,9 @@ $(document).ready(function() {
 				right: 'month,agendaWeek,agendaDay'
 			},
 			buttonText: {
-	        	prev: '<span class="icon24 icomoon-icon-arrow-left"></span>',
-	        	next: '<span class="icon24 icomoon-icon-arrow-right"></span>'
-	    	},
+				prev: '<span class="icon24 icomoon-icon-arrow-left"></span>',
+				next: '<span class="icon24 icomoon-icon-arrow-right"></span>'
+			},
 			editable: true,
 			events: [
 				{
@@ -379,9 +379,9 @@ $(document).ready(function() {
 			right: 'month,agendaWeek,agendaDay'
 		},
 		buttonText: {
-        	prev: '<span class="icon24 icomoon-icon-arrow-left"></span>',
-        	next: '<span class="icon24 icomoon-icon-arrow-right"></span>'
-    	},
+			prev: '<span class="icon24 icomoon-icon-arrow-left"></span>',
+			next: '<span class="icon24 icomoon-icon-arrow-right"></span>'
+		},
 		editable: true,
 		droppable: true, // this allows things to be dropped onto the calendar !!!
 		drop: function(date, allDay) { // this function is called when something is dropped
@@ -423,10 +423,10 @@ $(document).ready(function() {
 	}
 
 	/*if(typeof elastic == "undefined") {
-        $.getScript('plugins/elastic/jquery.elastic.js', function() {
-            $('.elastic').elastic();
-        });
-    }
+		$.getScript('plugins/elastic/jquery.elastic.js', function() {
+			$('.elastic').elastic();
+		});
+	}
 */
 	//------------- Input limiter -------------//
 	if ($('textarea').hasClass('limit')) {
@@ -505,11 +505,11 @@ $(document).ready(function() {
 	});
 
 	$('#datepicker-inline').datepicker({
-        inline: true,
+		inline: true,
 		showOtherMonths:true
-    });
+	});
 
-    //------------- Time entry (picker) -------------//
+	//------------- Time entry (picker) -------------//
 	$('#timepicker').timeEntry({
 		show24Hours: true,
 		spinnerImage: ''
@@ -560,8 +560,8 @@ $(document).ready(function() {
 
 	//--------------- Form validation ------------------//
 
-    $("#form-validate").validate({
-    	rules: {
+	$("#form-validate").validate({
+		rules: {
 			required: "required",
 			required1: {
 				required: true,
@@ -582,44 +582,44 @@ $(document).ready(function() {
 			},
 			maxLenght: {
 				required: true,
-      			maxlength: 10
+				maxlength: 10
 			},
 			rangelenght: {
-		      required: true,
-		      rangelength: [10, 20]
-		    },
-		    minval: {
-		      required: true,
-		      min: 13
-		    },
-		    maxval: {
-		      required: true,
-		      max: 13
-		    },
-		    range: {
-		      required: true,
-		      range: [5, 10]
-		    },
-		    url: {
-		      required: true,
-		      url: true
-		    },
-		    date: {
-		      required: true,
-		      date: true
-		    },
-		    number: {
-		      required: true,
-		      number: true
-		    },
-		    digits: {
-		      required: true,
-		      digits: true
-		    },
-		    ccard: {
-		      required: true,
-		      creditcard: true
-		    },
+			  required: true,
+			  rangelength: [10, 20]
+			},
+			minval: {
+			  required: true,
+			  min: 13
+			},
+			maxval: {
+			  required: true,
+			  max: 13
+			},
+			range: {
+			  required: true,
+			  range: [5, 10]
+			},
+			url: {
+			  required: true,
+			  url: true
+			},
+			date: {
+			  required: true,
+			  date: true
+			},
+			number: {
+			  required: true,
+			  number: true
+			},
+			digits: {
+			  required: true,
+			  digits: true
+			},
+			ccard: {
+			  required: true,
+			  creditcard: true
+			},
 			agree: "required"
 		},
 		messages: {
@@ -640,11 +640,11 @@ $(document).ready(function() {
 			email: "Please enter a valid email address",
 			agree: "Please accept our policy"
 		}	
-    });
+	});
 
 	$("#wizzard-form").validate({
-    	rules: {
-    		fname: {
+		rules: {
+			fname: {
 				required: true,
 				minlength: 4
 			},
@@ -694,29 +694,29 @@ $(document).ready(function() {
 			email1: "Please enter a valid email address",
 			gender: "Choise a gender"
 		}	
-    });
+	});
 	
 	//--------------- button state demo ------------------//
-    $('#fat-btn').click(function () {
-        var btn = $(this)
-        btn.button('loading')
-        setTimeout(function () {
-          btn.button('reset')
-        }, 3000);
-     })
+	$('#fat-btn').click(function () {
+		var btn = $(this)
+		btn.button('loading')
+		setTimeout(function () {
+		  btn.button('reset')
+		}, 3000);
+	 })
 
-    //--------------- Tabs ------------------//
-    $('#myTab a').click(function (e) {
-	  	e.preventDefault();
-	  	$(this).tab('show');
+	//--------------- Tabs ------------------//
+	$('#myTab a').click(function (e) {
+		e.preventDefault();
+		$(this).tab('show');
 	})
-    //activate loaders tabs
+	//activate loaders tabs
 	$('#myTabLoaders a').click(function (e) {
-	  	e.preventDefault();
-	  	$(this).tab('show');
+		e.preventDefault();
+		$(this).tab('show');
 	})
 
-    //make 2 tab active ( remove if not want )
+	//make 2 tab active ( remove if not want )
 	$('.tabs-right li:eq(1) a').tab('show'); // Select third tab (0-indexed)
 	$('.tabs-left li:eq(1) a').tab('show'); // Select third tab (0-indexed)
 
@@ -725,9 +725,9 @@ $(document).ready(function() {
 	  $(this).tab('show');
 	})
 
-    //--------------- Accordion ------------------//
-    var acc = $('.accordion'); //get all accordions
-    var accHeading = acc.find('.accordion-heading');
+	//--------------- Accordion ------------------//
+	var acc = $('.accordion'); //get all accordions
+	var accHeading = acc.find('.accordion-heading');
 	var accBody = acc.find('.accordion-body');
 
 	//function to put icons
@@ -838,56 +838,56 @@ $(document).ready(function() {
 	$('#progress1').anim_progressbar();
 
 	// from second #5 till 15
-    var iNow = new Date().setTime(new Date().getTime() + 5 * 1000); // now plus 5 secs
-    var iEnd = new Date().setTime(new Date().getTime() + 15 * 1000); // now plus 15 secs
-    $('#progress2').anim_progressbar({start: iNow, finish: iEnd, interval: 100});
+	var iNow = new Date().setTime(new Date().getTime() + 5 * 1000); // now plus 5 secs
+	var iEnd = new Date().setTime(new Date().getTime() + 15 * 1000); // now plus 15 secs
+	$('#progress2').anim_progressbar({start: iNow, finish: iEnd, interval: 100});
 
-    // we will just set interval of updating to 2 sec
-    $('#progress3').anim_progressbar({interval: 2000});
+	// we will just set interval of updating to 2 sec
+	$('#progress3').anim_progressbar({interval: 2000});
 
 	$(".progressBlue").knob({
-        'min':0,
-        'max':100,
-        'readOnly': false,
-        'width': 80,
-        'height': 80,
-        'fgColor': '#88BBC8',
-        'dynamicDraw': false,
-        'thickness': 0.2,
-        'tickColorizeValues': true,
-        "skin":"tron",
-        "cursor":true
-    })
+		'min':0,
+		'max':100,
+		'readOnly': false,
+		'width': 80,
+		'height': 80,
+		'fgColor': '#88BBC8',
+		'dynamicDraw': false,
+		'thickness': 0.2,
+		'tickColorizeValues': true,
+		"skin":"tron",
+		"cursor":true
+	})
 
-    $(".progressRed").knob({
-        'min':0,
-        'max':100,
-        'readOnly': false,
-        'width': 80,
-        'height': 80,
-        'fgColor': '#ED7A53',
-        'dynamicDraw': false,
-        'thickness': 0.2,
-        'tickColorizeValues': true,
-        "skin":"tron",
-        "cursor":true
-    })
+	$(".progressRed").knob({
+		'min':0,
+		'max':100,
+		'readOnly': false,
+		'width': 80,
+		'height': 80,
+		'fgColor': '#ED7A53',
+		'dynamicDraw': false,
+		'thickness': 0.2,
+		'tickColorizeValues': true,
+		"skin":"tron",
+		"cursor":true
+	})
 
-    $(".progressGreen").knob({
-        'min':0,
-        'max':100,
-        'readOnly': false,
-        'width': 80,
-        'height': 80,
-        'fgColor': '#9FC569',
-        'dynamicDraw': false,
-        'thickness': 0.2,
-        'tickColorizeValues': true,
-        "skin":"tron",
-        "cursor":true
-    })
+	$(".progressGreen").knob({
+		'min':0,
+		'max':100,
+		'readOnly': false,
+		'width': 80,
+		'height': 80,
+		'fgColor': '#9FC569',
+		'dynamicDraw': false,
+		'thickness': 0.2,
+		'tickColorizeValues': true,
+		"skin":"tron",
+		"cursor":true
+	})
 
-    //--------------- Dialogs ------------------//
+	//--------------- Dialogs ------------------//
 	$('#openDialog').click(function(){
 		$('#dialog').dialog('open');
 		return false;
@@ -927,137 +927,137 @@ $(document).ready(function() {
 	$('#myModal').modal({ show: false});
 	//add event to modal after closed
 	$('#myModal').on('hidden', function () {
-	  	$.pnotify({
-		    title: 'Modal',
-		    text: 'Modal window is closed',
-		    icon: 'picon icon16 entypo-icon-warning white',
-		    opacity: 0.95,
-		    sticker: false,
-		    history: false
+		$.pnotify({
+			title: 'Modal',
+			text: 'Modal window is closed',
+			icon: 'picon icon16 entypo-icon-warning white',
+			opacity: 0.95,
+			sticker: false,
+			history: false
 		});
 	})
 
 	//--------------- Popovers ------------------//
 	//using data-placement trigger
 	$("a[rel=popover]")
-      .popover()
-      .click(function(e) {
-        e.preventDefault()
-     })
+	  .popover()
+	  .click(function(e) {
+		e.preventDefault()
+	 })
 
-    //using js trigger
-    $("a[rel=popoverTop]")
-      .popover({placement: 'top'})
-      .click(function(e) {
-        e.preventDefault()
-     })
+	//using js trigger
+	$("a[rel=popoverTop]")
+	  .popover({placement: 'top'})
+	  .click(function(e) {
+		e.preventDefault()
+	 })
 
 
-    //--------------- Pines notify  ------------------//
+	//--------------- Pines notify  ------------------//
 
-    //regular notice
-    $('#noticeR').click(function(){
+	//regular notice
+	$('#noticeR').click(function(){
 		$.pnotify({
-		    title: 'Regular Notice',
-		    text: 'Check me out! I\'m a notice.',
-		    icon: 'picon icon16 entypo-icon-warning white',
-		    opacity: 0.95,
-		    sticker: false,
-		    history: false
+			title: 'Regular Notice',
+			text: 'Check me out! I\'m a notice.',
+			icon: 'picon icon16 entypo-icon-warning white',
+			opacity: 0.95,
+			sticker: false,
+			history: false
 		});
 	});
 
 	//Sticky notice
-    $('#noticeS').click(function(){
+	$('#noticeS').click(function(){
 		$.pnotify({
-		    title: 'Sticky Notice',
-		    text: 'Check me out! I\'m a sticky notice. You\'ll have to close me yourself.',
-		    hide: false,
-		    icon: 'picon icon16 entypo-icon-warning white',
-		    opacity: 0.95,
-		    history: false,
-		    sticker: false
+			title: 'Sticky Notice',
+			text: 'Check me out! I\'m a sticky notice. You\'ll have to close me yourself.',
+			hide: false,
+			icon: 'picon icon16 entypo-icon-warning white',
+			opacity: 0.95,
+			history: false,
+			sticker: false
 		});
 	});
 
 	//Regular info
-    $('#infoR').click(function(){
+	$('#infoR').click(function(){
 		$.pnotify({
 			type: 'info',
-		    title: 'New Thing',
-    		text: 'Just to let you know, something happened.',
-		    icon: 'picon icon16 brocco-icon-info white',
-		    opacity: 0.95,
-		    history: false,
-		    sticker: false
+			title: 'New Thing',
+			text: 'Just to let you know, something happened.',
+			icon: 'picon icon16 brocco-icon-info white',
+			opacity: 0.95,
+			history: false,
+			sticker: false
 		});
 	});
 
 	//Sticky info
-    $('#infoS').click(function(){
+	$('#infoS').click(function(){
 		$.pnotify({
 			type: 'info',
-		    title: 'Sticky Info',
-   			text: 'Sticky info, you know, like a newspaper covered in honey.',
-		    icon: 'picon icon16 brocco-icon-info white',
-		    hide: false,
-		    opacity: 0.95,
-		    history: false,
-		    sticker: false
+			title: 'Sticky Info',
+			text: 'Sticky info, you know, like a newspaper covered in honey.',
+			icon: 'picon icon16 brocco-icon-info white',
+			hide: false,
+			opacity: 0.95,
+			history: false,
+			sticker: false
 		});
 	});
 
 	//Regular success
-    $('#successR').click(function(){
+	$('#successR').click(function(){
 		$.pnotify({
 			type: 'success',
-		    title: 'Regular Success',
-    		text: 'That thing that you were trying to do worked!',
-		    icon: 'picon icon16 iconic-icon-check-alt white',
-		    opacity: 0.95,
-		    history: false,
-		    sticker: false
+			title: 'Regular Success',
+			text: 'That thing that you were trying to do worked!',
+			icon: 'picon icon16 iconic-icon-check-alt white',
+			opacity: 0.95,
+			history: false,
+			sticker: false
 		});
 	});
 
 	//Sticky success
-    $('#successS').click(function(){
+	$('#successS').click(function(){
 		$.pnotify({
 			type: 'success',
-		    title: 'Sticky Success',
-    		text: 'Sticky success... I\'m not even gonna make a joke.',
-		    icon: 'picon icon16 iconic-icon-check-alt white',
-		    opacity: 0.95,
-		    hide:false,
-		    history: false,
-		    sticker: false
+			title: 'Sticky Success',
+			text: 'Sticky success... I\'m not even gonna make a joke.',
+			icon: 'picon icon16 iconic-icon-check-alt white',
+			opacity: 0.95,
+			hide:false,
+			history: false,
+			sticker: false
 		});
 	});
 
 	//Regular success
-    $('#errorR').click(function(){
+	$('#errorR').click(function(){
 		$.pnotify({
 			type: 'error',
-		    title: 'Oh No!',
-    		text: 'Something terrible happened.',
-		    icon: 'picon icon24 typ-icon-cancel white',
-		    opacity: 0.95,
-		    history: false,
-		    sticker: false
+			title: 'Oh No!',
+			text: 'Something terrible happened.',
+			icon: 'picon icon24 typ-icon-cancel white',
+			opacity: 0.95,
+			history: false,
+			sticker: false
 		});
 	});
 
 	//Sticky success
-    $('#errorS').click(function(){
+	$('#errorS').click(function(){
 		$.pnotify({
 			type: 'error',
-		    title: 'Oh No!',
-    		text: 'Something terrible happened.',
-		    icon: 'picon icon24 typ-icon-cancel white',
-		    opacity: 0.95,
-		    hide:false,
-		    history: false,
-		    sticker: false
+			title: 'Oh No!',
+			text: 'Something terrible happened.',
+			icon: 'picon icon24 typ-icon-cancel white',
+			opacity: 0.95,
+			hide:false,
+			history: false,
+			sticker: false
 		});
 	});
 
@@ -1093,58 +1093,58 @@ $(document).ready(function() {
 			   $(this).find('.actionBtn').stop(true, true).show();
 			},
 			function () {
-			    $(this).find('.actionBtn').stop(true, true).hide();
+				$(this).find('.actionBtn').stop(true, true).hide();
 			}
 		);
 		//remove the gallery item after press delete
 		$('.actionBtn>.delete').click(function(){
 			$(this).closest('li').remove();
 			/* destroy and recreate gallery */
-		    $("div.holder").jPages("destroy").jPages({
-		        containerID : "itemContainer",
-		        animation   : "fadeInUp",
-		        perPage		: 16,
-		        scrollBrowse   : true, //use scroll to change pages
-		        keyBrowse   : true,
-		        callback    : function( pages ,items ){
-		            /* lazy load current images */
-		            items.showing.find("img").trigger("turnPage");
-		            /* lazy load next page images */
-		            items.oncoming.find("img").trigger("turnPage");
-		        }
-		    });
-		    // add notificaton 
+			$("div.holder").jPages("destroy").jPages({
+				containerID : "itemContainer",
+				animation   : "fadeInUp",
+				perPage		: 16,
+				scrollBrowse   : true, //use scroll to change pages
+				keyBrowse   : true,
+				callback    : function( pages ,items ){
+					/* lazy load current images */
+					items.showing.find("img").trigger("turnPage");
+					/* lazy load next page images */
+					items.oncoming.find("img").trigger("turnPage");
+				}
+			});
+			// add notificaton 
 			$.pnotify({
 				type: 'success',
-			    title: 'Done',
-	    		text: 'You just delete this picture.',
-			    icon: 'picon icon16 brocco-icon-info white',
-			    opacity: 0.95,
-			    history: false,
-			    sticker: false
+				title: 'Done',
+				text: 'You just delete this picture.',
+				icon: 'picon icon16 brocco-icon-info white',
+				opacity: 0.95,
+				history: false,
+				sticker: false
 			});
 
 		});
 
-	    /* initiate lazyload defining a custom event to trigger image loading  */
-	    $("ul#itemContainer li img").lazyload({
-	        event : "turnPage",
-	        effect : "fadeIn"
-	    });
-	    /* initiate plugin */
-	    $("div.holder").jPages({
-	        containerID : "itemContainer",
-	        animation   : "fadeInUp",
-	        perPage		: 16,
-	        scrollBrowse   : true, //use scroll to change pages
-	        keyBrowse   : true,
-	        callback    : function( pages ,items ){
-	            /* lazy load current images */
-	            items.showing.find("img").trigger("turnPage");
-	            /* lazy load next page images */
-	            items.oncoming.find("img").trigger("turnPage");
-	        }
-	    });
+		/* initiate lazyload defining a custom event to trigger image loading  */
+		$("ul#itemContainer li img").lazyload({
+			event : "turnPage",
+			effect : "fadeIn"
+		});
+		/* initiate plugin */
+		$("div.holder").jPages({
+			containerID : "itemContainer",
+			animation   : "fadeInUp",
+			perPage		: 16,
+			scrollBrowse   : true, //use scroll to change pages
+			keyBrowse   : true,
+			callback    : function( pages ,items ){
+				/* lazy load current images */
+				items.showing.find("img").trigger("turnPage");
+				/* lazy load next page images */
+				items.oncoming.find("img").trigger("turnPage");
+			}
+		});
 	});
 
 	//--------------- Data tables ------------------//
@@ -1174,35 +1174,35 @@ $(document).ready(function() {
 			"bLengthChange": false,
 			"oLanguage": {
 				"sSearch": "",
-		        "sInfo": "Got a total of _TOTAL_ emails to show (_START_ to _END_)"
-		    },
-		    "fnDrawCallback": function(){
-    			$("input[type=checkbox]").uniform();
-            },
-		    "aoColumns": [
-			    { 
-			    	"sWidth": "10px",
-			    	"bSortable": false
-			    },
-			    { 
-			    	"sWidth": "10px", 
-			    	"bSortable": false
-			    },
+				"sInfo": "Got a total of _TOTAL_ emails to show (_START_ to _END_)"
+			},
+			"fnDrawCallback": function(){
+				$("input[type=checkbox]").uniform();
+			},
+			"aoColumns": [
 				{ 
-			    	"bSortable": false
-			    },
+					"sWidth": "10px",
+					"bSortable": false
+				},
 				{ 
-			    	"bSortable": false
-			    },
-			    { 
-			    	"sWidth": "20px",
-			    	"bSortable": false
-			    },
+					"sWidth": "10px", 
+					"bSortable": false
+				},
 				{ 
-			    	"sWidth": "80px", 
-			    	"bSortable": false
-		    	}
-		    ]
+					"bSortable": false
+				},
+				{ 
+					"bSortable": false
+				},
+				{ 
+					"sWidth": "20px",
+					"bSortable": false
+				},
+				{ 
+					"sWidth": "80px", 
+					"bSortable": false
+				}
+			]
 		});
 	}		
 
@@ -1261,12 +1261,12 @@ $(document).ready(function() {
 		$('.email-content>.box.plain').fadeIn(300);
 		$.pnotify({
 			type: 'success',
-		    title: 'Done',
-    		text: 'Email is saved',
-		    icon: 'picon icon16 iconic-icon-check-alt white',
-		    opacity: 0.95,
-		    history: false,
-		    sticker: false
+			title: 'Done',
+			text: 'Email is saved',
+			icon: 'picon icon16 iconic-icon-check-alt white',
+			opacity: 0.95,
+			history: false,
+			sticker: false
 		});
 		//save callback here
 	});
@@ -1278,12 +1278,12 @@ $(document).ready(function() {
 		//add some notification
 		$.pnotify({
 			type: 'success',
-		    title: 'Done',
-    		text: 'Email send successfull',
-		    icon: 'picon icon16 iconic-icon-check-alt white',
-		    opacity: 0.95,
-		    history: false,
-		    sticker: false
+			title: 'Done',
+			text: 'Email send successfull',
+			icon: 'picon icon16 iconic-icon-check-alt white',
+			opacity: 0.95,
+			history: false,
+			sticker: false
 		});
 		//calback function here
 	});
@@ -1302,145 +1302,145 @@ $(document).ready(function() {
 	});
 
 	//------------- Smart Wizzard  -------------//	
-  	$('#wizard').smartWizard({
-  		transitionEffect: 'fade', // Effect on navigation, none/fade/slide/
-  		onLeaveStep:leaveAStepCallback,
-        onFinish:onFinishCallback
-    });
+	$('#wizard').smartWizard({
+		transitionEffect: 'fade', // Effect on navigation, none/fade/slide/
+		onLeaveStep:leaveAStepCallback,
+		onFinish:onFinishCallback
+	});
 
-    function leaveAStepCallback(obj){
-        var step = obj;
-        step.find('.stepNumber').stop(true, true).remove();
-        step.find('.stepDesc').stop(true, true).before('<span class="stepNumber"><span class="icon16 iconic-icon-checkmark"></span></span>');
-        return true;
-    }
-    function onFinishCallback(obj){
-    	var step = obj;
-    	step.find('.stepNumber').stop(true, true).remove();
-        step.find('.stepDesc').stop(true, true).before('<span class="stepNumber"><span class="icon16 iconic-icon-checkmark"></span></span>');
-      	$.pnotify({
+	function leaveAStepCallback(obj){
+		var step = obj;
+		step.find('.stepNumber').stop(true, true).remove();
+		step.find('.stepDesc').stop(true, true).before('<span class="stepNumber"><span class="icon16 iconic-icon-checkmark"></span></span>');
+		return true;
+	}
+	function onFinishCallback(obj){
+		var step = obj;
+		step.find('.stepNumber').stop(true, true).remove();
+		step.find('.stepDesc').stop(true, true).before('<span class="stepNumber"><span class="icon16 iconic-icon-checkmark"></span></span>');
+		$.pnotify({
 			type: 'success',
-		    title: 'Done',
-    		text: 'You finish the wizzard',
-		    icon: 'picon icon16 iconic-icon-check-alt white',
-		    opacity: 0.95,
-		    history: false,
-		    sticker: false
+			title: 'Done',
+			text: 'You finish the wizzard',
+			icon: 'picon icon16 iconic-icon-check-alt white',
+			opacity: 0.95,
+			history: false,
+			sticker: false
 		});
-    }
+	}
 
-    $('#wizard-validation').smartWizard({
-  		transitionEffect: 'fade', // Effect on navigation, none/fade/slide/
-  		onLeaveStep:leaveAStepCallbackValidation,
-        onFinish:onFinishCallbackValidaton
-    });
+	$('#wizard-validation').smartWizard({
+		transitionEffect: 'fade', // Effect on navigation, none/fade/slide/
+		onLeaveStep:leaveAStepCallbackValidation,
+		onFinish:onFinishCallbackValidaton
+	});
 
-    function leaveAStepCallbackValidation(obj){
-        var step = obj;
-        var stepN = step.attr('rel')
-        
-       /* if(stepN == 1) { return true;}     */  
-        //validate step 1
-        if(stepN == 1) {
+	function leaveAStepCallbackValidation(obj){
+		var step = obj;
+		var stepN = step.attr('rel')
+		
+	   /* if(stepN == 1) { return true;}     */  
+		//validate step 1
+		if(stepN == 1) {
 
-        	if ($("#username1").valid() == true ) {
-		        var validate = true;
-		    } else {
-		    	var validate = false;
-		    }
-		    if ($("#password1").valid() == true ) {
-		        var validate1 = true;
-		    } 
-		    else {
-		    	var validate1 = false;
-		    }
-		    if ($("#passwordConfirm1").valid() == true ) {
-		        var validate2 = true;
-		    } 
-		    else {
-		    	var validate2 = false;
-		    }
+			if ($("#username1").valid() == true ) {
+				var validate = true;
+			} else {
+				var validate = false;
+			}
+			if ($("#password1").valid() == true ) {
+				var validate1 = true;
+			} 
+			else {
+				var validate1 = false;
+			}
+			if ($("#passwordConfirm1").valid() == true ) {
+				var validate2 = true;
+			} 
+			else {
+				var validate2 = false;
+			}
 
-	        if(validate == true && validate1 == true && validate2 == true) {
-	        	step.find('.stepNumber').stop(true, true).remove();
-        		step.find('.stepDesc').stop(true, true).before('<span class="stepNumber"><span class="icon16 iconic-icon-checkmark"></span></span>');
-	        	return true;
-	        } else {
-	        	return false;
-	        }
-        }
-        //validate step 2
-        if(stepN == 2) {
+			if(validate == true && validate1 == true && validate2 == true) {
+				step.find('.stepNumber').stop(true, true).remove();
+				step.find('.stepDesc').stop(true, true).before('<span class="stepNumber"><span class="icon16 iconic-icon-checkmark"></span></span>');
+				return true;
+			} else {
+				return false;
+			}
+		}
+		//validate step 2
+		if(stepN == 2) {
 
-        	if ($("#fname").valid() == true ) {
-		        var validate3 = true;
-		    } else {
-		    	var validate3 = false;
-		    }
-		    if ($("#lname").valid() == true ) {
-		        var validate4 = true;
-		    } else {
-		    	var validate4 = false;
-		    }
-		    if ($("#gender").valid() == true ) {
-		        var validate5 = true;
-		    } 
-		    else {
-		    	var validate5 = false;
-		    }
+			if ($("#fname").valid() == true ) {
+				var validate3 = true;
+			} else {
+				var validate3 = false;
+			}
+			if ($("#lname").valid() == true ) {
+				var validate4 = true;
+			} else {
+				var validate4 = false;
+			}
+			if ($("#gender").valid() == true ) {
+				var validate5 = true;
+			} 
+			else {
+				var validate5 = false;
+			}
 
-	        if(validate3 == true && validate4 == true && validate5 == true) {
-	        	step.find('.stepNumber').stop(true, true).remove();
-        		step.find('.stepDesc').stop(true, true).before('<span class="stepNumber"><span class="icon16 iconic-icon-checkmark"></span></span>');
-	        	return true;
-	        } else {
-	        	return false;
-	        }
-        }
+			if(validate3 == true && validate4 == true && validate5 == true) {
+				step.find('.stepNumber').stop(true, true).remove();
+				step.find('.stepDesc').stop(true, true).before('<span class="stepNumber"><span class="icon16 iconic-icon-checkmark"></span></span>');
+				return true;
+			} else {
+				return false;
+			}
+		}
 
-        //validate step 2
-        if(stepN == 3) {
+		//validate step 2
+		if(stepN == 3) {
 
-        	if ($("#email1").valid() == true ) {
-		        var validate6 = true;
-		    } else {
-		    	var validate6 = false;
-		    }
+			if ($("#email1").valid() == true ) {
+				var validate6 = true;
+			} else {
+				var validate6 = false;
+			}
 		   
-	        if(validate6 == true ) {
-	        	step.find('.stepNumber').stop(true, true).remove();
-        		step.find('.stepDesc').stop(true, true).before('<span class="stepNumber"><span class="icon16 iconic-icon-checkmark"></span></span>');
-	        	return true;
-	        } else {
-	        	return false;
-	        }
-        }
-       
-    }
-    function onFinishCallbackValidaton(obj){
-    	var step = obj;
-    	step.find('.stepNumber').stop(true, true).remove();
-        step.find('.stepDesc').stop(true, true).before('<span class="stepNumber"><span class="icon16 iconic-icon-checkmark"></span></span>');
-      	$.pnotify({
+			if(validate6 == true ) {
+				step.find('.stepNumber').stop(true, true).remove();
+				step.find('.stepDesc').stop(true, true).before('<span class="stepNumber"><span class="icon16 iconic-icon-checkmark"></span></span>');
+				return true;
+			} else {
+				return false;
+			}
+		}
+	   
+	}
+	function onFinishCallbackValidaton(obj){
+		var step = obj;
+		step.find('.stepNumber').stop(true, true).remove();
+		step.find('.stepDesc').stop(true, true).before('<span class="stepNumber"><span class="icon16 iconic-icon-checkmark"></span></span>');
+		$.pnotify({
 			type: 'success',
-		    title: 'Done',
-    		text: 'You finish the wizzard',
-		    icon: 'picon icon16 iconic-icon-check-alt white',
-		    opacity: 0.95,
-		    history: false,
-		    sticker: false
+			title: 'Done',
+			text: 'You finish the wizzard',
+			icon: 'picon icon16 iconic-icon-check-alt white',
+			opacity: 0.95,
+			history: false,
+			sticker: false
 		});
 		$('#wizzard-form').submit();
-    }
+	}
 
-    //------------- Elfinder file manager  -------------//
-    var elf = $('#elfinder').elfinder({
+	//------------- Elfinder file manager  -------------//
+	var elf = $('#elfinder').elfinder({
 		// lang: 'ru',             // language (OPTIONAL)
 		url : 'php/connector.php'  // connector URL (REQUIRED)
 	}).elfinder('instance');
 
-    //------------- Plupload php upload  -------------//
-    // Setup html4 version
+	//------------- Plupload php upload  -------------//
+	// Setup html4 version
 	$("#html4_uploader").pluploadQueue({
 		// General settings
 		runtimes : 'html4', 
@@ -1530,7 +1530,7 @@ $(document).ready(function() {
 				$(this).append('<span class="status silk-icon-power gray"></span>');
 			}
 			//add close icon with hide state
-		   	$(this).append('<span class="closeMsg entypo-icon-close gray"></span>');
+			$(this).append('<span class="closeMsg entypo-icon-close gray"></span>');
 		});
 
 		//show close icon on hover and hide on hover out
@@ -1545,14 +1545,14 @@ $(document).ready(function() {
 
 		//close the msg on click
 		supportLi.find('.closeMsg').click(function() {
-		    //remove the element
-		    $(this).closest('li').animate({
-			    opacity: 0.25,
-			    height: 'toggle'
+			//remove the element
+			$(this).closest('li').animate({
+				opacity: 0.25,
+				height: 'toggle'
 			  }, 500, function() {
-			    // Animation complete. //callback here
-			    $(this).remove()
-			    
+				// Animation complete. //callback here
+				$(this).remove()
+				
 			  });
 		});
 		function msgReply(chatText) {
@@ -1566,12 +1566,12 @@ $(document).ready(function() {
 				//produce error if not have text in this case pinest notify
 				$.pnotify({
 					type: 'error',
-				    title: 'No text',
-		    		text: 'Please enter some text!',
-				    icon: 'picon icon24 typ-icon-cancel white',
-				    opacity: 0.95,
-				    history: false,
-				    sticker: false
+					title: 'No text',
+					text: 'Please enter some text!',
+					icon: 'picon icon24 typ-icon-cancel white',
+					opacity: 0.95,
+					history: false,
+					sticker: false
 				});
 			}
 		}
@@ -1582,24 +1582,24 @@ $(document).ready(function() {
 			//append to chat window
 			msgReply(chatText);
 			$('.support-section div.tab-content>.tab-pane.active')
-	    	.getNiceScroll().hide();
+			.getNiceScroll().hide();
 			updateScroll();
 		});
 
 		//add message notification after 5 sec to user
 		setTimeout(function(){
-	    	supportUl.find('li:nth-child(5)').append('<span class="notification newMsg">1</span>');
-	    }, 2000);
+			supportUl.find('li:nth-child(5)').append('<span class="notification newMsg">1</span>');
+		}, 2000);
 		//add new value to msg after 3 sec
 		setTimeout(function(){
-	    	supportUl.find('li:nth-child(5) .notification').removeClass('newMsg').text('2').addClass('newMsg');
-	    }, 5000);		
+			supportUl.find('li:nth-child(5) .notification').removeClass('newMsg').text('2').addClass('newMsg');
+		}, 5000);		
 	}
 	
 	//put scroll on active pane
 	function putScroll() {
 		$('.support-section div.tab-content>.tab-pane.active')
-		    .niceScroll({
+			.niceScroll({
 				cursoropacitymax: 0.7,
 				cursorborderradius: 6,
 				cursorwidth: "5px"
@@ -1607,8 +1607,8 @@ $(document).ready(function() {
 	}
 	//update nice scroll
 	function updateScroll() {
-	    $('.support-section div.tab-content>.tab-pane.active')
-	    .getNiceScroll().show();
+		$('.support-section div.tab-content>.tab-pane.active')
+		.getNiceScroll().show();
 	}
 
 	//load function only if .support-section is find
@@ -1631,7 +1631,7 @@ $(document).ready(function() {
 	setTimeout('$("html").removeClass("loadstate")',500);
 
 	$('.datetimePicker').datetimepicker({
-	    dateFormat: "dd/mm/y",
-	    timeFormat: "hh:mm"
-    });
+		dateFormat: "dd/mm/y",
+		timeFormat: "hh:mm"
+	});
 });

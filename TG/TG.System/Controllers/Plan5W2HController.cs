@@ -228,5 +228,10 @@ namespace Plan5W2HPlusPlus.Application.Controllers
 
             return RedirectToAction("CreateItem", "Plan5W2H", new { @id = planId });
         }
+
+        public ActionResult Gastos(String id)
+        {
+            return View();
+        }
     }
 }

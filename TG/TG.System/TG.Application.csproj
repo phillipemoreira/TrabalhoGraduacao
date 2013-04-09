@@ -1106,6 +1106,7 @@
     <Content Include="Views\Colaboradores\Index.cshtml" />
     <Content Include="Views\Task\Index.cshtml" />
     <Content Include="Views\Comunicacao\Index.cshtml" />
+    <Content Include="Views\Plan5W2H\Gastos.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Titulo = "Gastos";
+    ViewBag.LocalizacaoPai = "<a class='tip' href='" + Url.Action("Index", "Plan5W2h") + "'>Projetos</a>";
+    ViewBag.Localizacao = "Gastos";
+    ViewBag.Current = 1;
+}
+
+@Html.Partial("BodyFirstPart")
+
+@Html.Partial("Messages")
+
+@*Content Start*@
+
+<!-- Build page from here: -->
+<div class="row-fluid">
+    <div class="span12">
+
+        <div class="box chart">
+
+            <div class="title">
+
+                <h4>
+                    <span class="icon16 icomoon-icon-bars"></span>
+                    <span>Gastos do projeto</span>
+                </h4>
+                <a href="#" class="minimize">Minimize</a>
+            </div>
+            <div class="content">
+                <div class="lines-chart" style="height: 230px; width: 100%;">
+                </div>
+            </div>
+
+        </div>
+        <!-- End .box -->
+    </div>
+    <!-- End .span6 -->
+</div>
+
+@*Content End*@
+
+@Html.Partial("BodySecondPart")

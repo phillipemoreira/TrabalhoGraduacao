@@ -9,8 +9,8 @@ var chartColours = ['#88bbc8', '#ed7a53', '#9FC569', '#bbdce3', '#9a3b1b', '#5a8
 //sparklines (making loop with random data for all 7 sparkline)
 i=1;
 for (i=1; i<8; i++) {
- 	var data = [[1, 3+randNum()], [2, 5+randNum()], [3, 8+randNum()], [4, 11+randNum()],[5, 14+randNum()],[6, 17+randNum()],[7, 20+randNum()], [8, 15+randNum()], [9, 18+randNum()], [10, 22+randNum()]];
- 	placeholder = '.sparkLine' + i;
+	var data = [[1, 3+randNum()], [2, 5+randNum()], [3, 8+randNum()], [4, 11+randNum()],[5, 14+randNum()],[6, 17+randNum()],[7, 20+randNum()], [8, 15+randNum()], [9, 18+randNum()], [10, 22+randNum()]];
+	placeholder = '.sparkLine' + i;
 	$(placeholder).sparkline(data, { 
 		width: 100,//Width of the chart - Defaults to 'auto' - May be any valid css width - 1.5em, 20px, etc (using a number without a unit specifier won't do what you want) - This option does nothing for bar and tristate chars (see barWidth)
 		height: 30,//Height of the chart - Defaults to 'auto' (line height of the containing tag)
@@ -82,38 +82,38 @@ $(document).ready(function() {
 	$(function () {
 
 		$(".greenCircle").knob({
-            'min':0,
-            'max':100,
-            'readOnly': true,
-            'width': 80,
-            'height': 80,
-            'fgColor': '#9FC569',
-            'dynamicDraw': true,
-            'thickness': 0.2,
-            'tickColorizeValues': true
-        })
-        $(".redCircle").knob({
-            'min':0,
-            'max':100,
-            'readOnly': true,
-            'width': 80,
-            'height': 80,
-            'fgColor': '#ED7A53',
-            'dynamicDraw': true,
-            'thickness': 0.2,
-            'tickColorizeValues': true
-        })
-        $(".blueCircle").knob({
-            'min':0,
-            'max':100,
-            'readOnly': true,
-            'width': 80,
-            'height': 80,
-            'fgColor': '#88BBC8',
-            'dynamicDraw': true,
-            'thickness': 0.2,
-            'tickColorizeValues': true
-        })
+			'min':0,
+			'max':100,
+			'readOnly': true,
+			'width': 80,
+			'height': 80,
+			'fgColor': '#9FC569',
+			'dynamicDraw': true,
+			'thickness': 0.2,
+			'tickColorizeValues': true
+		})
+		$(".redCircle").knob({
+			'min':0,
+			'max':100,
+			'readOnly': true,
+			'width': 80,
+			'height': 80,
+			'fgColor': '#ED7A53',
+			'dynamicDraw': true,
+			'thickness': 0.2,
+			'tickColorizeValues': true
+		})
+		$(".blueCircle").knob({
+			'min':0,
+			'max':100,
+			'readOnly': true,
+			'width': 80,
+			'height': 80,
+			'fgColor': '#88BBC8',
+			'dynamicDraw': true,
+			'thickness': 0.2,
+			'tickColorizeValues': true
+		})
 
 	});
 
@@ -130,54 +130,54 @@ $(document).ready(function() {
 		var options = {
 				grid: {
 					show: true,
-				    aboveData: true,
-				    color: "#3f3f3f" ,
-				    labelMargin: 5,
-				    axisMargin: 0, 
-				    borderWidth: 0,
-				    borderColor:null,
-				    minBorderMargin: 5 ,
-				    clickable: true, 
-				    hoverable: true,
-				    autoHighlight: true,
-				    mouseActiveRadius: 20
+					aboveData: true,
+					color: "#3f3f3f" ,
+					labelMargin: 5,
+					axisMargin: 0, 
+					borderWidth: 0,
+					borderColor:null,
+					minBorderMargin: 5 ,
+					clickable: true, 
+					hoverable: true,
+					autoHighlight: true,
+					mouseActiveRadius: 20
 				},
-		        series: {
-		        	grow: {
-		        		active: false,
-		        		stepMode: "linear",
-		        		steps: 50,
-		        		stepDelay: true
-		        	},
-		            lines: {
-	            		show: true,
-	            		fill: true,
-	            		lineWidth: 4,
-	            		steps: false
-		            	},
-		            points: {
-		            	show:true,
-		            	radius: 5,
-		            	symbol: "circle",
-		            	fill: true,
-		            	borderColor: "#fff",
-		            }
-		        },
-		        legend: { 
-		        	position: "ne", 
-		        	margin: [0,-25], 
-		        	noColumns: 0,
-		        	labelBoxBorderColor: null,
-		        	labelFormatter: function(label, series) {
-					    // just add some space to labes
-					    return label+'&nbsp;&nbsp;';
+				series: {
+					grow: {
+						active: false,
+						stepMode: "linear",
+						steps: 50,
+						stepDelay: true
+					},
+					lines: {
+						show: true,
+						fill: true,
+						lineWidth: 4,
+						steps: false
+						},
+					points: {
+						show:true,
+						radius: 5,
+						symbol: "circle",
+						fill: true,
+						borderColor: "#fff",
+					}
+				},
+				legend: { 
+					position: "ne", 
+					margin: [0,-25], 
+					noColumns: 0,
+					labelBoxBorderColor: null,
+					labelFormatter: function(label, series) {
+						// just add some space to labes
+						return label+'&nbsp;&nbsp;';
 					 }
-		    	},
-		        yaxis: { min: 0 },
-		        xaxis: {ticks:11, tickDecimals: 0},
-		        colors: chartColours,
-		        shadowSize:1,
-		        tooltip: true, //activate tooltip
+				},
+				yaxis: { min: 0 },
+				xaxis: {ticks:11, tickDecimals: 0},
+				colors: chartColours,
+				shadowSize:1,
+				tooltip: true, //activate tooltip
 				tooltipOpts: {
 					content: "%s : %y.0",
 					shifts: {
@@ -185,36 +185,36 @@ $(document).ready(function() {
 						y: -50
 					}
 				}
-		    };   
+			};   
 	
-        	$.plot(placeholder, [ 
+			$.plot(placeholder, [ 
 
-        		{
-        			label: "Visits", 
-        			data: d1,
-        			lines: {fillColor: "#f2f7f9"},
-        			points: {fillColor: "#88bbc8"}
-        		}, 
-        		{	
-        			label: "Unique Visits", 
-        			data: d2,
-        			lines: {fillColor: "#fff8f2"},
-        			points: {fillColor: "#ed7a53"}
-        		} 
+				{
+					label: "Saldo", 
+					data: d1,
+					lines: {fillColor: "#f2f7f9"},
+					points: {fillColor: "#88bbc8"}
+				}, 
+				{	
+					label: "Gastos", 
+					data: d2,
+					lines: {fillColor: "#fff8f2"},
+					points: {fillColor: "#ed7a53"}
+				} 
 
-        	], options);
-	        
-    });
-    }//end if
+			], options);
+			
+	});
+	}//end if
 
-    
+	
 
 	//pie visits graph
 	if (divElement.hasClass('pieStats')) {
 	$(function () {
 	   var data = [
-		    { label: "%78.75 New Visitor",  data: 78.75, color: "#88bbc8"},
-		    { label: "%21.25 Returning Visitor",  data: 21.25, color: "#ed7a53"}
+			{ label: "%78.75 New Visitor",  data: 78.75, color: "#88bbc8"},
+			{ label: "%21.25 Returning Visitor",  data: 21.25, color: "#ed7a53"}
 		];
 		
 		$.plot($(".pieStats"), data, 
@@ -237,14 +237,14 @@ $(document).ready(function() {
 				grow: {	active: false},
 			},
 			legend: { 
-	        	position: "ne", 
-	        	labelBoxBorderColor: null
-	    	},
+				position: "ne", 
+				labelBoxBorderColor: null
+			},
 			grid: {
-	            hoverable: true,
-	            clickable: true
-	        },
-	        tooltip: true, //activate tooltip
+				hoverable: true,
+				clickable: true
+			},
+			tooltip: true, //activate tooltip
 			tooltipOpts: {
 				content: "%s : %y.1",
 				shifts: {
@@ -259,49 +259,49 @@ $(document).ready(function() {
 	//------------- Graphs for chart.html page -------------//
 
 	//Simple chart 
-    if (divElement.hasClass('simple-chart')) {
+	if (divElement.hasClass('simple-chart')) {
 	$(function () {
 		var sin = [], cos = [];
-	    for (var i = 0; i < 14; i += 0.5) {
-	        sin.push([i, Math.sin(i)]);
-	        cos.push([i, Math.cos(i)]);
-	    }
-	    //graph options
+		for (var i = 0; i < 14; i += 0.5) {
+			sin.push([i, Math.sin(i)]);
+			cos.push([i, Math.cos(i)]);
+		}
+		//graph options
 		var options = {
 				grid: {
 					show: true,
-				    aboveData: true,
-				    color: "#3f3f3f" ,
-				    labelMargin: 5,
-				    axisMargin: 0, 
-				    borderWidth: 0,
-				    borderColor:null,
-				    minBorderMargin: 5 ,
-				    clickable: true, 
-				    hoverable: true,
-				    autoHighlight: true,
-				    mouseActiveRadius: 20
+					aboveData: true,
+					color: "#3f3f3f" ,
+					labelMargin: 5,
+					axisMargin: 0, 
+					borderWidth: 0,
+					borderColor:null,
+					minBorderMargin: 5 ,
+					clickable: true, 
+					hoverable: true,
+					autoHighlight: true,
+					mouseActiveRadius: 20
 				},
-		        series: {
-		        	grow: {active: false},
-		            lines: {
-	            		show: true,
-	            		fill: false,
-	            		lineWidth: 4,
-	            		steps: false
-		            	},
-		            points: {
-		            	show:true,
-		            	radius: 5,
-		            	symbol: "circle",
-		            	fill: true,
-		            	borderColor: "#fff",
-		            }
-		        },
-		        legend: { position: "se" },
-		        colors: chartColours,
-		        shadowSize:1,
-		        tooltip: true, //activate tooltip
+				series: {
+					grow: {active: false},
+					lines: {
+						show: true,
+						fill: false,
+						lineWidth: 4,
+						steps: false
+						},
+					points: {
+						show:true,
+						radius: 5,
+						symbol: "circle",
+						fill: true,
+						borderColor: "#fff",
+					}
+				},
+				legend: { position: "se" },
+				colors: chartColours,
+				shadowSize:1,
+				tooltip: true, //activate tooltip
 				tooltipOpts: {
 					content: "%s : %y.3",
 					shifts: {
@@ -311,35 +311,35 @@ $(document).ready(function() {
 				}
 		};  
 		var plot = $.plot($(".simple-chart"),
-           [{
-    			label: "Sin", 
-    			data: sin,
-    			lines: {fillColor: "#f2f7f9"},
-    			points: {fillColor: "#88bbc8"}
-    		}, 
-    		{	
-    			label: "Cos", 
-    			data: cos,
-    			lines: {fillColor: "#fff8f2"},
-    			points: {fillColor: "#ed7a53"}
-    		}], options);
+		   [{
+				label: "Sin", 
+				data: sin,
+				lines: {fillColor: "#f2f7f9"},
+				points: {fillColor: "#88bbc8"}
+			}, 
+			{	
+				label: "Cos", 
+				data: cos,
+				lines: {fillColor: "#fff8f2"},
+				points: {fillColor: "#ed7a53"}
+			}], options);
 	});
 	}//end if
 
 	//Donut simple chart
-    if (divElement.hasClass('simple-donut')) {
+	if (divElement.hasClass('simple-donut')) {
 	$(function () {
 		var data = [
-		    { label: "USA",  data: 38, color: "#88bbc8"},
-		    { label: "Brazil",  data: 23, color: "#ed7a53"},
-		    { label: "India",  data: 15, color: "#9FC569"},
-		    { label: "Turkey",  data: 9, color: "#bbdce3"},
-		    { label: "France",  data: 7, color: "#9a3b1b"},
-		    { label: "China",  data: 5, color: "#5a8022"},
-		    { label: "Germany",  data: 3, color: "#2c7282"}
+			{ label: "USA",  data: 38, color: "#88bbc8"},
+			{ label: "Brazil",  data: 23, color: "#ed7a53"},
+			{ label: "India",  data: 15, color: "#9FC569"},
+			{ label: "Turkey",  data: 9, color: "#bbdce3"},
+			{ label: "France",  data: 7, color: "#9a3b1b"},
+			{ label: "China",  data: 5, color: "#5a8022"},
+			{ label: "Germany",  data: 3, color: "#2c7282"}
 		];
 
-	    $.plot($(".simple-donut"), data, 
+		$.plot($(".simple-donut"), data, 
 		{
 			series: {
 				pie: { 
@@ -354,26 +354,26 @@ $(document).ready(function() {
 						width: 8
 					},
 					startAngle: 2,
-				    combine: {
-	                    color: '#353535',
-	                    threshold: 0.05
-	                },
-	                label: {
-	                    show: true,
-	                    radius: 1,
-	                    formatter: function(label, series){
-	                        return '<div class="pie-chart-label">'+label+'&nbsp;'+Math.round(series.percent)+'%</div>';
-	                    }
-	                }
+					combine: {
+						color: '#353535',
+						threshold: 0.05
+					},
+					label: {
+						show: true,
+						radius: 1,
+						formatter: function(label, series){
+							return '<div class="pie-chart-label">'+label+'&nbsp;'+Math.round(series.percent)+'%</div>';
+						}
+					}
 				},
 				grow: {	active: false}
 			},
 			legend:{show:false},
 			grid: {
-	            hoverable: true,
-	            clickable: true
-	        },
-	        tooltip: true, //activate tooltip
+				hoverable: true,
+				clickable: true
+			},
+			tooltip: true, //activate tooltip
 			tooltipOpts: {
 				content: "%s : %y.1"+"%",
 				shifts: {
@@ -386,19 +386,19 @@ $(document).ready(function() {
 	}//end if
 
 	//Pie simple chart
-    if (divElement.hasClass('simple-pie')) {
+	if (divElement.hasClass('simple-pie')) {
 	$(function () {
 		var data = [
-		    { label: "USA",  data: 38, color: "#88bbc8"},
-		    { label: "Brazil",  data: 23, color: "#ed7a53"},
-		    { label: "India",  data: 15, color: "#9FC569"},
-		    { label: "Turkey",  data: 9, color: "#bbdce3"},
-		    { label: "France",  data: 7, color: "#9a3b1b"},
-		    { label: "China",  data: 5, color: "#5a8022"},
-		    { label: "Germany",  data: 3, color: "#2c7282"}
+			{ label: "USA",  data: 38, color: "#88bbc8"},
+			{ label: "Brazil",  data: 23, color: "#ed7a53"},
+			{ label: "India",  data: 15, color: "#9FC569"},
+			{ label: "Turkey",  data: 9, color: "#bbdce3"},
+			{ label: "France",  data: 7, color: "#9a3b1b"},
+			{ label: "China",  data: 5, color: "#5a8022"},
+			{ label: "Germany",  data: 3, color: "#2c7282"}
 		];
 
-	    $.plot($(".simple-pie"), data, 
+		$.plot($(".simple-pie"), data, 
 		{
 			series: {
 				pie: { 
@@ -412,26 +412,26 @@ $(document).ready(function() {
 						width: 2
 					},
 					startAngle: 2,
-				    combine: {
-	                    color: '#353535',
-	                    threshold: 0.05
-	                },
-	                label: {
-	                    show: true,
-	                    radius: 1,
-	                    formatter: function(label, series){
-	                        return '<div class="pie-chart-label">'+label+'&nbsp;'+Math.round(series.percent)+'%</div>';
-	                    }
-	                }
+					combine: {
+						color: '#353535',
+						threshold: 0.05
+					},
+					label: {
+						show: true,
+						radius: 1,
+						formatter: function(label, series){
+							return '<div class="pie-chart-label">'+label+'&nbsp;'+Math.round(series.percent)+'%</div>';
+						}
+					}
 				},
 				grow: {	active: false}
 			},
 			legend:{show:false},
 			grid: {
-	            hoverable: true,
-	            clickable: true
-	        },
-	        tooltip: true, //activate tooltip
+				hoverable: true,
+				clickable: true
+			},
+			tooltip: true, //activate tooltip
 			tooltipOpts: {
 				content: "%s : %y.1"+"%",
 				shifts: {
@@ -445,38 +445,38 @@ $(document).ready(function() {
 
 
 	//Ordered bars chart
-    if (divElement.hasClass('order-bars-chart')) {
+	if (divElement.hasClass('order-bars-chart')) {
 	$(function () {
 		//some data
 		var d1 = [];
-	    for (var i = 0; i <= 10; i += 1)
-	        d1.push([i, parseInt(Math.random() * 30)]);
+		for (var i = 0; i <= 10; i += 1)
+			d1.push([i, parseInt(Math.random() * 30)]);
 	 
-	    var d2 = [];
-	    for (var i = 0; i <= 10; i += 1)
-	        d2.push([i, parseInt(Math.random() * 30)]);
+		var d2 = [];
+		for (var i = 0; i <= 10; i += 1)
+			d2.push([i, parseInt(Math.random() * 30)]);
 	 
-	    var d3 = [];
-	    for (var i = 0; i <= 10; i += 1)
-	        d3.push([i, parseInt(Math.random() * 30)]);
+		var d3 = [];
+		for (var i = 0; i <= 10; i += 1)
+			d3.push([i, parseInt(Math.random() * 30)]);
 	 
-	    var ds = new Array();
+		var ds = new Array();
 	 
-	     ds.push({
-	     	label: "Data One",
-	        data:d1,
-	        bars: {order: 1}
-	    });
-	    ds.push({
-	    	label: "Data Two",
-	        data:d2,
-	        bars: {order: 2}
-	    });
-	    ds.push({
-	    	label: "Data Three",
-	        data:d3,
-	        bars: {order: 3}
-	    });
+		 ds.push({
+			label: "Data One",
+			data:d1,
+			bars: {order: 1}
+		});
+		ds.push({
+			label: "Data Two",
+			data:d2,
+			bars: {order: 2}
+		});
+		ds.push({
+			label: "Data Three",
+			data:d3,
+			bars: {order: 3}
+		});
 
 		var options = {
 				bars: {
@@ -486,24 +486,24 @@ $(document).ready(function() {
 				},
 				grid: {
 					show: true,
-				    aboveData: false,
-				    color: "#3f3f3f" ,
-				    labelMargin: 5,
-				    axisMargin: 0, 
-				    borderWidth: 0,
-				    borderColor:null,
-				    minBorderMargin: 5 ,
-				    clickable: true, 
-				    hoverable: true,
-				    autoHighlight: false,
-				    mouseActiveRadius: 20
+					aboveData: false,
+					color: "#3f3f3f" ,
+					labelMargin: 5,
+					axisMargin: 0, 
+					borderWidth: 0,
+					borderColor:null,
+					minBorderMargin: 5 ,
+					clickable: true, 
+					hoverable: true,
+					autoHighlight: false,
+					mouseActiveRadius: 20
 				},
-		        series: {
-		        	grow: {active:false}
-		        },
-		        legend: { position: "ne" },
-		        colors: chartColours,
-		        tooltip: true, //activate tooltip
+				series: {
+					grow: {active:false}
+				},
+				legend: { position: "ne" },
+				colors: chartColours,
+				tooltip: true, //activate tooltip
 				tooltipOpts: {
 					content: "%s : %y.0",
 					shifts: {
@@ -518,64 +518,64 @@ $(document).ready(function() {
 	}//end if
 
 	//Stacked bars chart
-    if (divElement.hasClass('stacked-bars-chart')) {
+	if (divElement.hasClass('stacked-bars-chart')) {
 	$(function () {
 		//some data
 		var d1 = [];
-	    for (var i = 0; i <= 10; i += 1)
-	        d1.push([i, parseInt(Math.random() * 30)]);
+		for (var i = 0; i <= 10; i += 1)
+			d1.push([i, parseInt(Math.random() * 30)]);
 	 
-	    var d2 = [];
-	    for (var i = 0; i <= 10; i += 1)
-	        d2.push([i, parseInt(Math.random() * 30)]);
+		var d2 = [];
+		for (var i = 0; i <= 10; i += 1)
+			d2.push([i, parseInt(Math.random() * 30)]);
 	 
-	    var d3 = [];
-	    for (var i = 0; i <= 10; i += 1)
-	        d3.push([i, parseInt(Math.random() * 30)]);
+		var d3 = [];
+		for (var i = 0; i <= 10; i += 1)
+			d3.push([i, parseInt(Math.random() * 30)]);
 	 
-	    var ds = new Array();
+		var ds = new Array();
 	 
-	     ds.push({
-	     	label: "Data One",
-	        data:d1
-	    });
-	    ds.push({
-	    	label: "Data Two",
-	        data:d2
-	    });
-	    ds.push({
-	    	label: "Data Tree",
-	        data:d3
-	    });
+		 ds.push({
+			label: "Data One",
+			data:d1
+		});
+		ds.push({
+			label: "Data Two",
+			data:d2
+		});
+		ds.push({
+			label: "Data Tree",
+			data:d3
+		});
 
 		var stack = 0, bars = true, lines = false, steps = false;
 
 		var options = {
 				grid: {
 					show: true,
-				    aboveData: false,
-				    color: "#3f3f3f" ,
-				    labelMargin: 5,
-				    axisMargin: 0, 
-				    borderWidth: 0,
-				    borderColor:null,
-				    minBorderMargin: 5 ,
-				    clickable: true, 
-				    hoverable: true,
-				    autoHighlight: true,
-				    mouseActiveRadius: 20
+					aboveData: false,
+					color: "#3f3f3f" ,
+					labelMargin: 5,
+					axisMargin: 0, 
+					borderWidth: 0,
+					borderColor:null,
+					minBorderMargin: 5 ,
+					clickable: true, 
+					hoverable: true,
+					autoHighlight: true,
+					mouseActiveRadius: 20
 				},
-		        series: {
-		        	grow: {active:false},
-		        	stack: stack,
-	                lines: { show: lines, fill: true, steps: steps },
-	                bars: { show: bars, barWidth: 0.5, fill:1}
-			    },
-		        xaxis: {ticks:11, tickDecimals: 0},
-		        legend: { position: "se" },
-		        colors: chartColours,
-		        shadowSize:1,
-		        tooltip: true, //activate tooltip
+				series: {
+					grow: {active:false},
+					stack: stack,
+					lines: { show: lines, fill: true, steps: steps },
+					bars: { show: bars, barWidth: 0.5, fill:1}
+				},
+				xaxis: {ticks:11, tickDecimals: 0},
+				legend: { position: "se" },
+				colors: chartColours,
+				shadowSize:1,
+				tooltip: true, //activate tooltip
 				tooltipOpts: {
 					content: "%s : %y.0",
 					shifts: {
@@ -592,7 +592,7 @@ $(document).ready(function() {
 
 
 	//Lines chart without points
-    if (divElement.hasClass('lines-chart')) {
+	if (divElement.hasClass('lines-chart')) {
 	$(function () {
 
 		//some data
@@ -604,34 +604,34 @@ $(document).ready(function() {
 		var options = {
 				grid: {
 					show: true,
-				    aboveData: true,
-				    color: "#3f3f3f" ,
-				    labelMargin: 5,
-				    axisMargin: 0, 
-				    borderWidth: 0,
-				    borderColor:null,
-				    minBorderMargin: 5 ,
-				    clickable: true, 
-				    hoverable: true,
-				    autoHighlight: true,
-				    mouseActiveRadius: 20
+					aboveData: true,
+					color: "#3f3f3f" ,
+					labelMargin: 5,
+					axisMargin: 0, 
+					borderWidth: 0,
+					borderColor:null,
+					minBorderMargin: 5 ,
+					clickable: true, 
+					hoverable: true,
+					autoHighlight: true,
+					mouseActiveRadius: 20
 				},
-		        series: {
-		        	grow: {active:false},
-		            lines: {
-	            		show: true,
-	            		fill: true,
-	            		lineWidth: 2,
-	            		steps: false
-		            	},
-		            points: {show:false}
-		        },
-		        legend: { position: "se" },
-		        yaxis: { min: 0 },
-		        xaxis: {ticks:11, tickDecimals: 0},
-		        colors: chartColours,
-		        shadowSize:1,
-		        tooltip: true, //activate tooltip
+				series: {
+					grow: {active:false},
+					lines: {
+						show: true,
+						fill: true,
+						lineWidth: 2,
+						steps: false
+						},
+					points: {show:false}
+				},
+				legend: { position: "se" },
+				yaxis: { min: 0 },
+				xaxis: {ticks:11, tickDecimals: 0},
+				colors: chartColours,
+				shadowSize:1,
+				tooltip: true, //activate tooltip
 				tooltipOpts: {
 					content: "%s : %y.0",
 					shifts: {
@@ -639,102 +639,102 @@ $(document).ready(function() {
 						y: -50
 					}
 				}
-		    };   
+			};   
 	
-        	$.plot(placeholder, [ 
+			$.plot(placeholder, [ 
 
-        		{
-        			label: "Visits", 
-        			data: d1,
-        			lines: {fillColor: "#f2f7f9"},
-        			points: {fillColor: "#88bbc8"}
-        		}, 
-        		{	
-        			label: "Unique Visits", 
-        			data: d2,
-        			lines: {fillColor: "#fff8f2"},
-        			points: {fillColor: "#ed7a53"}
-        		} 
+				{
+					label: "Saldo", 
+					data: d1,
+					lines: {fillColor: "#f2f7f9"},
+					points: {fillColor: "#88bbc8"}
+				}, 
+				{	
+					label: "Gastos", 
+					data: d2,
+					lines: {fillColor: "#fff8f2"},
+					points: {fillColor: "#ed7a53"}
+				} 
 
-        	], options);
+			], options);
 
 	});
 	}//end if
 
 	//Horizontal bars chart
-    if (divElement.hasClass('horizontal-bars-chart')) {
+	if (divElement.hasClass('horizontal-bars-chart')) {
 	$(function () {
 		//some data
 		//Display horizontal graph
-    var d1_h = [];
-    for (var i = 0; i <= 5; i += 1)
-        d1_h.push([parseInt(Math.random() * 30),i ]);
+	var d1_h = [];
+	for (var i = 0; i <= 5; i += 1)
+		d1_h.push([parseInt(Math.random() * 30),i ]);
 
-    var d2_h = [];
-    for (var i = 0; i <= 5; i += 1)
-        d2_h.push([parseInt(Math.random() * 30),i ]);
+	var d2_h = [];
+	for (var i = 0; i <= 5; i += 1)
+		d2_h.push([parseInt(Math.random() * 30),i ]);
 
-    var d3_h = [];
-    for (var i = 0; i <= 5; i += 1)
-        d3_h.push([ parseInt(Math.random() * 30),i]);
-                
-    var ds_h = new Array();
-    ds_h.push({
-        data:d1_h,
-        bars: {
-            horizontal:true, 
-            show: true, 
-            barWidth: 0.2, 
-            order: 1,
-        }
-    });
+	var d3_h = [];
+	for (var i = 0; i <= 5; i += 1)
+		d3_h.push([ parseInt(Math.random() * 30),i]);
+				
+	var ds_h = new Array();
 	ds_h.push({
-	    data:d2_h,
-	    bars: {
-	        horizontal:true, 
-	        show: true, 
-	        barWidth: 0.2, 
-	        order: 2
-	    }
+		data:d1_h,
+		bars: {
+			horizontal:true, 
+			show: true, 
+			barWidth: 0.2, 
+			order: 1,
+		}
 	});
 	ds_h.push({
-	    data:d3_h,
-	    bars: {
-	        horizontal:true, 
-	        show: true, 
-	        barWidth: 0.2, 
-	        order: 3
-	    }
+		data:d2_h,
+		bars: {
+			horizontal:true, 
+			show: true, 
+			barWidth: 0.2, 
+			order: 2
+		}
+	});
+	ds_h.push({
+		data:d3_h,
+		bars: {
+			horizontal:true, 
+			show: true, 
+			barWidth: 0.2, 
+			order: 3
+		}
 	});
 
 
 		var options = {
 				grid: {
 					show: true,
-				    aboveData: false,
-				    color: "#3f3f3f" ,
-				    labelMargin: 5,
-				    axisMargin: 0, 
-				    borderWidth: 0,
-				    borderColor:null,
-				    minBorderMargin: 5 ,
-				    clickable: true, 
-				    hoverable: true,
-				    autoHighlight: false,
-				    mouseActiveRadius: 20
+					aboveData: false,
+					color: "#3f3f3f" ,
+					labelMargin: 5,
+					axisMargin: 0, 
+					borderWidth: 0,
+					borderColor:null,
+					minBorderMargin: 5 ,
+					clickable: true, 
+					hoverable: true,
+					autoHighlight: false,
+					mouseActiveRadius: 20
 				},
-		        series: {
-		        	grow: {active:false},
-			        bars: {
-			        	show:true,
+				series: {
+					grow: {active:false},
+					bars: {
+						show:true,
 						horizontal: true,
 						barWidth:0.2,
 						fill:1
 					}
-		        },
-		        legend: { position: "ne" },
-		        colors: chartColours,
-		        tooltip: true, //activate tooltip
+				},
+				legend: { position: "ne" },
+				colors: chartColours,
+				tooltip: true, //activate tooltip
 				tooltipOpts: {
 					content: "%s : %y.0",
 					shifts: {
@@ -749,64 +749,64 @@ $(document).ready(function() {
 	}//end if
 
 	//Auto update chart
-    if (divElement.hasClass('auto-update-chart')) {
+	if (divElement.hasClass('auto-update-chart')) {
 	$(function () {
 		// we use an inline data source in the example, usually data would
-	    // be fetched from a server
-	    var data = [], totalPoints = 300;
-	    function getRandomData() {
-	        if (data.length > 0)
-	            data = data.slice(1);
+		// be fetched from a server
+		var data = [], totalPoints = 300;
+		function getRandomData() {
+			if (data.length > 0)
+				data = data.slice(1);
 
-	        // do a random walk
-	        while (data.length < totalPoints) {
-	            var prev = data.length > 0 ? data[data.length - 1] : 50;
-	            var y = prev + Math.random() * 10 - 5;
-	            if (y < 0)
-	                y = 0;
-	            if (y > 100)
-	                y = 100;
-	            data.push(y);
-	        }
+			// do a random walk
+			while (data.length < totalPoints) {
+				var prev = data.length > 0 ? data[data.length - 1] : 50;
+				var y = prev + Math.random() * 10 - 5;
+				if (y < 0)
+					y = 0;
+				if (y > 100)
+					y = 100;
+				data.push(y);
+			}
 
-	        // zip the generated y values with the x values
-	        var res = [];
-	        for (var i = 0; i < data.length; ++i)
-	            res.push([i, data[i]])
-	        return res;
-	    }
+			// zip the generated y values with the x values
+			var res = [];
+			for (var i = 0; i < data.length; ++i)
+				res.push([i, data[i]])
+			return res;
+		}
 
-	    // Update interval
-	    var updateInterval = 200;
+		// Update interval
+		var updateInterval = 200;
 
-	    // setup plot
-	    var options = {
-	        series: { 
-	        	grow: {active:false}, //disable auto grow
-	        	shadowSize: 0, // drawing is faster without shadows
-	        	lines: {
-            		show: true,
-            		fill: true,
-            		lineWidth: 2,
-            		steps: false
-	            }
-	        },
-	        grid: {
+		// setup plot
+		var options = {
+			series: { 
+				grow: {active:false}, //disable auto grow
+				shadowSize: 0, // drawing is faster without shadows
+				lines: {
+					show: true,
+					fill: true,
+					lineWidth: 2,
+					steps: false
+				}
+			},
+			grid: {
 				show: true,
-			    aboveData: false,
-			    color: "#3f3f3f" ,
-			    labelMargin: 5,
-			    axisMargin: 0, 
-			    borderWidth: 0,
-			    borderColor:null,
-			    minBorderMargin: 5 ,
-			    clickable: true, 
-			    hoverable: true,
-			    autoHighlight: false,
-			    mouseActiveRadius: 20
+				aboveData: false,
+				color: "#3f3f3f" ,
+				labelMargin: 5,
+				axisMargin: 0, 
+				borderWidth: 0,
+				borderColor:null,
+				minBorderMargin: 5 ,
+				clickable: true, 
+				hoverable: true,
+				autoHighlight: false,
+				mouseActiveRadius: 20
 			}, 
 			colors: chartColours,
-	        tooltip: true, //activate tooltip
+			tooltip: true, //activate tooltip
 			tooltipOpts: {
 				content: "Value is : %y.0",
 				shifts: {
@@ -814,20 +814,20 @@ $(document).ready(function() {
 					y: -50
 				}
 			},	
-	        yaxis: { min: 0, max: 100 },
-	        xaxis: { show: true}
-	    };
-	    var plot = $.plot($(".auto-update-chart"), [ getRandomData() ], options);
+			yaxis: { min: 0, max: 100 },
+			xaxis: { show: true}
+		};
+		var plot = $.plot($(".auto-update-chart"), [ getRandomData() ], options);
 
-	    function update() {
-	        plot.setData([ getRandomData() ]);
-	        // since the axes don't change, we don't need to call plot.setupGrid()
-	        plot.draw();
-	        
-	        setTimeout(update, updateInterval);
-	    }
+		function update() {
+			plot.setData([ getRandomData() ]);
+			// since the axes don't change, we don't need to call plot.setupGrid()
+			plot.draw();
+			
+			setTimeout(update, updateInterval);
+		}
 
-	    update();
+		update();
 	});
 	}//end if
 

@@ -116,13 +116,13 @@ yepnope([
 		        	$.plot(placeholder, [ 
 
 		        		{
-		        			label: "Visits", 
+		        			label: "Disponível", 
 		        			data: d1,
 		        			lines: {fillColor: "#f2f7f9"},
 		        			points: {fillColor: "#88bbc8"}
 		        		}, 
 		        		{	
-		        			label: "Unique Visits", 
+		        			label: "Gasto", 
 		        			data: d2,
 		        			lines: {fillColor: "#fff8f2"},
 		        			points: {fillColor: "#ed7a53"}

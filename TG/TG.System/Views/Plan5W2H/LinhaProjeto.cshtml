@@ -30,6 +30,9 @@
     <td class="lastcolumn">
         <div class="shortcuts center">
             <ul>
+                <li>
+                    <a href="@Url.Action("Gastos", "Plan5W2H", new { @id = Model.Code.ToString() })" class="tip" oldtitle="Remover" title="Gastos" aria-describedby="ui-tooltip-3"><span class="icon24 icomoon-icon-stats-up"></span></a>
+                </li>
                 @if (Model.Andamento != Status.Finalizado)
                 {
                 <li>
