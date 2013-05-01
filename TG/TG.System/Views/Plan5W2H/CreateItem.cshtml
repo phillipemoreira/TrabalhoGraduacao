@@ -193,7 +193,7 @@
     $(function () {
         function format(state) {
             if (!state.id) return state.text; // optgroup
-            return "<img style='width:36px;height:32px;' class='avatar' src='/Content/UsersAvatar/avatar-" + state.id.toLowerCase() + ".png'/>" + state.text;
+            return "<img style='width:36px;height:32px;' class='avatar' src='/Content/UsersAvatar/avatar" + state.id.toLowerCase() + ".png'/>" + state.text;
         }
 
         $("#Colaboradores").select2({
